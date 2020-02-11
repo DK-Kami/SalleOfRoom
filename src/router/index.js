@@ -3,9 +3,15 @@ import VueRouter from 'vue-router';
 import initListners from './initListners';
 import listners from './listners';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
-const routes = [];
+const routes = [
+  {
+    name: 'start',
+    path: '/',
+    component: () => import('@/views/StartPage')
+  }
+];
 
 const router = new VueRouter({
   mode: 'history',

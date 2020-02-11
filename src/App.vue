@@ -1,60 +1,111 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+    <notification />
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+    <v-content :style="isEmptyLayout ? 'height:100vh' : ''">
+      <router-view v-if="isEmptyLayout" />
 
-      <v-spacer></v-spacer>
+      <template v-else>
+        <the-toolbar />
+        <!-- <the-menu /> -->
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
+        <v-container fluid class="px-0 mt-4">
+          <v-layout fill-height justify-center>
+            <v-slide-y-transition mode="out-in">
+              <router-view />
+            </v-slide-y-transition>
+          </v-layout>
+        </v-container>
 
-    <!-- <v-content>
-      <HelloWorld/>
-    </v-content> -->
+        <the-footer />
+      </template>
+    </v-content>
   </v-app>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld';
+import Notification from '@/components/layout/Notification';
+import TheToolbar from '@/components/layout/TheToolbar';
+import TheFooter from '@/components/layout/TheFooter';
+import TheMenu from '@/components/layout/TheMenu';
 
 export default {
   name: 'App',
 
   components: {
-    // HelloWorld,
+    Notification,
+    TheToolbar,
+    TheFooter,
+    TheMenu,
   },
 
-  data: () => ({
-    //
-  }),
+  computed: {
+    isEmptyLayout() {
+      return false;
+    },
+  },
 };
 </script>
+
+<style>
+.v-card,
+.v-stepper,
+.custom-elevation,
+.v-stepper__header,
+.v-expansion-panel,
+.v-btn-toggle--selected,
+.v-expansion-panel,
+.v-expansion-panels,
+.v-expansion-panel-header,
+.v-expansion-panel-content,
+.v-expansion-panel::before,
+.v-data-table {
+  /* box-shadow: 0 7px 15px rgba(0,0,0,.03) !important; */
+  box-shadow: none !important;
+}
+.v-card, .v-expansion-panel {
+  border: 1px solid #e6eef5 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.07) !important;
+}
+.v-data-table {
+  background: transparent !important;
+}
+.v-application .elevation-0 {
+  border: none !important;
+}
+.v-application .primary {
+  background: linear-gradient(80deg,#2e3e4f,#476686);
+}
+.elevation-3 {
+  box-shadow: 0 7px 15px rgba(0,0,0,.03) !important;
+  border: none !important;
+}
+.cursor--pointer {
+  cursor: pointer;
+}
+.v-navigation-drawer {
+  pointer-events: inherit;
+}
+
+.theme--light.v-divider {
+  border-color: transparent !important;
+}
+
+.theme--light.v-data-table thead {
+  background: linear-gradient(80deg,#2e3e4f,#476686);
+  text-transform: uppercase;
+}
+
+.theme--light.v-data-table thead th {
+  color: #ffffff !important;
+}
+
+.theme--light.v-data-table .v-data-table-header th.sortable.active .v-data-table-header__icon, .theme--light.v-data-table .v-data-table-header th.sortable .v-data-table-header__icon {
+  color: #ffffff !important;
+}
+
+.no-select {
+  user-select: none;
+}
+</style>
