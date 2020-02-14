@@ -1,6 +1,6 @@
 <template>
   <form-validate @submit="handleSubmit" @fail-validation="hadleFailValidation">
-    <v-card elevation="0">
+    <v-card :elevation="elevation" width="700">
       <v-card-title class="pa-0">
         <v-layout column>
           <v-layout align-center>
@@ -57,21 +57,11 @@ export default {
     FormValidate,
   },
 
-  /**
-   * Попытка программно задать validateOnBlur всем input формы
-   */
-  // mounted() {
-  //   const componentTags = [
-  //     'v-autocomplete',
-  //     'v-text-field',
-  //     'v-textaria',
-  //     'v-select',
-  //   ];
-
-  //   this.setValidateOnBlurToComponents(this.$slots.default, componentTags);
-  // },
-
   props: {
+    elevation: {
+      type: [Number, String],
+      default: 0,
+    },
     afterTitle: String,
     title: String,
   },
@@ -81,21 +71,6 @@ export default {
   }),
 
   methods: {
-    /**
-     * Метод для рекурсивного задания свойства ValidateonBlur дочерним компонентам
-     */
-    // async setValidateOnBlurToComponents(components, tags) {
-    //   if (!components || !components.length) return;
-
-    //   components.forEach(component => {
-    //     if (component.componentOptions && tags.includes(component.componentOptions.tag)) {
-    //       component.componentOptions.propsData.validateOnBlur = '';
-    //       console.log(component.componentOptions.propsData);
-    //     }
-    //     return this.setValidateOnBlurToComponents(component.children, tags);
-    //   });
-    // },
-
     hadleFailValidation(e) {
       this.$emit('fail-validation', e);
       return this.error = 'Проверьте заполненность и корректность данных полей';
