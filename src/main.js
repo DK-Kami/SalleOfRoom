@@ -6,7 +6,11 @@ import vuetify from './plugins/vuetify';
 import 'roboto-fontface/css/roboto/roboto-fontface.css';
 import '@mdi/font/css/materialdesignicons.css';
 
+import mainMixin from './helper/mixins/main';
+
 Vue.config.productionTip = false;
+
+Vue.mixin(mainMixin);
 
 const router = routerInit(store);
 new Vue({

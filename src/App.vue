@@ -2,7 +2,11 @@
   <v-app>
     <notification />
 
-    <v-content>
+    <v-content v-if="true">
+      <router-view />
+    </v-content>
+
+    <v-content v-else>
       <v-app-bar style="display:none"></v-app-bar>
       <the-toolbar />
 

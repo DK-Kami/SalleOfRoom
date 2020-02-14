@@ -16,6 +16,19 @@ class WebClient {
   }
 
   setInterceptors() {
+    this.axios.interceptors.response.use(null, error => {
+      if (error.response && error.response.config && (error.response.status === 401 || error.response.status === 403)) {
+        return router.push({ name: "login" });
+      }
+      return Promise.resolve(error.response);
+    });
+  }
+
+  login(token) {
+    this.axios.defaults.headers.common['Authorization'] = token;
+  }
+  logout() {
+    delete this.axios.defaults.headers.common['Authorization'];
   }
 
   get(url, params) {
@@ -47,5 +60,5 @@ class WebClient {
   }
 };
 
-const url = 'https://radar.vdooh.com';
+const url = 'https://localhost:44388/';
 export default new WebClient(url);
