@@ -7,7 +7,7 @@ class WebClient {
     this.axios = axios.create({
       baseURL,
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
       withCredentials: false,
     });
@@ -26,9 +26,11 @@ class WebClient {
 
   login(token) {
     this.axios.defaults.headers.common['Authorization'] = token;
+    this.axios.defaults.headers.common['Content-Type'] = 'application/json';
   }
   logout() {
     delete this.axios.defaults.headers.common['Authorization'];
+    this.axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
   }
 
   get(url, params) {

@@ -1,6 +1,6 @@
 <template>
   <form-validate @submit="handleSubmit" @fail-validation="hadleFailValidation">
-    <v-card :elevation="elevation" width="700">
+    <v-card :elevation="elevation" width="700" class="pa-4">
       <v-card-title class="pa-0">
         <v-layout column>
           <v-layout align-center>

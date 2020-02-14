@@ -1,10 +1,12 @@
 export default {
   async auth(login, password) {
-    const user = (await this.apiClient.post('Token', {
-      grant_type: 'password',
-      username: login,
-      password,
-    })).data;
+    const requestBody = [
+      'grant_type=password',
+      `password=${password}`,
+      `username=${login}`,
+    ].join('&');
+
+    const user = (await this.apiClient.post('Token', requestBody)).data;
     console.log(user);
     
     if (!user.error) {
