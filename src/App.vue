@@ -2,23 +2,17 @@
   <v-app>
     <notification />
 
-    <v-content :style="isEmptyLayout ? 'height:100vh' : ''">
-      <router-view v-if="isEmptyLayout" />
+    <v-content>
+      <v-app-bar style="display:none"></v-app-bar>
+      <the-toolbar />
 
-      <template v-else>
-        <the-toolbar />
-        <!-- <the-menu /> -->
-
-        <v-container fluid class="px-0 mt-4">
-          <v-layout fill-height justify-center>
-            <v-slide-y-transition mode="out-in">
-              <router-view />
-            </v-slide-y-transition>
-          </v-layout>
-        </v-container>
-
-        <the-footer />
-      </template>
+      <v-container fluid class="px-0 mt-4">
+        <v-layout fill-height justify-center>
+          <v-slide-y-transition mode="out-in">
+            <router-view />
+          </v-slide-y-transition>
+        </v-layout>
+      </v-container>
     </v-content>
   </v-app>
 </template>
@@ -37,12 +31,6 @@ export default {
     TheToolbar,
     TheFooter,
     TheMenu,
-  },
-
-  computed: {
-    isEmptyLayout() {
-      return false;
-    },
   },
 };
 </script>
@@ -74,9 +62,7 @@ export default {
 .v-application .elevation-0 {
   border: none !important;
 }
-.v-application .primary {
-  background: linear-gradient(80deg,#2e3e4f,#476686);
-}
+
 .elevation-3 {
   box-shadow: 0 7px 15px rgba(0,0,0,.03) !important;
   border: none !important;
@@ -90,11 +76,6 @@ export default {
 
 .theme--light.v-divider {
   border-color: transparent !important;
-}
-
-.theme--light.v-data-table thead {
-  background: linear-gradient(80deg,#2e3e4f,#476686);
-  text-transform: uppercase;
 }
 
 .theme--light.v-data-table thead th {

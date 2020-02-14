@@ -1,5 +1,5 @@
 <template>
   <div>
-    code here
+    Иди нахуй
   </div>
 </template>
