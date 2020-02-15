@@ -18,7 +18,10 @@ export default {
   },
 
   loadUsers(search) {
-    return this.apiClient.get('users', { search });
+    if (search) {
+      return this.apiClient.get('users', { search });
+    }
+    return this.apiClient.get('users');
   },
   loadUser(id) {
     return this.apiClient.get('user', { id });

@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 import initListners from './initListners';
 import listners from './listners';
 
-import usersChildren from './routes/users';
+import usersRoutes from './routes/users';
 
 Vue.use(VueRouter);
 
@@ -14,13 +14,7 @@ const routes = [
     component: () => import('@/views/Login'),
   },
 
-  {
-    path: '/users',
-    meta: {
-      role: 'admin',
-    },
-    children: usersChildren,
-  },
+  ...usersRoutes,
 
   {
     path: '/ping',

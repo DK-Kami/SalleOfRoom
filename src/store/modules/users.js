@@ -13,7 +13,7 @@ export const initialState = () => ({
 export const mutations = {
   SET_USERS: (state, users) => state.users = users,
   SET_USER: (state, user) => state.user = user,
-},
+};
 
 export const actions = {
   async loadUsers({ commit }, search) {

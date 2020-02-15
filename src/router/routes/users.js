@@ -1,17 +1,33 @@
-export default [
+const parentRoute = '/users';
+
+const routes = [
   {
     path: '/',
-    name: 'user.lists',
+    name: 'users.list',
+    meta: {
+      role: 'admin',
+    },
     component: () => import('@/views/Users/UsersList'),
   },
   {
     path: '/create',
-    name: 'user.create',
+    name: 'users.create',
+    meta: {
+      role: 'admin',
+    },
     component: () => import('@/views/Users/UsersModify'),
   },
   {
     path: '/:id/edit',
-    name: 'user.edit',
+    name: 'users.edit',
+    meta: {
+      role: 'admin',
+    },
     component: () => import('@/views/Users/UsersModify'),
   },
 ];
+
+export default routes.map(route => ({
+  ...route,
+  path: parentRoute + route.path,
+}));
