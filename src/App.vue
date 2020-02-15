@@ -1,17 +1,34 @@
 <template>
-  <v-app>
+  <v-app light>
     <notification />
 
-    <v-content v-if="true">
+    <v-content v-if="isEmptyLayout">
       <router-view />
     </v-content>
 
     <v-content v-else>
-      <v-app-bar style="display:none"></v-app-bar>
-      <the-toolbar />
+      <!-- <the-toolbar /> -->
+      <v-app-bar color="primary" dark>
+        <div>
+          Добро пожаловать, {{ username }}
+        </div>
+        <v-spacer />
+        <v-toolbar-items>
+          <v-btn
+            @click.stop="logout"
+            class="px-3"
+            large
+            text
+          >
+            <span class="mr-2">Выйти</span>
+            <v-icon middle>mdi-logout</v-icon>
+          </v-btn>
+        </v-toolbar-items>
+      </v-app-bar>
+      
 
-      <v-container fluid class="px-0 mt-4">
-        <v-layout fill-height justify-center>
+      <v-container class="mt-4">
+        <v-layout fill-height justify-center class="elevation-4">
           <v-slide-y-transition mode="out-in">
             <router-view />
           </v-slide-y-transition>
@@ -35,6 +52,28 @@ export default {
     TheToolbar,
     TheFooter,
     TheMenu,
+  },
+
+  computed: {
+    isEmptyLayout() {
+      if (!this.$route.meta) return true;
+      const meta = {};
+      this.$route.matched.forEach(match => Object.assign(meta, match.meta));
+      return !meta.role || meta.role === 'none';
+    },
+    user() {
+      return this.$store.getters['auth/getUser'];
+    },
+    username() {
+      return this.user.userName || this.user.email;
+    },
+  },
+
+  methods: {
+    async logout() {
+      await this.$store.dispatch('logout');
+      this.$router.replace({ name: 'ping' });
+    },
   },
 };
 </script>
@@ -76,18 +115,6 @@ export default {
 }
 .v-navigation-drawer {
   pointer-events: inherit;
-}
-
-.theme--light.v-divider {
-  border-color: transparent !important;
-}
-
-.theme--light.v-data-table thead th {
-  color: #ffffff !important;
-}
-
-.theme--light.v-data-table .v-data-table-header th.sortable.active .v-data-table-header__icon, .theme--light.v-data-table .v-data-table-header th.sortable .v-data-table-header__icon {
-  color: #ffffff !important;
 }
 
 .no-select {

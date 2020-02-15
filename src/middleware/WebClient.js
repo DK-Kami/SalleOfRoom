@@ -1,4 +1,6 @@
 import axios from 'axios';
+// import store from '@/store';
+// import router from '@/router';
 
 class WebClient {
   constructor(baseURL) {
@@ -18,15 +20,16 @@ class WebClient {
   setInterceptors() {
     this.axios.interceptors.response.use(null, error => {
       if (error.response && error.response.config && (error.response.status === 401 || error.response.status === 403)) {
-        return router.push({ name: "login" });
+        // return router(store).push({ name: "login" });
       }
       return Promise.resolve(error.response);
     });
   }
 
   login(token) {
-    this.axios.defaults.headers.common['Authorization'] = token;
+    this.axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
     this.axios.defaults.headers.common['Content-Type'] = 'application/json';
+    console.log(this.axios.defaults.headers);
   }
   logout() {
     delete this.axios.defaults.headers.common['Authorization'];
@@ -62,5 +65,5 @@ class WebClient {
   }
 };
 
-const url = 'https://localhost:44388/';
+const url = 'https://localhost:44388/api';
 export default new WebClient(url);

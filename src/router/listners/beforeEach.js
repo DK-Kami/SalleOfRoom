@@ -13,7 +13,7 @@ export default function (store) {
     const role = store.getters['auth/getUserRole'];
     const token = store.getters['auth/getToken'];
 
-    if (isEmpty(lastRoute) && token) {
+    if (token) {
       webClient.login(token);
     }
 

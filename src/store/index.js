@@ -4,6 +4,8 @@ import modules from './modules';
 import initialModules from './initialModules';
 import RStore from '../helper/RStore';
 import WebClient from '../middleware/WebClient';
+import services from '../middleware';
+const { UserService } = services;
 
 Vue.use(Vuex);
 
@@ -43,6 +45,10 @@ const vuex = new Vuex.Store({
   },
 
   actions: {
+    async logout({ dispatch }) {
+      await UserService.logout();
+      dispatch('unsetUserData');
+    },
     unsetUserData({ commit, dispatch }) {
       Object.keys(modules).forEach(m => {
         commit(`${m}/UNSET_DATA`);

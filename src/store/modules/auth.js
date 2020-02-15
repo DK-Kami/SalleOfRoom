@@ -4,6 +4,7 @@ const { UserService } = services;
 export const initialState = () => ({
   isSigned: false,
   userName: '',
+  email: '',
   token: '',
   role: '',
 });
@@ -11,15 +12,16 @@ export const initialState = () => ({
 export const mutations = {
   LOGIN: (state, data) => {
     state.userName = data.userName;
+    state.email = data.email;
     state.token = data.token;
+    state.role = data.role;
     state.isSigned = true;
-    state.role = 'admin';
   },
 };
 
 export const actions = {
   loginFromState: ({ commit }, data) => commit('LOGIN', data),
-  async login({ commit, dispatch }, { login, password }) {
+  async login({ dispatch }, { login, password }) {
     const user = await UserService.auth(login, password);
     if (user.error) {
       return {
@@ -28,14 +30,21 @@ export const actions = {
       };
     }
 
-    const data = {
-      token: user.access_token,
-      userName: user.userName,
-      role: 'admin',
+    await dispatch('setUserInfo', user);
+    return { error: false };
+  },
+  async setUserInfo({ dispatch, commit }, data) {
+    const user = (await UserService.loadUserInfo()).data;
+
+    const userData = {
+      role: user.Role.toLowerCase(),
+      token: data.access_token,
+      userName: data.userName,
+      email: user.Email,
     }
-    commit('LOGIN', data);
-    dispatch('saveToLocaleStorage', data, { root: true });
-    return { error: false, data };
+    commit('LOGIN', userData);
+    dispatch('saveToLocaleStorage', userData, { root: true });
+    return;
   },
 };
 
@@ -43,4 +52,9 @@ export const getters = {
   isSigned: state => state.isSigned,
   getUserRole: state => state.role,
   getToken: state => state.token,
+  getUser: state => ({
+    userName: state.userName,
+    email: state.email,
+    role: state.role,
+  }),
 };

@@ -1,15 +1,19 @@
 <template>
-  <v-layout>
-    <v-flex>Персонал</v-flex>
-    <v-flex>add here</v-flex>
+  <v-layout wrap>
+    <top-bar
+      v-model="search"
+      title="Персонал"
+      @action="addUsers"
+    />
 
-    <v-flex>
-      <users-table />
+    <v-flex xs12>
+      <users-table :search="search" />
     </v-flex>
   </v-layout>
 </template>
 
 <script>
+import TopBar from '@/components/base/TopBar';
 import UsersTable from './UsersTable';
 
 export default {
@@ -17,6 +21,17 @@ export default {
 
   components: {
     UsersTable,
+    TopBar,
+  },
+
+  data: () => ({
+    search: '',
+  }),
+
+  methods: {
+    addUsers() {
+      return this.$router.push({ name: 'users.create' });
+    },
   },
 };
 </script>

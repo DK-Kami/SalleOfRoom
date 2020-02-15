@@ -1,6 +1,6 @@
 <template>
   <v-layout class="px-7 pt-6" align-center>
-    <v-flex shrink class="title mr-6">
+    <v-flex shrink class="display-1 mr-6">
       <slot name="title">{{ title }}</slot>
     </v-flex>
 

@@ -6,7 +6,7 @@ export default {
       `username=${login}`,
     ].join('&');
 
-    const user = (await this.apiClient.post('Token', requestBody)).data;
+    const user = (await this.apiClient.post('auth', requestBody)).data;
     
     if (!user.error) {
       this.apiClient.login(user.access_token);
@@ -14,16 +14,16 @@ export default {
     return user;
   },
   logout() {
-    return this.apiClient.get('logout');
+    return this.apiClient.post('account/logout');
   },
 
-  loadUsers(search) {
-    if (search) {
-      return this.apiClient.get('users', { search });
-    }
-    return this.apiClient.get('users');
+  loadUsers(page, searchString) {
+    return this.apiClient.get('account/users', { page, searchString });
   },
   loadUser(id) {
-    return this.apiClient.get('user', { id });
+    return this.apiClient.get('account/user', { id });
+  },
+  loadUserInfo() {
+    return this.apiClient.get('account/user-info');
   },
 };

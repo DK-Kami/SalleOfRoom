@@ -16,12 +16,12 @@ export const mutations = {
 };
 
 export const actions = {
-  async loadUsers({ commit }, search) {
-    const users = (await UserService.loadUsers(search)).data;
-    commit('SET_USERS', users);
+  async loadUsers({ commit }, { page, search }) {
+    const { Users, UsersCount } = (await UserService.loadUsers(page, search)).data;
+    commit('SET_USERS', Users);
     return {
       error: false,
-      data: users,
+      data: UsersCount,
     };
   },
 
