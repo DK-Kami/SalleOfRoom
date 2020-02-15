@@ -23,8 +23,6 @@ export default function (store) {
     matched.forEach(match => Object.assign(meta, match.meta));
     const { role: neededRole } = meta;
 
-    debugger;
-
     if ((isEmpty(lastRoute) && to.name === 'login') || to.name !== 'login') Object.assign(lastRoute, to);
     if (neededRole === 'none') return next((isPing && path) || true);
     if (!isSigned) {

@@ -3,20 +3,23 @@ const { UserService } = services;
 
 export const initialState = () => ({
   isSigned: false,
+  userName: '',
   token: '',
   role: '',
 });
 
 export const mutations = {
   LOGIN: (state, data) => {
-    state.token = data.access_token;
+    state.userName = data.userName;
+    state.token = data.token;
     state.isSigned = true;
     state.role = 'admin';
   },
 };
 
 export const actions = {
-  async login({ commit }, { login, password }) {
+  loginFromState: ({ commit }, data) => commit('LOGIN', data),
+  async login({ commit, dispatch }, { login, password }) {
     const user = await UserService.auth(login, password);
     if (user.error) {
       return {
@@ -25,8 +28,14 @@ export const actions = {
       };
     }
 
-    commit('LOGIN', user);
-    return { error: false };
+    const data = {
+      token: user.access_token,
+      userName: user.userName,
+      role: 'admin',
+    }
+    commit('LOGIN', data);
+    dispatch('saveToLocaleStorage', data, { root: true });
+    return { error: false, data };
   },
 };
 

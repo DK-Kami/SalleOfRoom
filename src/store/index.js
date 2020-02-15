@@ -2,6 +2,8 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import modules from './modules';
 import initialModules from './initialModules';
+import RStore from '../helper/RStore';
+import WebClient from '../middleware/WebClient';
 
 Vue.use(Vuex);
 
@@ -48,6 +50,9 @@ const vuex = new Vuex.Store({
       commit('UNSET_DATA');
       dispatch('saveToLocaleStorage');
       WebClient.logout();
+    },
+    saveToLocaleStorage(_, data) {
+      RStore.initState(data);
     },
   },
 

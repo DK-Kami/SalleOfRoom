@@ -7,7 +7,6 @@ export default {
     ].join('&');
 
     const user = (await this.apiClient.post('Token', requestBody)).data;
-    console.log(user);
     
     if (!user.error) {
       this.apiClient.login(user.access_token);
