@@ -21,6 +21,7 @@
           <v-text-field
             v-model="password"
             :rules="[rulesList.required]"
+            type="password"
             label="Пароль"
             outlined
           />
@@ -67,6 +68,7 @@ export default {
         this.$refs.form.setError(message);
       }
       this.loading = false;
+      this.$router.replace({ name: 'ping' });
     },
   },
 };
