@@ -17,7 +17,7 @@
       :items="users"
     >
     </v-data-table>
-  </vlayout>
+  </v-layout>
 </template>
 
 <script>

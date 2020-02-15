@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import UsersTable from './UsersTable';
+
 export default {
   name: 'UsersListPage',
 
