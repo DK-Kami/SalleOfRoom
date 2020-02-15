@@ -17,4 +17,11 @@ export default {
   logout() {
     return this.apiClient.get('logout');
   },
+
+  loadUsers(search) {
+    return this.apiClient.get('users', { search });
+  },
+  loadUser(id) {
+    return this.apiClient.get('user', { id });
+  },
 };
