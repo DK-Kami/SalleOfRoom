@@ -3,6 +3,8 @@ import VueRouter from 'vue-router';
 import initListners from './initListners';
 import listners from './listners';
 
+import usersChildren from './routes/users';
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -11,6 +13,15 @@ const routes = [
     name: 'login',
     component: () => import('@/views/Login'),
   },
+
+  {
+    path: '/users',
+    meta: {
+      role: 'admin',
+    },
+    children: usersChildren,
+  },
+
   {
     path: '/*',
     redirect: '/login',

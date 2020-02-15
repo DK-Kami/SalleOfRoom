@@ -1,5 +1,6 @@
 <template>
   <v-layout>
+    <v-flex>Персонал</v-flex>
     <v-flex>add here</v-flex>
 
     <v-flex>
