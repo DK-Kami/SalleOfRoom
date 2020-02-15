@@ -8,7 +8,29 @@
         @submit="handleSubmit"
       >
         <v-layout column>
-          form here
+          <v-layout>
+            <v-text-field
+              v-model="counterparty.secondName"
+              label="Фамилия"
+              class="mr-8"
+            />
+            <v-text-field
+              v-model="counterparty.firstName"
+              label="Имя"
+              class="mx-4"
+            />
+            <v-text-field
+              v-model="counterparty.lastName"
+              label="Отчество"
+              class="ml-8"
+            />
+          </v-layout>
+
+          <v-text-field
+            v-model="counterparty.phone"
+            v-mask="phoneMask"
+            label="Телефон"
+          />
         </v-layout>
 
         <template #actions>
@@ -26,12 +48,17 @@
 
 <script>
 import FormBase from '@/components/base/FormBase';
+import { mask } from 'vue-the-mask';
 
 export default {
   name: 'CounterpartiesModify',
 
   components: {
     FormBase,
+  },
+
+  directives: {
+    mask,
   },
 
   created() {
@@ -42,6 +69,7 @@ export default {
   },
 
   data: () => ({
+    phoneMask: '+7 (###) ###-##-##',
     loading: false,
   }),
 

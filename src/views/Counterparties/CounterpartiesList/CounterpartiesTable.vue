@@ -7,12 +7,19 @@
     :page.sync="page"
     :items="counterparties"
   >
-    <template #item.actions="{ item }">
+    <template #item.actions="{ item }" v-if="!isDisabled">
       <v-layout>
         <tooltip-button
-          tooltip="Редактирование пользователя"
+          tooltip="Редактирование контрагента"
           icon="mdi-pencil"
+          color="primary"
           @action="editCounterparty(item.Id)"
+        />
+        <tooltip-button
+          tooltip="Удаление контрагента"
+          icon="mdi-delete"
+          color="error"
+          @action="deleteCounterparty(item.Id)"
         />
       </v-layout>
     </template>
@@ -23,7 +30,8 @@
 import TooltipButton from '@/components/helper/TooltipButton';
 
 const headers = [
-  
+  { text: 'ФИО',      value: 'Name'     },
+  { text: 'Телефон',  value: 'Phone'    },
   { text: 'Действия', value: 'actions'  },
 ];
 
@@ -71,15 +79,20 @@ export default {
       this.loading = false;
     },
 
+    async deleteCounterparty(id) {
+      this.$store.dispatch('counterparties/deleteCounterparty', id);
+      this.loadCounterparties();
+    },
+
+    editCounterparty(id) {
+      this.$router.push({ name: 'counterparties.edit', params: { id }});
+    },
+
     searchInCounterparties() {
       clearTimeout(this.timer);
       this.timer = null;
 
       this.timer = setTimeout(this.loadCounterparties, 500);
-    },
-
-    editCounterparty(id) {
-      this.$router.push({ name: 'counterparties.edit', params: { id }});
     },
 
     russRole(role) {
@@ -92,6 +105,9 @@ export default {
   watch: {
     search() {
       this.searchInCounterparties();
+    },
+    isDisabled() {
+      this.loadCounterparties();
     },
   },
 };

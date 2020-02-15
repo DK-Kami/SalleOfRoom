@@ -11,4 +11,7 @@ export default {
   loadCounterparty(id) {
     return this.apiClient.get('counterparty', { id });
   },
+  deleteCounterparty(id) {
+    return this.apiClient.delete('counterparty', {}, { id });
+  },
 };

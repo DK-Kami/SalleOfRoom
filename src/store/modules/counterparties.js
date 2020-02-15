@@ -2,6 +2,10 @@ import services from '@/middleware';
 const { CounterpartiesService } = services;
 
 const initialCounterparty = () => ({
+  firstName: '',
+  secondName: '',
+  lastName: '',
+  phone: '+7 (',
 });
 
 export const initialState = () => ({
@@ -10,9 +14,12 @@ export const initialState = () => ({
 });
 
 export const mutations = {
-  SET_USERS: (state, counterparties) => state.counterparty = counterparties,
-  SET_USER: (state, counterparty) => {
-    state.counterparty = counterparty;
+  SET_COUNTERPARTIES: (state, counterparties) => state.counterparties = counterparties,
+  SET_COUNTERPARTY: (state, counterparty) => {
+    state.counterparty.secondName = counterparty.SecondName;
+    state.counterparty.firstName = counterparty.FirstName;
+    state.counterparty.lastName = counterparty.LastName;
+    state.counterparty.phone = counterparty.Phone;
   },
 };
 
@@ -21,7 +28,7 @@ export const actions = {
 
   async loadCounterparties({ commit }, { page, search, isDisabled }) {
     const { Counterparties, CounterpartyCount } = (await CounterpartiesService.loadCounterparties(page, search, isDisabled)).data;
-    commit('SET_USERS', Counterparties);
+    commit('SET_COUNTERPARTIES', Counterparties);
     return {
       error: false,
       data: CounterpartyCount,
@@ -30,7 +37,7 @@ export const actions = {
 
   async loadCounterparty({ commit }, id) {
     const counterparty = (await CounterpartiesService.loadCounterparty(id)).data;
-    commit('SET_USER', counterparty);
+    commit('SET_COUNTERPARTY', counterparty);
     return {
       error: false,
       data: counterparty,
@@ -40,6 +47,10 @@ export const actions = {
   async createCounterparty({ dispatch, state }, isAdmin) {
     const data = (await CounterpartiesService.createCounterparty({
       counterparty: {
+        SecondName: state.counterparty.secondName,
+        FirstName: state.counterparty.firstName,
+        LastName: state.counterparty.lastName,
+        Phone: state.counterparty.phone,
       },
       isAdmin,
     })).data;
@@ -53,6 +64,10 @@ export const actions = {
   async updateCounterparty({ dispatch, state }, id) {
     const data = (await CounterpartiesService.updateCounterparty({
       counterparty: {
+        SecondName: state.counterparty.secondName,
+        FirstName: state.counterparty.firstName,
+        LastName: state.counterparty.lastName,
+        Phone: state.counterparty.phone,
       },
       id,
     })).data;
@@ -62,6 +77,15 @@ export const actions = {
       return { error: true, data };
     }
     return { error: false, data };
+  },
+
+  async deleteCounterparty({ dispatch }, id) {
+    await CounterpartiesService.deleteCounterparty(id);
+    dispatch('notification/set', {
+      message: 'Контрагент был добавлен в архив',
+      type: 'error',
+    }, { root: true });
+    return { error: false };
   },
 };
 
