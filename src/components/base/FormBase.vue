@@ -1,5 +1,5 @@
 <template>
-  <form-validate @submit="handleSubmit" @fail-validation="hadleFailValidation">
+  <form-validate @submit="handleSubmit" @fail-validation="haтdleFailValidation">
     <v-card :elevation="elevation" width="700" class="pa-4">
       <v-card-title class="pa-0">
         <v-layout column>
@@ -71,7 +71,7 @@ export default {
   }),
 
   methods: {
-    hadleFailValidation(e) {
+    haтdleFailValidation(e) {
       this.$emit('fail-validation', e);
       return this.error = 'Проверьте заполненность и корректность данных полей';
     },
