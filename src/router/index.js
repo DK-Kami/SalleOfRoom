@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import initListners from './initListners';
 import listners from './listners';
 
+import counterpartiesRoutes from './routes/counterparties';
 import usersRoutes from './routes/users';
 
 Vue.use(VueRouter);
@@ -14,6 +15,7 @@ const routes = [
     component: () => import('@/views/Login'),
   },
 
+  ...counterpartiesRoutes,
   ...usersRoutes,
 
   {

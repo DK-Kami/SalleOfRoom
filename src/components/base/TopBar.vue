@@ -17,6 +17,10 @@
     </v-flex>
     <v-spacer />
 
+    <v-flex shrink>
+      <slot name="beforeSearch" />
+    </v-flex>
+
     <v-flex xs3 v-if="withSearch">
       <v-text-field
         v-model="searchComp"
