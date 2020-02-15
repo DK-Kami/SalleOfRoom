@@ -1,5 +1,5 @@
 <template>
-  <v-layout wrap>
+  <v-layout wrap class="elevation-4">
     <top-bar
       v-model="search"
       title="Персонал"

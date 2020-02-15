@@ -13,7 +13,20 @@
           Добро пожаловать, {{ username }}
         </div>
         <v-spacer />
+
         <v-toolbar-items>
+          <v-btn
+            v-for="item in menu"
+            :key="item.path"
+            :to="item.path"
+            class="px-3"
+            large
+            text
+          >
+            <v-icon class="mr-2" middle>{{ item.icon }}</v-icon>
+            <span>{{ item.title }}</span>
+          </v-btn>
+
           <v-btn
             @click.stop="logout"
             class="px-3"
@@ -28,7 +41,7 @@
       
 
       <v-container class="mt-4">
-        <v-layout fill-height justify-center class="elevation-4">
+        <v-layout fill-height justify-center>
           <v-slide-y-transition mode="out-in">
             <router-view />
           </v-slide-y-transition>
@@ -44,6 +57,12 @@ import TheToolbar from '@/components/layout/TheToolbar';
 import TheFooter from '@/components/layout/TheFooter';
 import TheMenu from '@/components/layout/TheMenu';
 
+const menu = [
+  { title: 'Персонал',      path: '/users',         icon: 'mdi-account-group' },
+  { title: 'Контр-агенты',  path: '/counterparty',  icon: 'mdi-file-document' },
+  { title: 'Недвижимость',  path: '/realty',        icon: 'mdi-home-city'     },
+];
+
 export default {
   name: 'App',
 
@@ -53,6 +72,10 @@ export default {
     TheFooter,
     TheMenu,
   },
+
+  data: () => ({
+    menu,
+  }),
 
   computed: {
     isEmptyLayout() {

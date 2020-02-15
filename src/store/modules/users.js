@@ -2,7 +2,14 @@ import services from '@/middleware';
 const { UserService } = services;
 
 const initialUser = () => ({
-  username: '',
+  confirmPassword: '',
+  secondName: '',
+  firstName: '',
+  password: '',
+  lastName: '',
+  email: '',
+  role: '',
+  phone: '+7 (',
 });
 
 export const initialState = () => ({
@@ -12,10 +19,21 @@ export const initialState = () => ({
 
 export const mutations = {
   SET_USERS: (state, users) => state.users = users,
-  SET_USER: (state, user) => state.user = user,
+  SET_USER: (state, user) => {
+    state.user.confirmPassword = user.Password;
+    state.user.secondName = user.SecondName;
+    state.user.phone = user.Phone || '+7 (';
+    state.user.firstName = user.FirstName;
+    state.user.lastName = user.LastName;
+    state.user.password = user.Password;
+    state.user.email = user.Email;
+    state.user.role = user.Role;
+  },
 };
 
 export const actions = {
+  clearUser: state => state.user = initialUser(),
+
   async loadUsers({ commit }, { page, search }) {
     const { Users, UsersCount } = (await UserService.loadUsers(page, search)).data;
     commit('SET_USERS', Users);
@@ -32,6 +50,46 @@ export const actions = {
       error: false,
       data: user,
     };
+  },
+
+  async createUser({ dispatch, state }, isAdmin) {
+    const data = (await UserService.createUser({
+      user: {
+        ConfirmPassword: state.user.confirmPassword,
+        SecondName: state.user.secondName,
+        FirstName: state.user.firstName,
+        LastName: state.user.lastName,
+        Password: state.user.password,
+        Email: state.user.email,
+        Phone: state.user.phone,
+      },
+      isAdmin,
+    })).data;
+
+    dispatch('clearUser');
+    if (data.Message) {
+      return { error: true, data };
+    }
+    return { error: false, data };
+  },
+  async updateUser({ dispatch, state }, id) {
+    const data = (await UserService.updateUser({
+      user: {
+        SecondName: state.user.secondName,
+        Password: state.user.password,
+        FirstName: state.user.firstName,
+        LastName: state.user.lastName,
+        Email: state.user.email,
+        Phone: state.user.phone,
+      },
+      id,
+    })).data;
+    
+    dispatch('clearUser');
+    if (data.Message) {
+      return { error: true, data };
+    }
+    return { error: false, data };
   },
 };
 

@@ -20,6 +20,12 @@ export default {
   loadUsers(page, searchString) {
     return this.apiClient.get('account/users', { page, searchString });
   },
+  createUser({ user, isAdmin }) {
+    return this.apiClient.post('account/register', user, { isAdmin });
+  },
+  updateUser({ user, id }) {
+    return this.apiClient.put('account', user, { id });
+  },
   loadUser(id) {
     return this.apiClient.get('account/user', { id });
   },

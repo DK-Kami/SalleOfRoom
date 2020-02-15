@@ -1,9 +1,19 @@
 <template>
-  <form-validate @submit="handleSubmit" @fail-validation="haтdleFailValidation">
+  <form-validate @submit="handleSubmit" @fail-validation="handleFailValidation">
     <v-card :elevation="elevation" width="700" class="pa-4">
       <v-card-title class="pa-0">
         <v-layout column>
           <v-layout align-center>
+            <div v-if="withBackButton">
+              <v-btn
+                @click="goToBack"
+                text
+                icon
+              >
+                <v-icon>mdi-arrow-left</v-icon>
+              </v-btn>
+            </div>
+
             <slot name="title">
               <span
                 class="font-weight-regular"
@@ -62,6 +72,7 @@ export default {
       type: [Number, String],
       default: 0,
     },
+    withBackButton: Boolean,
     afterTitle: String,
     title: String,
   },
@@ -71,7 +82,7 @@ export default {
   }),
 
   methods: {
-    haтdleFailValidation(e) {
+    handleFailValidation(e) {
       this.$emit('fail-validation', e);
       return this.error = 'Проверьте заполненность и корректность данных полей';
     },
@@ -82,6 +93,9 @@ export default {
 
     setError(error) {
       return this.error = error;
+    },
+    goToBack() {
+      return this.$router.back();
     },
   },
 };

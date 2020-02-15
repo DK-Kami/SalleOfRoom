@@ -32,6 +32,9 @@ const initialState = () => ({
         case 'phone':
           return v => (v + '').length === 18 || message;
 
+        case 'password':
+          return v => (v + '').length > 6 || message;
+
         default: return true;
       };
     },
