@@ -23,7 +23,11 @@ const routes = [
   },
 
   {
-    path: '/*',
+    path: '/ping',
+    name: 'ping',
+  },
+  {
+    path: '/',
     redirect: '/login',
   },
 ];

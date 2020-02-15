@@ -3,11 +3,15 @@ const { UserService } = services;
 
 export const initialState = () => ({
   isSigned: false,
+  token: '',
+  role: '',
 });
 
 export const mutations = {
   LOGIN: (state, data) => {
+    state.token = data.access_token;
     state.isSigned = true;
+    state.role = 'admin';
   },
 };
 
@@ -28,4 +32,6 @@ export const actions = {
 
 export const getters = {
   isSigned: state => state.isSigned,
+  getUserRole: state => state.role,
+  getToken: state => state.token,
 };
