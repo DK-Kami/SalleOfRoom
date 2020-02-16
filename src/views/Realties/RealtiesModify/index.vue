@@ -12,6 +12,7 @@
             <v-text-field
               v-model="realty.price"
               style="max-width: 250px"
+              class="pr-3"
               type="number"
               label="Цена"
               min="0"
@@ -42,9 +43,7 @@
             </v-flex>
 
             <v-flex xs6>
-              <v-card>
-                pictures
-              </v-card>
+              <photos-form />
             </v-flex>
           </v-layout>
 
@@ -66,6 +65,7 @@
 import FormBase from '@/components/base/FormBase';
 import MeasuringForm from './MeasuringForm';
 import AddressForm from './AddressForm';
+import PhotosForm from './PhotosForm';
 import TypesForm from './TypesForm';
 import { mask } from 'vue-the-mask';
 
@@ -75,6 +75,7 @@ export default {
   components: {
     MeasuringForm,
     AddressForm,
+    PhotosForm,
     TypesForm,
     FormBase,
   },

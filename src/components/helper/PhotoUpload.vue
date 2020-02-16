@@ -1,0 +1,111 @@
+<template>
+  <v-responsive :aspect-ratio="9/10">
+    <v-layout fill-height justify-center align-center column>
+      <vue-dropzone
+        :options="dropzoneOptions"
+        ref="myVueDropzone"
+        id="dropzone"
+        duplicate-check
+        @vdropzone-complete="uploadFile"
+      />
+    </v-layout>
+  </v-responsive>
+</template>
+
+<script>
+import vue2Dropzone from "vue2-dropzone";
+import "vue2-dropzone/dist/vue2Dropzone.min.css";
+
+export default {
+  name: 'PhotoUpload',
+
+  components: {
+    vueDropzone: vue2Dropzone,
+  },
+
+  data: () => ({
+    dropzoneOptions: {
+      paramName: "image",
+      acceptedFiles: "image/*",
+      url: 'https://httpbin.org/post',
+
+      maxFiles: 1,
+      maxFilesize: 2,
+
+      addRemoveLinks: true,
+      withCredentials: true,
+      thumbnailWidth: null,
+      thumbnailHeight: null,
+      createImageThumbnails: false,
+
+      dictRemoveFile: "Удалить",
+      dictCancelUpload: "Отменить загрузку",
+      dictInvalidFileType: "Нужно загрузить изображение",
+
+      dictDefaultMessage:
+        `
+          <i aria-hidden="true" class="v-icon notranslate mdi mdi-cloud-download-outline theme--light" style="font-size: 70px;"></i>
+          <br>
+          <div class="title font-weight-regular">Кликните или просто перетащите в это поле видеофайл</div>
+        `,
+      dictResponseError:
+        "Возникла проблема на сервере. Свяжитесь с нами или попробуйте позже",
+      dictMaxFilesExceeded:
+        "Можно загрузить только один файл. Удалите лишний",
+      dictFileTooBig:
+        "Размер файла должен быть меньше 2 мегабайт"
+    },
+  }),
+
+  methods: {
+    uploadFile(e) {
+      const total = e.upload.total / 1024 / 1024;
+      if (total >= 2) {
+        this.$store.dispatch('notification/set', {
+          message: 'Файл должен быть меньше, либо равен 2 МБ',
+          type: 'error',
+        });
+        this.$nextTick(this.clearPhoto);
+        return;
+      }
+
+      const type = e.type.split('/')[0];
+      if (type !== 'image') {
+        this.$store.dispatch('notification/set', {
+          message: 'Неверное расширение файла. Нужно загрузить изображение в формате jpg, png или gif',
+          type: 'error',
+        });
+        this.$nextTick(this.clearPhoto);
+        return;
+      }
+
+      this.$emit('upload', e);
+    },
+  },
+};
+</script>
+
+<style>
+.video-placeholder {
+  background-color: #f1f1f1;
+  border: 2px dashed #00695c;
+}
+
+#dropzone {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed #00695c;
+}
+.dz-preview,
+.dz-processing,
+.dz-image-preview,
+.dz-success,
+.dz-complete {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+</style>

@@ -26,6 +26,7 @@ const initialRealty = () => ({
   city: '',
   
   coord: '53, 37',
+  previewPictures: [],
   pictures: [],
 });
 
