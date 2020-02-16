@@ -4,7 +4,7 @@
     align-center
     fill-height
   >
-    <v-flex shrink>
+    <v-flex xs10 md7 lg5 xl4>
       <form-base
         title="Авторизация"
         elevation="4"

@@ -94,12 +94,6 @@ export default {
 
       this.timer = setTimeout(this.loadCounterparties, 500);
     },
-
-    russRole(role) {
-      if (role.toLowerCase() === 'admin') return 'Администратор';
-      if (role.toLowerCase() === 'rieltor') return 'Риелтор';
-      return '';
-    }
   },
 
   watch: {

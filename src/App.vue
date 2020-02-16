@@ -60,7 +60,7 @@ import TheMenu from '@/components/layout/TheMenu';
 const menu = [
   { title: 'Персонал',      path: '/users',           icon: 'mdi-account-group' },
   { title: 'Контр-агенты',  path: '/counterparties',  icon: 'mdi-file-document' },
-  { title: 'Недвижимость',  path: '/realty',          icon: 'mdi-home-city'     },
+  { title: 'Недвижимость',  path: '/realties',        icon: 'mdi-home-city'     },
 ];
 
 export default {
