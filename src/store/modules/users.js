@@ -94,6 +94,10 @@ export const actions = {
 };
 
 export const getters = {
+  getRealtor: state => {
+    console.log(state.users);
+    return state.users.filter(u => u.Role.toLowerCase() === 'rieltor');
+  },
   getUsers: state => state.users,
   getUser: state => state.user,
 };

@@ -4,6 +4,7 @@ import initListners from './initListners';
 import listners from './listners';
 
 import counterpartiesRoutes from './routes/counterparties';
+import realtiesRoutes from './routes/realties';
 import usersRoutes from './routes/users';
 
 Vue.use(VueRouter);
@@ -16,6 +17,7 @@ const routes = [
   },
 
   ...counterpartiesRoutes,
+  ...realtiesRoutes,
   ...usersRoutes,
 
   {
