@@ -1,15 +1,13 @@
 <template>
-  <v-responsive :aspect-ratio="9/10">
-    <v-layout fill-height justify-center align-center column>
-      <vue-dropzone
-        :options="dropzoneOptions"
-        ref="myVueDropzone"
-        id="dropzone"
-        duplicate-check
-        @vdropzone-complete="uploadFile"
-      />
-    </v-layout>
-  </v-responsive>
+  <v-layout fill-height justify-center align-center column>
+    <vue-dropzone
+      :options="dropzoneOptions"
+      ref="myVueDropzone"
+      id="dropzone"
+      duplicate-check
+      @vdropzone-complete="uploadFile"
+    />
+  </v-layout>
 </template>
 
 <script>
@@ -46,7 +44,7 @@ export default {
         `
           <i aria-hidden="true" class="v-icon notranslate mdi mdi-cloud-download-outline theme--light" style="font-size: 70px;"></i>
           <br>
-          <div class="title font-weight-regular">Кликните или просто перетащите в это поле видеофайл</div>
+          <div class="title font-weight-regular">Кликните или просто перетащите в это поле фотографию</div>
         `,
       dictResponseError:
         "Возникла проблема на сервере. Свяжитесь с нами или попробуйте позже",
@@ -80,6 +78,7 @@ export default {
       }
 
       this.$emit('upload', e);
+      this.$refs.myVueDropzone.removeAllFiles();
     },
   },
 };
