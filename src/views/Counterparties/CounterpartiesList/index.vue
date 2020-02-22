@@ -2,7 +2,7 @@
   <v-layout wrap class="elevation-4">
     <top-bar
       v-model="search"
-      title="Контр-агенты"
+      title="Контрагенты"
       @action="addCounterparties"
     >
       <template #beforeSearch>

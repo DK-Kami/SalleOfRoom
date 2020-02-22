@@ -14,6 +14,7 @@ export const initialState = () => ({
 });
 
 export const mutations = {
+  CLEAR_COUNTERPARTY: state => state.counterparty = initialCounterparty(),
   SET_COUNTERPARTIES: (state, counterparties) => state.counterparties = counterparties,
   SET_COUNTERPARTY: (state, counterparty) => {
     state.counterparty.secondName = counterparty.SecondName;
@@ -24,7 +25,7 @@ export const mutations = {
 };
 
 export const actions = {
-  clearCounterparty: state => state.counterparty = initialCounterparty(),
+  clearCounterparty: ({ commit }) => commit('CLEAR_COUNTERPARTY'),
 
   async loadCounterparties({ commit }, { page, search, isDisabled }) {
     const { Counterparties, CounterpartyCount } = (await CounterpartiesService.loadCounterparties(page, search, isDisabled)).data;
@@ -44,21 +45,24 @@ export const actions = {
     };
   },
 
-  async createCounterparty({ dispatch, state }, isAdmin) {
+  async createCounterparty({ dispatch, state }) {
     const data = (await CounterpartiesService.createCounterparty({
       counterparty: {
         SecondName: state.counterparty.secondName,
         FirstName: state.counterparty.firstName,
         LastName: state.counterparty.lastName,
         Phone: state.counterparty.phone,
-      },
-      isAdmin,
+      }
     })).data;
 
-    dispatch('clearCounterparty');
     if (data.Message) {
       return { error: true, data };
     }
+
+    dispatch('notification/set', {
+      message: 'Контрагент добавлен в систему',
+      type: 'success',
+    }, { root: true });
     return { error: false, data };
   },
   async updateCounterparty({ dispatch, state }, id) {
@@ -72,10 +76,14 @@ export const actions = {
       id,
     })).data;
     
-    dispatch('clearCounterparty');
     if (data.Message) {
       return { error: true, data };
     }
+
+    dispatch('notification/set', {
+      message: 'Контагент изменён',
+      type: 'success',
+    }, { root: true });
     return { error: false, data };
   },
 

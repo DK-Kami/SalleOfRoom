@@ -18,6 +18,7 @@ export const initialState = () => ({
 });
 
 export const mutations = {
+  CLEAR_USER: state => state.user = initialUser(),
   SET_USERS: (state, users) => state.users = users,
   SET_USER: (state, user) => {
     state.user.confirmPassword = user.Password;
@@ -32,7 +33,7 @@ export const mutations = {
 };
 
 export const actions = {
-  clearUser: state => state.user = initialUser(),
+  clearUser: ({ commit }) => commit('CLEAR_USER'),
 
   async loadUsers({ commit }, { page, search }) {
     const { Users, UsersCount } = (await UserService.loadUsers(page, search)).data;
@@ -66,10 +67,14 @@ export const actions = {
       isAdmin,
     })).data;
 
-    dispatch('clearUser');
     if (data.Message) {
       return { error: true, data };
     }
+
+    dispatch('notification/set', {
+      message: 'Пользователь добавлен в систему',
+      type: 'success',
+    }, { root: true });
     return { error: false, data };
   },
   async updateUser({ dispatch, state }, id) {
@@ -85,10 +90,14 @@ export const actions = {
       id,
     })).data;
     
-    dispatch('clearUser');
     if (data.Message) {
       return { error: true, data };
     }
+
+    dispatch('notification/set', {
+      message: 'Пользователь изменён',
+      type: 'success',
+    }, { root: true });
     return { error: false, data };
   },
 };
@@ -96,7 +105,7 @@ export const actions = {
 export const getters = {
   getRealtor: state => {
     console.log(state.users);
-    return state.users.filter(u => u.Role.toLowerCase() === 'rieltor');
+    return state.users.filter(u => u.Role.toLowerCase() === 'realtor');
   },
   getUsers: state => state.users,
   getUser: state => state.user,

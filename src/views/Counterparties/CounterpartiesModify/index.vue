@@ -2,7 +2,7 @@
   <v-layout justify-center>
     <v-flex xs7 xl5 class="elevation-4">
       <form-base
-        title="Добавление контрагентов"
+        :title="id ? 'Редактирование контрагента' : 'Добавление контрагента'"
         ref="form"
         with-back-button
         @submit="handleSubmit"
@@ -103,6 +103,12 @@ export default {
       if (error) {
         const error = Object.values(data.ModelState)[0][0];
         this.$refs.form.setError(error);
+      }
+      else {
+        setTimeout(() => {
+          this.$router.push({ name: 'counterparties.list' });
+          this.$store.dispatch('counterparties/clearCounterparty');
+        }, 1000)
       }
     },
 
