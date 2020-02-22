@@ -15,6 +15,15 @@
 
         <v-flex xs6>
           <v-text-field
+            v-model="realty.area"
+            label="Площадь"
+            type="number"
+            min="0"
+          />
+        </v-flex>
+
+        <v-flex xs6>
+          <v-text-field
             v-model="realty.kitchenArea"
             label="Площадь кухни"
             type="number"

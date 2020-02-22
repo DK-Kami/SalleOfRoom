@@ -29,14 +29,7 @@
             label="Регион"
           />
         </v-flex>
-
-        <v-flex xs6>
-          <v-text-field
-            v-model="realty.area"
-            label="Область"
-          />
-        </v-flex>
-        <v-flex xs6>
+        <v-flex xs12>
           <v-text-field
             v-model="realty.street"
             label="Улица"

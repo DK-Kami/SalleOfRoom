@@ -16,7 +16,7 @@
 
         <v-flex>
           <v-select
-            v-model="realty.transactionTypeId"
+            v-model="realty.counterpartyId"
             :items="counterparty"
             label="Контрагент"
             item-text="Name"
@@ -26,7 +26,7 @@
 
         <v-flex>
           <v-select
-            v-model="realty.wallMaterialId"
+            v-model="realty.transactionTypeId"
             :items="transaction"
             label="Тип транзакции"
           />
@@ -42,7 +42,7 @@
       </v-layout>
 
       <v-select
-        v-model="realty.counterpartyId"
+        v-model="realty.wallMaterialId"
         :items="wallMaterial"
         label="Материал стены"
       />
