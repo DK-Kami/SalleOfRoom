@@ -3,12 +3,14 @@
     <v-card-title>Загрузка фотографий</v-card-title>
 
     <v-card-text>
-      <v-layout>
-        <v-flex xs6>
+      <v-layout column>
+        <v-flex class="my-4">
           <photo-upload @upload="uploadFile" />
         </v-flex>
 
-        <v-flex xs6>
+        <v-divider class="my-5" />
+
+        <v-flex>
           <v-responsive v-if="!realty.previewPictures.length" :aspect-ratio="9/10">
             <v-layout
               justify-center
@@ -25,7 +27,7 @@
               v-for="(picture, index) in realty.previewPictures"
               :key="'picture-' + index"
             >
-              <v-img :src="picture" />
+              <v-img :src="picture" height="100%" />
             </v-carousel-item>
           </v-carousel>
         </v-flex>

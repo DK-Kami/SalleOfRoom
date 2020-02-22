@@ -22,6 +22,19 @@ const initialState = () => ({
         return value <= max || 'Значение не должно превышать ' + max;
       }
     },
+    coords: geo => {
+      const message = 'Неправильные координаты. Вид координат: 55.751435, 37.620260';
+      if (!geo) return message;
+      const coords = geo.toString().split(',');
+
+      if (coords.length !== 2) return message;
+      if (!coords.every(c => c.toString().trim().length
+        && !Number.isNaN(c)
+        && Number(c) >= 0)
+      ) return message;
+
+      return true;
+    },
     email: value => {
       const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return pattern.test(value) || 'Неправильный e-mail.'

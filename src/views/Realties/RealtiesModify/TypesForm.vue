@@ -8,6 +8,8 @@
           <v-select
             v-model="realty.realtorId"
             :items="realtor"
+            item-text="Name"
+            item-value="Id"
             label="Риелтор"
           />
         </v-flex>
@@ -17,6 +19,8 @@
             v-model="realty.transactionTypeId"
             :items="counterparty"
             label="Контрагент"
+            item-text="Name"
+            item-value="Id"
           />
         </v-flex>
 

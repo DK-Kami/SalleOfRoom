@@ -37,9 +37,7 @@
             </v-flex>
 
             <v-flex xs6>
-              <v-card>
-                coord
-              </v-card>
+              <map-form />
             </v-flex>
 
             <v-flex xs6>
@@ -67,6 +65,7 @@ import MeasuringForm from './MeasuringForm';
 import AddressForm from './AddressForm';
 import PhotosForm from './PhotosForm';
 import TypesForm from './TypesForm';
+import MapForm from './MapForm';
 import { mask } from 'vue-the-mask';
 
 export default {
@@ -78,6 +77,7 @@ export default {
     PhotosForm,
     TypesForm,
     FormBase,
+    MapForm,
   },
 
   directives: {

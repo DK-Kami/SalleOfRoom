@@ -30,7 +30,6 @@ class WebClient {
     this.axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
     this.axios.defaults.headers.common['Content-Type'] = 'application/json';
     this.axios.defaults.headers['content-type'] = 'application/json';
-    console.log(this.axios.defaults.headers);
   }
   logout() {
     delete this.axios.defaults.headers.common['Authorization'];
