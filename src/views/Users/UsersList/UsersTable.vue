@@ -87,7 +87,7 @@ export default {
 
     russRole(role) {
       if (role.toLowerCase() === 'admin') return 'Администратор';
-      if (role.toLowerCase() === 'rieltor') return 'Риелтор';
+      if (role.toLowerCase() === 'realtor') return 'Риелтор';
       return '';
     }
   },

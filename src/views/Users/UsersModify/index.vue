@@ -2,7 +2,7 @@
   <v-layout justify-center>
     <v-flex xs7 xl5 class="elevation-4">
       <form-base
-        title="Добавление персонала"
+        :title="id ? 'Редактирование персонала' : 'Добавление персонала'"
         ref="form"
         with-back-button
         @submit="handleSubmit"
@@ -31,6 +31,7 @@
             :rules="[rulesList.email, rulesList.required]"
             label="Электронная почта"
             type="email"
+            ref="email"
             validate-on-blur
           />
           <v-text-field
@@ -100,6 +101,12 @@ export default {
     }
   },
 
+  mounted() {
+    if (this.id && this.$refs.email) {
+      this.$nextTick(this.$refs.email.focus);
+    }
+  },
+
   data: () => ({
     phoneMask: '+7 (###) ###-##-##',
     isAdmin: false,
@@ -138,6 +145,16 @@ export default {
       if (error) {
         const error = Object.values(data.ModelState)[0][0];
         this.$refs.form.setError(error);
+        this.$store.dispatch('notification/set', {
+          message: error,
+          type: 'error',
+        })
+      }
+      else {
+        setTimeout(() => {
+          this.$router.push({ name: 'users.list' });
+          this.$store.dispatch('users/clearUser');
+        }, 1000)
       }
     },
 
