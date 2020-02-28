@@ -123,10 +123,10 @@ export const actions = {
     })).data;
 
     // const { id } = data.Estate || 1;
-    const id = 'zri-padla';
+    // const id = 'zri-padla';
     await dispatch('setImages', {
       photos: state.realty.pictures,
-      id,
+      id: data,
     });
 
     if (data.Message) {
