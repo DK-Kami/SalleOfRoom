@@ -88,9 +88,16 @@ export const actions = {
     };
   },
 
+  async setImages(_, { id, photos }) {
+    const fd = new FormData();
+    fd.append('hui', photos);
+    const data = (await RealtiesService.setImages({ photos: fd, id }));
+    return data;
+  },
+
   async createRealty({ dispatch, state }) {
     const data = (await RealtiesService.createRealty({
-      realty: createFormData({
+      realty: {
         TransactionTypeId: state.realty.transactionTypeId,
         CounterpartyId:    state.realty.counterpartyId,
         WallMaterialId:    state.realty.wallMaterialId,
@@ -112,9 +119,15 @@ export const actions = {
         Area:              state.realty.area,
         City:              state.realty.city,
         Coord:             state.realty.coord,
-        Pictures:          state.realty.pictures,
-      }),
+      },
     })).data;
+
+    // const { id } = data.Estate || 1;
+    const id = 'zri-padla';
+    await dispatch('setImages', {
+      photos: state.realty.pictures,
+      id,
+    });
 
     if (data.Message) {
       return { error: true, data };

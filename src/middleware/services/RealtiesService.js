@@ -8,6 +8,9 @@ export default {
   updateRealty({ realty, id }) {
     return this.apiClient.put('realty', realty, { id });
   },
+  setImages({ photos, id }) {
+    return this.apiClient.post('estate/set-images', photos, { id });
+  },
   loadRealty(id) {
     return this.apiClient.get('estate', { id });
   },
