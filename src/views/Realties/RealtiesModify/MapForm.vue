@@ -11,7 +11,7 @@
         <v-responsive :aspect-ratio="9.6/10" class="mt-7">
           <yandex-map
             :coords="currentCoords"
-            :behaviors="[]"
+            :controls="['searchControl', 'zoomControl']"
             style="width: 100%; max-width: 100%; height: 100%;"
             zoom="10"
           >
@@ -19,6 +19,9 @@
               v-if="currentCoords || refresh"
               :coords="currentCoords"
               marker-type="Placemark"
+              :options="{
+                preset: 'islands#nightCircleIcon'
+              }"
               marker-id="1"
             />
           </yandex-map>

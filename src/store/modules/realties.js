@@ -90,7 +90,7 @@ export const actions = {
 
   async createRealty({ dispatch, state }) {
     const data = (await RealtiesService.createRealty({
-      realty: {
+      realty: createFormData({
         TransactionTypeId: state.realty.transactionTypeId,
         CounterpartyId:    state.realty.counterpartyId,
         WallMaterialId:    state.realty.wallMaterialId,
@@ -113,7 +113,7 @@ export const actions = {
         City:              state.realty.city,
         Coord:             state.realty.coord,
         Pictures:          state.realty.pictures,
-      },
+      }),
     })).data;
 
     if (data.Message) {
@@ -128,7 +128,7 @@ export const actions = {
   },
   async updateRealty({ dispatch, state }, id) {
     const data = (await RealtiesService.updateRealty({
-      realty: {
+      realty: createFormData({
         TransactionTypeId: state.realty.transactionTypeId,
         CounterpartyId:    state.realty.counterpartyId,
         WallMaterialId:    state.realty.wallMaterialId,
@@ -151,7 +151,7 @@ export const actions = {
         City:              state.realty.city,
         Coord:             state.realty.coord,
         Pictures:          state.realty.pictures,
-      },
+      }),
       id,
     })).data;
 
@@ -179,4 +179,14 @@ export const actions = {
 export const getters = {
   getRealties: state => state.realties,
   getRealty: state => state.realty,
+};
+
+
+function createFormData(realty) {
+  let fd = new FormData();
+  Object.keys(realty).forEach(key => {
+    const data = realty[key];
+    fd.append(key, data);
+  })
+  return fd;
 };
