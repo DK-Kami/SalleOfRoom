@@ -148,7 +148,7 @@ export default {
         this.$store.dispatch('notification/set', {
           message: error,
           type: 'error',
-        })
+        });
       }
       else {
         setTimeout(() => {

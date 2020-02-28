@@ -2,19 +2,19 @@ import services from '@/middleware';
 const { RealtiesService } = services;
 
 const initialRealty = () => ({
-  transactionTypeId: 0,
-  counterpartyId: 0,
-  wallMaterialId: 0,
-  categoryId: 0,
-  realtorId: 0,
+  transactionTypeId: '',
+  counterpartyId: '',
+  wallMaterialId: '',
+  categoryId: '',
+  realtorId: '',
 
-  houseNumber: 0,
-  kitchenArea: 0,
-  flatNumber: 0,
-  livingArea: 0,
-  roomCount: 0,
-  price: 0.00,
-  floor: 0,
+  houseNumber: '',
+  kitchenArea: '',
+  flatNumber: '',
+  livingArea: '',
+  roomCount: '',
+  price: 0.0,
+  floor: '',
   
   readyState: 'ready',
   cityDistrict: '',

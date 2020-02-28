@@ -29,6 +29,8 @@
             v-model="realty.transactionTypeId"
             :items="transaction"
             label="Тип транзакции"
+            item-text="Name"
+            item-value="Id"
           />
         </v-flex>
 
@@ -37,6 +39,8 @@
             v-model="realty.categoryId"
             :items="category"
             label="Категория"
+            item-text="Name"
+            item-value="Id"
           />
         </v-flex>
       </v-layout>
@@ -45,6 +49,8 @@
         v-model="realty.wallMaterialId"
         :items="wallMaterial"
         label="Материал стены"
+        item-text="Name"
+        item-value="Id"
       />
     </v-card-text>
   </v-card>

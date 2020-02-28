@@ -126,6 +126,16 @@ export default {
       if (error) {
         const error = Object.values(data.ModelState)[0][0];
         this.$refs.form.setError(error);
+        this.$store.dispatch('notification/set', {
+          message: error,
+          type: 'error',
+        });
+      }
+      else {
+        setTimeout(() => {
+          this.$router.push({ name: 'realties.list' });
+          this.$store.dispatch('users/clearUser');
+        }, 1000)
       }
     },
 
