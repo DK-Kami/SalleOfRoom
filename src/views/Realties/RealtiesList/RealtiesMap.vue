@@ -16,6 +16,21 @@ import {
   ymapMarker,
 } from 'vue-yandex-maps';
 
+const realtyData = [
+  { title: 'Этаж',              value: 'Floor'        },
+  { title: 'Номер квартиры',    value: 'HouseNumber'  },
+  { title: 'Комнат',            value: 'RoomCount'    },
+  { title: 'Площадь',           value: 'Area'         },
+  { title: 'Жилая площадь',     value: 'LivingArea'   },
+  { title: 'Площадь кухни',     value: 'KitchenArea'  },
+  { title: 'Город',             value: 'City'         },
+  { title: 'Округ',             value: 'CityDistrict' },
+  { title: 'Район',             value: 'District'     },
+  { title: 'Регион',            value: 'Region'       },
+  { title: 'Улица',             value: 'Street'       },
+  { title: 'Номер дома',        value: 'HouseNumber'  },
+];
+
 export default {
   name: 'RealtiesMap',
 
@@ -39,21 +54,50 @@ export default {
     },
 
     realtiesObjects() {
-      const realties = this.realties.map(realty => ({
-        type: "Feature",
-        id: realty.Id,
-        options: {
-          preset: 'islands#nightCircleIcon',
-        },
-        geometry: {
-          type: "Point",
-          coordinates: realty.Coord.split(','),
-        },
-        properties: {
-          balloonContentBody: 'енто балун',
-          balloonContent: 'енто балун',
-        },
-      }));
+      const realties = this.realties.map(realty => {
+        const aboutRealty = realtyData.map(rd => {
+          return `
+            <div class="flex xs5">
+              <span class="subtitle-1 font-weight-medium">${rd.title}:</span>
+              <span class="subtitle-2 font-weight-regular">${realty[rd.value]}</span>
+            </div>
+          `;
+        }).join('');
+
+        return {
+          type: "Feature",
+          id: realty.Id,
+          options: {
+            preset: 'islands#nightCircleIcon',
+          },
+          geometry: {
+            type: "Point",
+            coordinates: realty.Coord.split(','),
+          },
+          properties: {
+            hideIconOnBalloonOpen: false,
+            balloonContentBody: `
+              <div class="layout wrap py-2">
+                <div class="flex xs12">
+                  <span class="subtitle-1 font-weight-medium">Риелтор:</span>
+                  <span class="subtitle-2 font-weight-regular">${realty.Realtor.Name}</span>
+                </div>
+                
+                <div>
+                  <span class="subtitle-1 font-weight-medium">Контрагент:</span>
+                  <span class="subtitle-2 font-weight-regular">${realty.Counterparty.Name}</span>
+                </div>
+
+                <div class="flex xs12">
+                  <hr role="separator" aria-orientation="horizontal" class="v-divider theme--light">
+                </div>
+
+                <div class="layout justify-space-between wrap">${aboutRealty}</div>
+              </div>
+            `,
+          },
+        }
+      });
 
       return {
         type: "FeatureCollection",
@@ -73,7 +117,7 @@ export default {
       this.objectManager = new ymaps.ObjectManager({
         clusterIconLayout: "default#pieChart",
         hideIconOnBalloonOpen: false,
-        geoObjectHasBalloon: false,
+        geoObjectHasBalloon: true,
         clusterize: true,
       });
 
