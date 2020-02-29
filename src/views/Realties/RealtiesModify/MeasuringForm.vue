@@ -77,21 +77,15 @@
 </template>
 
 <script>
-const readyStates = [
-  { text: 'Готов',    value: 'ready'  },
-  { text: 'Закрыто',  value: 'stop'   },
-];
-
 export default {
   name: 'MeasuringForm',
-
-  data: () => ({
-    readyStates,
-  }),
 
   computed: {
     realty() {
       return this.$store.getters['realties/getRealty'];
+    },
+    readyStates() {
+      return this.$store.getters['realties/getReadyStates'];
     },
   },
 };

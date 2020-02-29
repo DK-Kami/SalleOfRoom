@@ -11,6 +11,12 @@
     <template #item.actions="{ item }">
       <v-layout>
         <tooltip-button
+          tooltip="Посмотреть недвижимость"
+          icon="mdi-eye"
+          color="primary"
+          @action="openRealtyView(item.Id)"
+        />
+        <tooltip-button
           tooltip="Редактирование недвижимости"
           icon="mdi-pencil"
           color="primary"
@@ -32,7 +38,7 @@ import TooltipButton from '@/components/helper/TooltipButton';
 import FilteredTable from '@/components/base/FilteredTable';
 
 const headers = [
-  { text: 'Состояние',          value: 'ReadyState',        isSelected: true, isFilter: true },
+  { text: 'Состояние',          value: 'russReadyState',    isSelected: true, isFilter: true },
   { text: 'Цена',               value: 'Price',             isSelected: true  },
   { text: 'Риелтор',            value: 'RealtorName',       isSelected: true, isFilter: true  },
   { text: 'Контагент',          value: 'CounterpartyName',  isSelected: true, isFilter: true  },
@@ -72,12 +78,7 @@ export default {
 
   computed: {
     realties() {
-      return this.$store.getters['realties/getRealties']
-        .map(r => ({
-          ...r,
-          CounterpartyName: r.Counterparty.Name,
-          RealtorName: r.Realtor.Name,
-        }));
+      return this.$store.getters['realties/getRealties'];
     },
   },
 
@@ -102,6 +103,9 @@ export default {
 
     editRealty(id) {
       this.$router.push({ name: 'realties.edit', params: { id }});
+    },
+    openRealtyView(id) {
+      this.$router.push({ name: 'realties.view', params: { id }});
     },
 
     searchInRealties() {

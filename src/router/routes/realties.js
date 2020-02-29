@@ -25,6 +25,14 @@ const routes = [
     },
     component: () => import('@/views/Realties/RealtiesModify'),
   },
+  {
+    path: '/:id/view',
+    name: 'realties.view',
+    meta: {
+      role: 'admin',
+    },
+    component: () => import('@/views/Realties/RealtiesView'),
+  },
 ];
 
 export default routes.map(route => ({

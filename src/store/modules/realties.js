@@ -33,17 +33,35 @@ const initialRealty = () => ({
 export const initialState = () => ({
   realty: initialRealty(),
   realties: [],
+
+  readyStates: [
+    { text: 'Готов',    value: 'ready', color: 'green'  },
+    { text: 'Закрыто',  value: 'stop' , color: 'red'    },
+  ],
 });
 
 export const mutations = {
   CLEAR_REALTY: state => state.realty = initialRealty(),
-  SET_REALTIES: (state, realties) => state.realties = realties,
+  SET_REALTIES: (state, realties) =>
+    state.realties = realties
+      .map(realty => ({
+        ...realty,
+        russReadyState: russianState(state.readyStates, realty.ReadyState),
+        CounterpartyName: realty.Counterparty.Name,
+        RealtorName: realty.Realtor.Name,
+      })),
+
   SET_REALTY: (state, realty) => {
-    state.realty.transactionTypeId = realty.TransactionType.Id;
-    state.realty.counterpartyId    = realty.Counterparty.Id;
-    state.realty.wallMaterialId    = realty.WallMaterial.Id;
-    state.realty.categoryId        = realty.Category.Id;
-    state.realty.realtorId         = realty.Realtor.Id;
+    state.realty.transactionType   = realty.TransactionType;
+    state.realty.transactionTypeId = realty.TransactionType && realty.TransactionType.Id;
+    state.realty.counterparty      = realty.Counterparty;
+    state.realty.counterpartyId    = realty.Counterparty && realty.Counterparty.Id;
+    state.realty.wallMaterial      = realty.WallMaterial;
+    state.realty.wallMaterialId    = realty.WallMaterial && realty.WallMaterial.Id;
+    state.realty.category          = realty.Category;
+    state.realty.categoryId        = realty.Category && realty.Category.Id;
+    state.realty.realtor           = realty.Realtor;
+    state.realty.realtorId         = realty.Realtor && realty.Realtor.Id;
 
     state.realty.houseNumber       = realty.HouseNumber;
     state.realty.kitchenArea       = realty.KitchenArea;
@@ -53,6 +71,7 @@ export const mutations = {
     state.realty.price             = realty.Price;
     state.realty.floor             = realty.Floor;
 
+    state.realty.russReadyState    = russianState(state.readyStates, realty.ReadyState);
     state.realty.readyState        = realty.ReadyState;
     state.realty.cityDistrict      = realty.CityDistrict;
     state.realty.district          = realty.District;
@@ -62,8 +81,9 @@ export const mutations = {
     state.realty.area              = realty.Area;
     state.realty.city              = realty.City;
 
-    state.realty.coord             = realty.Coord;
+    state.realty.coord             = realty.Coord || '55.751435, 37.620260';
     state.realty.pictures          = realty.Pictures;
+    state.realty.previewPictures   = [];
   },
 };
 
@@ -190,6 +210,7 @@ export const actions = {
 };
 
 export const getters = {
+  getReadyStates: state => state.readyStates,
   getRealties: state => state.realties,
   getRealty: state => state.realty,
 };
@@ -202,4 +223,10 @@ function createFormData(realty) {
     fd.append(key, data);
   })
   return fd;
+};
+
+function russianState(readyStates, readyState) {
+  if (!readyState) return '';
+  const state = readyStates.find(s => s.value === readyState);
+  return state ? state.text : '';
 };
