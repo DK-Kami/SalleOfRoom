@@ -39,31 +39,31 @@ export const mutations = {
   CLEAR_REALTY: state => state.realty = initialRealty(),
   SET_REALTIES: (state, realties) => state.realties = realties,
   SET_REALTY: (state, realty) => {
-    state.transactionTypeId = realty.TransactionTypeId;
-    state.counterpartyId    = realty.CounterpartyId;
-    state.wallMaterialId    = realty.WallMaterialId;
-    state.categoryId        = realty.CategoryId;
-    state.realtorId         = realty.RealtorId;
+    state.realty.transactionTypeId = realty.TransactionType.Id;
+    state.realty.counterpartyId    = realty.Counterparty.Id;
+    state.realty.wallMaterialId    = realty.WallMaterial.Id;
+    state.realty.categoryId        = realty.Category.Id;
+    state.realty.realtorId         = realty.Realtor.Id;
 
-    state.houseNumber       = realty.HouseNumber;
-    state.kitchenArea       = realty.KitchenArea;
-    state.livingArea        = realty.LivingArea;
-    state.flatNumber        = realty.FlatNumber;
-    state.roomCount         = realty.RoomCount;
-    state.price             = realty.Price;
-    state.floor             = realty.Floor;
+    state.realty.houseNumber       = realty.HouseNumber;
+    state.realty.kitchenArea       = realty.KitchenArea;
+    state.realty.livingArea        = realty.LivingArea;
+    state.realty.flatNumber        = realty.FlatNumber;
+    state.realty.roomCount         = realty.RoomCount;
+    state.realty.price             = realty.Price;
+    state.realty.floor             = realty.Floor;
 
-    state.readyState        = realty.ReadyState;
-    state.cityDistrict      = realty.CityDistrict;
-    state.district          = realty.District;
-    state.comment           = realty.Comment;
-    state.region            = realty.Region;
-    state.street            = realty.Street;
-    state.area              = realty.Area;
-    state.city              = realty.City;
+    state.realty.readyState        = realty.ReadyState;
+    state.realty.cityDistrict      = realty.CityDistrict;
+    state.realty.district          = realty.District;
+    state.realty.comment           = realty.Comment;
+    state.realty.region            = realty.Region;
+    state.realty.street            = realty.Street;
+    state.realty.area              = realty.Area;
+    state.realty.city              = realty.City;
 
-    state.coord             = realty.Coord;
-    state.pictures          = realty.Pictures;
+    state.realty.coord             = realty.Coord;
+    state.realty.pictures          = realty.Pictures;
   },
 };
 
@@ -126,7 +126,7 @@ export const actions = {
     // const id = 'zri-padla';
     await dispatch('setImages', {
       photos: state.realty.pictures,
-      id: data,
+      id: data.Id,
     });
 
     if (data.Message) {

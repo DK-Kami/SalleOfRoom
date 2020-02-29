@@ -1,6 +1,6 @@
 export default {
-  loadRealties(page) {
-    return this.apiClient.get('estate/all', { page });
+  loadRealties(page, searchString) {
+    return this.apiClient.get('estate/all', { page, searchString });
   },
   createRealty({ realty }) {
     return this.apiClient.post('Estate', realty);
