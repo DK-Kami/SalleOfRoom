@@ -1,10 +1,13 @@
 <template>
   <v-layout justify-center>
-    <v-flex xs7 xl5 class="elevation-4">
+    <v-flex
+      class="elevation-4"
+      :class="{ 'xs7 xl5': !dialogView }"
+    >
       <form-base
-        :title="id ? 'Редактирование контрагента' : 'Добавление контрагента'"
+        :title="currentTitle"
         ref="form"
-        with-back-button
+        :with-back-button="!dialogView"
         @submit="handleSubmit"
       >
         <v-layout column>
@@ -61,6 +64,10 @@ export default {
     mask,
   },
 
+  props: {
+    dialogView: Boolean,
+  },
+
   created() {
     this.$store.dispatch('counterparties/clearCounterparty');
     if (this.id) {
@@ -80,6 +87,10 @@ export default {
     id() {
       return this.$route.params.id;
     },
+    currentTitle() {
+      if (this.dialogView) return '';
+      return this.id ? 'Редактирование контрагента' : 'Добавление контрагента'
+    }
   },
 
   methods: {
@@ -105,6 +116,9 @@ export default {
         this.$refs.form.setError(error);
       }
       else {
+        if (this.dialogView) {
+          return this.$emit('add', data.Id);
+        }
         setTimeout(() => {
           this.$router.push({ name: 'counterparties.list' });
           this.$store.dispatch('counterparties/clearCounterparty');

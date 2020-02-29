@@ -42,7 +42,7 @@
             </v-slide-y-transition>
           </v-flex>
 
-          <v-divider />
+          <v-divider v-if="title" />
         </v-layout>
       </v-card-title>
 
