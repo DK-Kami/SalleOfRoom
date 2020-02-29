@@ -2,7 +2,8 @@
   <v-layout column>
     <v-data-table
       :no-data-text="loading ? 'Данные загружаются' : 'Данных нет'"
-      :footer-props.sync="footerProps"
+      :server-items-length="serverItemsLength"
+      :footer-props="footerProps"
       :headers="visibleHeaders"
       :show-all="showSelect"
       :items="filteredItems"
@@ -10,6 +11,7 @@
       :loading="loading"
       :sort-by="sortBy"
       :search="search"
+      :page.sync="page"
       @pagination="updatePagination"
     >
       <!-- :options.sync="options" -->
@@ -98,14 +100,17 @@ export default {
       type: Array,
       default: () => [],
     },
+    serverItemsLength: Number,
     customiseHeader: Boolean,
     withActions: Boolean,
+    footerProps: Object,
     showSelect: Boolean,
     hideFooter: Boolean,
     sortDesc: Boolean,
     loading: Boolean,
     sortBy: String,
     search: String,
+    page: Number,
   },
 
   created() {

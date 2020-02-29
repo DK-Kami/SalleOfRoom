@@ -1,13 +1,14 @@
 <template>
-  <v-data-table
+  <filtered-table
     :server-items-length="totalItems"
     :footer-props="footerTableProps"
     :headers="headers"
     :loading="loading"
     :page.sync="page"
     :items="realties"
+    customise-header
   >
-    <!-- <template #item.actions="{ item }">
+    <template #item.actions="{ item }">
       <v-layout>
         <tooltip-button
           tooltip="Редактирование недвижимости"
@@ -22,15 +23,27 @@
           @action="deleteRealty(item.Id)"
         />
       </v-layout>
-    </template> -->
-  </v-data-table>
+    </template>
+  </filtered-table>
 </template>
 
 <script>
 import TooltipButton from '@/components/helper/TooltipButton';
+import FilteredTable from '@/components/base/FilteredTable';
 
 const headers = [
-  { text: 'Действия', value: 'actions'  },
+  { text: 'Состояние',          value: 'ReadyState',        isSelected: true, isFilter: true },
+  { text: 'Цена',               value: 'Price',             isSelected: true  },
+  { text: 'Риелтор',            value: 'RealtorName',       isSelected: true, isFilter: true  },
+  { text: 'Контагент',          value: 'CounterpartyName',  isSelected: true, isFilter: true  },
+  { text: 'Этаж',               value: 'Floor',             isSelected: true  },
+  { text: 'Номер квартиры',     value: 'Number',            isSelected: true  },
+  { text: 'Количество комнат',  value: 'RoomCount',         isSelected: true  },
+  { text: 'Площадь',            value: 'Area',              isSelected: true  },
+  { text: 'Жилая площадь',      value: 'LivingArea',        isSelected: true  },
+  { text: 'Площадь кухни',      value: 'KitchenArea',       isSelected: true  },
+  { text: 'Коммментарий',       value: 'Comment',           isSelected: false },
+  { text: 'Действия',           value: 'actions' ,          isSelected: true  },
 ];
 
 export default {
@@ -42,6 +55,7 @@ export default {
 
   components: {
     TooltipButton,
+    FilteredTable,
   },
 
   props: {
@@ -58,7 +72,12 @@ export default {
 
   computed: {
     realties() {
-      return this.$store.getters['realties/getRealties'];
+      return this.$store.getters['realties/getRealties']
+        .map(r => ({
+          ...r,
+          CounterpartyName: r.Counterparty.Name,
+          RealtorName: r.Realtor.Name,
+        }));
     },
   },
 
