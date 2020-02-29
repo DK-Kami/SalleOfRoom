@@ -148,6 +148,10 @@
                 >Применить фильтры</v-btn>
               </v-layout>
             </v-flex>
+
+            <v-flex xs12>
+              <v-divider />
+            </v-flex>
           </v-layout>
         </v-container>
       </v-expand-transition>

@@ -38,10 +38,10 @@ import TooltipButton from '@/components/helper/TooltipButton';
 import FilteredTable from '@/components/base/FilteredTable';
 
 const headers = [
-  { text: 'Состояние',          value: 'russReadyState',    isSelected: true, isFilter: true },
+  { text: 'Состояние',          value: 'russReadyState',    isSelected: true, },
   { text: 'Цена',               value: 'Price',             isSelected: true  },
-  { text: 'Риелтор',            value: 'RealtorName',       isSelected: true, isFilter: true  },
-  { text: 'Контагент',          value: 'CounterpartyName',  isSelected: true, isFilter: true  },
+  { text: 'Риелтор',            value: 'RealtorName',       isSelected: true, },
+  { text: 'Контагент',          value: 'CounterpartyName',  isSelected: true, },
   { text: 'Этаж',               value: 'Floor',             isSelected: true  },
   { text: 'Номер квартиры',     value: 'Number',            isSelected: true  },
   { text: 'Количество комнат',  value: 'RoomCount',         isSelected: true  },

@@ -16,7 +16,7 @@
     >
       <!-- :options.sync="options" -->
       <!-- hide-default-footer -->
-      <template #header="{ props }">
+      <template #header="{ props }" v-if="withFilter">
         <slot name="filter" :headers="props.headers">
           <tr class="grey lighten-3">
             <th v-for="header in props.headers" :key="header.text">
@@ -129,6 +129,10 @@ export default {
       set(value) {
         this.$emit('input', value);
       },
+    },
+
+    withFilter() {
+      return this.headers.some(h => h.isFilter);
     },
 
     visibleHeaders() {
