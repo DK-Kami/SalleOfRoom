@@ -82,8 +82,10 @@ export const mutations = {
     state.realty.city              = realty.City;
 
     state.realty.coord             = realty.Coord || '55.751435, 37.620260';
-    state.realty.pictures          = realty.Pictures;
-    state.realty.previewPictures   = [];
+    state.realty.pictures          = realty.Picture;
+    state.realty.previewPictures   = realty.Picture
+      ? realty.Picture.map(p => 'https://localhost:44388/api/service/image?id=' + p)
+      : [];
   },
 };
 
@@ -92,6 +94,15 @@ export const actions = {
 
   async loadRealties({ commit }, { page, search, isDisabled }) {
     const { Estates, EstateCount } = (await RealtiesService.loadRealties(page, search, isDisabled)).data;
+    commit('SET_REALTIES', Estates);
+    return {
+      error: false,
+      data: EstateCount,
+    };
+  },
+
+  async applyFilters({ commit }, { filters, page, search, isDisabled }) {
+    const { Estates, EstateCount } = (await RealtiesService.applyFilters(filters, page, search, isDisabled)).data;
     commit('SET_REALTIES', Estates);
     return {
       error: false,

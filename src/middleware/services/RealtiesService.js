@@ -17,4 +17,8 @@ export default {
   deleteRealty(id) {
     return this.apiClient.delete('Estate', {}, { id });
   },
+
+  applyFilters(filters, page, searchString, isDisabled) {
+    return this.apiClient.post('estate/all', filters, { page, searchString, isDisabled});
+  }
 };

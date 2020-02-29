@@ -20,11 +20,13 @@ export default {
   render(h, context) {
     const { photos } = context.props;
 
+    console.log(photos);
+
     return (
       <VCard color="#cacaca">
         {photos.length
           ? (
-            <VCarousel v-if="photos.length">
+            <VCarousel>
               {photos.forEach((photo, index) => {
                 <VCarouselItem key={'picture-' + index}>
                   <VImg src={photo} height="100%" />

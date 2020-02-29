@@ -54,11 +54,10 @@ export default {
 
   methods: {
     uploadFile(e) {
-      console.log(e);
       const blob = new Blob([e], {type: e.type});
       const photo = window.URL.createObjectURL(blob);
       this.realty.previewPictures.push(photo);
-      this.realty.pictures.push(e.upload);
+      this.realty.pictures.push(e);
     },
   },
 };

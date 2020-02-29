@@ -6,7 +6,11 @@
       id="dropzone"
       duplicate-check
       @vdropzone-complete="uploadFile"
+      @vdropzone-file-added="fileAdded"
     />
+
+    <!-- :name="name" :accept="accept" :multiple="multiple" -->
+    <input ref="inputFile" type="file" accept="image/*" @input="change" />
   </v-layout>
 </template>
 
@@ -56,7 +60,42 @@ export default {
   }),
 
   methods: {
+    clearPhoto() {
+      this.$refs.inputFile.value = '';
+    },
+
+    change(e) {
+      const file = e.target.files[0];
+      console.log(file);
+
+      const total = file.size / 1024 / 1024;
+      if (total >= 2) {
+        this.$store.dispatch('notification/set', {
+          message: 'Файл должен быть меньше, либо равен 2 МБ',
+          type: 'error',
+        });
+        this.$nextTick(this.clearPhoto);
+        return;
+      }
+
+      const type = file.type.split('/')[0];
+      if (type !== 'image') {
+        this.$store.dispatch('notification/set', {
+          message: 'Неверное расширение файла. Нужно загрузить изображение в формате jpg, png или gif',
+          type: 'error',
+        });
+        this.$nextTick(this.clearPhoto);
+        return;
+      }
+
+      this.$emit('upload', file);
+    },
+
+    fileAdded(e) {
+      console.log(e);
+    },
     uploadFile(e) {
+      console.log(e);
       const total = e.upload.total / 1024 / 1024;
       if (total >= 2) {
         this.$store.dispatch('notification/set', {

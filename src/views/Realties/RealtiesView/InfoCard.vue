@@ -27,6 +27,12 @@
           </v-list-item>
         </v-list>
       </v-flex>
+
+      <v-flex xs12 v-if="realty.comment">
+        <div class="title">Комментарий</div>
+        <v-divider />
+        {{ realty.comment }}
+      </v-flex>
     </v-layout>
 
     <v-layout>
@@ -42,23 +48,23 @@ const realtyData = [
   {
     title: 'Размеры',
     list: [
-      { title: 'Этаж',              value: 'floor' },
-      { title: 'Номер квартиры',    value: 'houseNumber' },
-      { title: 'Количество комнат', value: 'roomCount' },
-      { title: 'Площадь',           value: 'area' },
-      { title: 'Жилая площадь',     value: 'livingArea' },
-      { title: 'Площадь кухни',     value: 'kitchenArea' },
+      { title: 'Этаж',              value: 'floor'        },
+      { title: 'Номер квартиры',    value: 'houseNumber'  },
+      { title: 'Количество комнат', value: 'roomCount'    },
+      { title: 'Площадь',           value: 'area'         },
+      { title: 'Жилая площадь',     value: 'livingArea'   },
+      { title: 'Площадь кухни',     value: 'kitchenArea'  },
     ],
   },
   {
     title: 'Расположение',
     list: [
-      { title: 'Этаж',              value: 'floor' },
-      { title: 'Номер квартиры',    value: 'houseNumber' },
-      { title: 'Количество комнат', value: 'roomCount' },
-      { title: 'Площадь',           value: 'area' },
-      { title: 'Жилая площадь',     value: 'livingArea' },
-      { title: 'Площадь кухни',     value: 'kitchenArea' },
+      { title: 'Город',           value: 'city'         },
+      { title: 'Округ',           value: 'cityDistrict' },
+      { title: 'Район',           value: 'district'     },
+      { title: 'Регион',          value: 'region'       },
+      { title: 'Улица',           value: 'street'       },
+      { title: 'Номер дома',      value: 'houseNumber'  },
     ],
   },
 ];

@@ -55,25 +55,22 @@ const headers = [
 export default {
   name: 'RealtiesTable',
 
-  created() {
-    this.loadRealties();
-  },
-
   components: {
     TooltipButton,
     FilteredTable,
   },
 
   props: {
+    isDisabled: Boolean,
+    totalItems: Number,
     search: String,
+    page: Number,
   },
 
   data: () => ({
-    totalItems: 0,
     loading: false,
     timer: null,
     headers,
-    page: 1,
   }),
 
   computed: {
