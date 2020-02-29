@@ -8,9 +8,6 @@
       @vdropzone-complete="uploadFile"
       @vdropzone-file-added="fileAdded"
     />
-
-    <!-- :name="name" :accept="accept" :multiple="multiple" -->
-    <input ref="inputFile" type="file" accept="image/*" @input="change" />
   </v-layout>
 </template>
 

@@ -43,13 +43,16 @@ export default {
         type: "Feature",
         id: realty.Id,
         options: {
-          preset: 'islands#nightCircleIcon'
+          preset: 'islands#nightCircleIcon',
         },
         geometry: {
           type: "Point",
           coordinates: realty.Coord.split(','),
         },
-        properties: {},
+        properties: {
+          balloonContentBody: 'енто балун',
+          balloonContent: 'енто балун',
+        },
       }));
 
       return {
@@ -60,12 +63,6 @@ export default {
   },
 
   methods: {
-    reloadMap() {
-      if (this.mapLoaded && this.withSortBar) {
-        this.map.container.fitToViewport();
-      }
-    },
-
     mapInit(map) {
       this.mapLoaded = true;
       this.yMap = ymaps;
