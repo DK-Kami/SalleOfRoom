@@ -29,7 +29,7 @@
         </v-tab-item>
 
         <v-tab-item class="pa-4">
-          <realties-card :realties="realties" />
+          <realties-card :realties="realties" with-actions />
         </v-tab-item>
 
         <v-tab-item>

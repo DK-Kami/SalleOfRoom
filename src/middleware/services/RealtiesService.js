@@ -6,7 +6,7 @@ export default {
     return this.apiClient.post('Estate', realty);
   },
   updateRealty({ realty, id }) {
-    return this.apiClient.put('realty', realty, { id });
+    return this.apiClient.put('estate', realty, { id });
   },
   setImages({ photos, id }) {
     return this.apiClient.post('estate/set-images', photos, { id });

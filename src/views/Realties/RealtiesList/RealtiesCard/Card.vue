@@ -37,7 +37,29 @@
       </v-layout>
     </v-card-text>
 
-    <v-card-actions>
+    <v-card-actions v-if="withActions">
+      <v-spacer />
+      <tooltip-button
+        tooltip="Посмотреть недвижимость"
+        icon="mdi-eye"
+        color="primary"
+        @action="openRealtyView(realty.Id)"
+      />
+      <tooltip-button
+        tooltip="Редактирование недвижимости"
+        icon="mdi-pencil"
+        color="primary"
+        @action="editRealty(realty.Id)"
+      />
+      <tooltip-button
+        tooltip="Удаление недвижимости"
+        icon="mdi-delete"
+        color="error"
+        @action="deleteRealty(realty.Id)"
+      />
+    </v-card-actions>
+    
+    <v-card-actions v-else>
       <v-spacer />
       <v-btn
         color="primary"
@@ -48,9 +70,11 @@
 </template>
 
 <script>
+import TooltipButton from '@/components/helper/TooltipButton';
+
 const realtyData = [
   { title: 'Этаж',              value: 'Floor'        },
-  { title: 'Номер квартиры',    value: 'FlatNumber'  },
+  { title: 'Номер квартиры',    value: 'FlatNumber'   },
   { title: 'Количество комнат', value: 'RoomCount'    },
   { title: 'Площадь',           value: 'Area'         },
   { title: 'Жилая площадь',     value: 'LivingArea'   },
@@ -60,7 +84,12 @@ const realtyData = [
 export default {
   name: 'RealtyCard',
 
+  components: {
+    TooltipButton,
+  },
+
   props: {
+    withActions: Boolean,
     realty: Object,
   },
 
@@ -91,6 +120,17 @@ export default {
   methods: {
     async loadReadyStates() {
       await this.$store.dispatch('realties/loadReadyState');
+    },
+    async deleteRealty(id) {
+      this.$store.dispatch('realties/deleteRealty', id);
+      this.loadRealties();
+    },
+
+    editRealty(id) {
+      this.$router.push({ name: 'realties.edit', params: { id }});
+    },
+    openRealtyView(id) {
+      this.$router.push({ name: 'realties.view', params: { id }});
     },
 
     // russReadyState(readyState) {

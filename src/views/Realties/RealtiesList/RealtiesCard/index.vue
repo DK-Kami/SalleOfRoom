@@ -5,7 +5,7 @@
         v-for="realty in realties"
         xs3
       >
-        <realty-card :realty="realty" />
+        <realty-card :realty="realty" with-actions />
       </v-flex>
     </v-layout>
   </v-container>
@@ -22,6 +22,7 @@ export default {
   },
 
   props: {
+    withActions: Boolean,
     realties: Array,
   },
 };

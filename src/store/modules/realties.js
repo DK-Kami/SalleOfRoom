@@ -155,8 +155,6 @@ export const actions = {
       },
     })).data;
 
-    // const { id } = data.Estate || 1;
-    // const id = 'zri-padla';
     await dispatch('setImages', {
       photos: state.realty.pictures,
       id: data.Id,
@@ -200,6 +198,11 @@ export const actions = {
       }),
       id,
     })).data;
+
+    await dispatch('setImages', {
+      photos: state.realty.pictures,
+      id: data.Id,
+    });
 
     if (data.Message) {
       return { error: true, data };
