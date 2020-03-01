@@ -52,8 +52,9 @@ export default {
     realties() {
       return this.$store.getters['realties/getRealties'];
     },
-
     realtiesObjects() {
+      if (!ymaps) return;
+
       const realties = this.realties.map(realty => {
         const aboutRealty = realtyData.map(rd => {
           return `
@@ -96,23 +97,25 @@ export default {
               </div>
             `,
           },
-        }
+        };
       });
 
       return {
         type: "FeatureCollection",
         features: realties,
       };
-    }
+    },
   },
 
   methods: {
     mapInit(map) {
-      this.mapLoaded = true;
-      this.yMap = ymaps;
-      this.map = map;
+      if (!this.mapLoaded) {
+        this.mapLoaded = true;
+        this.ymaps = ymaps;
+        this.map = map;
+      }
 
-      this.map.options.set('suppressMapOpenBlock', true);
+      if (!this.realties.length) return;
 
       this.objectManager = new ymaps.ObjectManager({
         clusterIconLayout: "default#pieChart",
@@ -142,6 +145,12 @@ export default {
       // });
 
       // map.controls.add(this.reZoomButton, {float: 'left'});
+    },
+  },
+
+  watch: {
+    realties(newVal) {
+      if (this.mapLoaded) this.mapInit();
     },
   },
 };
