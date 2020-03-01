@@ -20,5 +20,8 @@ export default {
 
   applyFilters(filters, page, searchString, isDisabled) {
     return this.apiClient.post('estate/all', filters, { page, searchString, isDisabled});
-  }
+  },
+  loadReadyState() {
+    return this.apiClient.get('service/ready-state');
+  },
 };

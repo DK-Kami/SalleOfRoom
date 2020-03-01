@@ -70,6 +70,8 @@
       <v-select
         v-model="realty.readyState"
         :items="readyStates"
+        item-value="Value"
+        item-text="Text"
         label="Статус недвижимости"
       />
     </v-card-text>
@@ -80,12 +82,22 @@
 export default {
   name: 'MeasuringForm',
 
+  created() {
+    this.loadReadyStates();
+  },
+
   computed: {
     realty() {
       return this.$store.getters['realties/getRealty'];
     },
     readyStates() {
       return this.$store.getters['realties/getReadyStates'];
+    },
+  },
+
+  methods: {
+    loadReadyStates() {
+      this.$store.dispatch('realties/loadReadyState');
     },
   },
 };
