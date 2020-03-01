@@ -7,21 +7,21 @@
       >
         <v-img :src="photo" height="100%" contain />
       </v-carousel-item>
-  </v-carousel>
+    </v-carousel>
 
-  <v-layout v-else>
-    <v-responsive aspect-ratio="2.7">
-      <v-layout
-        class="display-2"
-        justify-center
-        align-center
-        fill-height
-      >
-        Изображений нет
-        <v-icon>mdi-image-off-outline</v-icon>
-      </v-layout>
-    </v-responsive>
-  </v-layout>
+    <v-layout v-else>
+      <v-responsive aspect-ratio="2.7">
+        <v-layout
+          class="display-2"
+          justify-center
+          align-center
+          fill-height
+        >
+          Изображений нет
+          <v-icon>mdi-image-off-outline</v-icon>
+        </v-layout>
+      </v-responsive>
+    </v-layout>
   </v-card>
 </template>
 

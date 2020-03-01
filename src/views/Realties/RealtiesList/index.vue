@@ -21,12 +21,15 @@
     <v-flex xs12>
       <v-tabs>
         <v-tab>Карта</v-tab>
+        <v-tab>Плитка</v-tab>
         <v-tab>Список</v-tab>
 
         <v-tab-item>
-          <realties-map
-            :search="search"
-          />
+          <realties-map :search="search" />
+        </v-tab-item>
+
+        <v-tab-item class="pa-4">
+          <realties-card :realties="realties" />
         </v-tab-item>
 
         <v-tab-item>
@@ -46,6 +49,7 @@
 import TopBar from '@/components/base/TopBar';
 import RealtiesFilters from './RealtiesFilters';
 import RealtiesTable from './RealtiesTable';
+import RealtiesCard from './RealtiesCard';
 import RealtiesMap from './RealtiesMap';
 
 export default {
@@ -54,6 +58,7 @@ export default {
   components: {
     RealtiesFilters,
     RealtiesTable,
+    RealtiesCard,
     RealtiesMap,
     TopBar,
   },
@@ -68,6 +73,12 @@ export default {
     search: '',
     page: 1,
   }),
+
+  computed: {
+    realties() {
+      return this.$store.getters['realties/getRealties'];
+    },
+  },
 
   methods: {
     async loadRealties() {

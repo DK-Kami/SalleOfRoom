@@ -43,7 +43,7 @@ const headers = [
   { text: 'Риелтор',            value: 'RealtorName',       isSelected: true, },
   { text: 'Контагент',          value: 'CounterpartyName',  isSelected: true, },
   { text: 'Этаж',               value: 'Floor',             isSelected: true  },
-  { text: 'Номер квартиры',     value: 'Number',            isSelected: true  },
+  { text: 'Номер квартиры',     value: 'FlatNumber',        isSelected: true  },
   { text: 'Количество комнат',  value: 'RoomCount',         isSelected: true  },
   { text: 'Площадь',            value: 'Area',              isSelected: true  },
   { text: 'Жилая площадь',      value: 'LivingArea',        isSelected: true  },
