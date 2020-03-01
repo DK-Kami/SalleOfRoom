@@ -46,6 +46,7 @@
             type="password"
             label="Пароль"
           />
+
           <v-text-field
             v-model="user.confirmPassword"
             label="Повторите пароль"

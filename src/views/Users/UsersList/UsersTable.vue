@@ -15,7 +15,14 @@
         <tooltip-button
           tooltip="Редактирование пользователя"
           icon="mdi-pencil"
+          color="primary"
           @action="editUser(item.Id)"
+        />
+        <tooltip-button
+          tooltip="Удаление пользователя"
+          icon="mdi-delete"
+          color="error"
+          @action="deleteUser(item.Id)"
         />
       </v-layout>
     </template>
@@ -26,7 +33,6 @@
 import TooltipButton from '@/components/helper/TooltipButton';
 
 const headers = [
-  { text: 'ФИО',      value: 'Name'     },
   { text: 'Email',    value: 'Email'    },
   { text: 'Роль',     value: 'Role'     },
   { text: 'Действия', value: 'actions'  },
@@ -72,6 +78,9 @@ export default {
         this.totalItems = data;
       }
       this.loading = false;
+    },
+    async deleteUser(id) {
+      this.$store.dispatch('user/deleteUser', id);
     },
 
     searchInUsers() {
