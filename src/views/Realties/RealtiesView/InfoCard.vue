@@ -1,8 +1,8 @@
 <template>
   <v-card class="pa-3">
-    <v-card-title class="headline" :class="`${colorByStatus}--text`">
+    <!-- <v-card-title class="headline" :class="`${colorByStatus}--text`">
       {{ realty.russReadyState }}
-    </v-card-title>
+    </v-card-title> -->
 
     <v-layout
       justify-space-between
