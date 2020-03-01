@@ -121,7 +121,8 @@ export const actions = {
 
   async setImages(_, { id, photos }) {
     const fd = new FormData();
-    fd.append('hui', photos);
+    for (let i = 0; i < photos.length; i++) 
+      fd.append('hui', photos[i]);
     const data = (await RealtiesService.setImages({ photos: fd, id }));
     return data;
   },
