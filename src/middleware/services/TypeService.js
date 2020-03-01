@@ -8,4 +8,14 @@ export default {
   loadCategory() {
     return this.apiClient.get('service/categories');
   },
-}
+  loadHistory({ tableName, page }) {
+    return this.apiClient.get('history/all', { tableName, page });
+  },
+  loadModels() {
+    return {
+      data: [
+        { Value: 'Estates', Text: 'Недвижимость' },
+      ]
+    };
+  },
+};

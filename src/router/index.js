@@ -5,6 +5,7 @@ import listners from './listners';
 
 import counterpartiesRoutes from './routes/counterparties';
 import realtiesRoutes from './routes/realties';
+import realtorsRoutes from './routes/realtors';
 import usersRoutes from './routes/users';
 
 Vue.use(VueRouter);
@@ -15,9 +16,18 @@ const routes = [
     name: 'login',
     component: () => import('@/views/Login'),
   },
+  {
+    path: '/history',
+    name: 'history.list',
+    meta: {
+      role: 'admin',
+    },
+    component: () => import('@/views/History'),
+  },
 
   ...counterpartiesRoutes,
   ...realtiesRoutes,
+  ...realtorsRoutes,
   ...usersRoutes,
 
   {

@@ -16,6 +16,9 @@ export default {
   logout() {
     return this.apiClient.post('account/logout');
   },
+  loadUserInfo() {
+    return this.apiClient.get('account/user-info');
+  },
 
   loadUsers(page, searchString) {
     return this.apiClient.get('account/users', { page, searchString });
@@ -29,7 +32,17 @@ export default {
   loadUser(id) {
     return this.apiClient.get('account/user', { id });
   },
-  loadUserInfo() {
-    return this.apiClient.get('account/user-info');
+  deleteUser(id) {
+    return this.apiClient.delete('account', { id });
   },
+
+  loadRealtors(page, searchString, isDisabled) {
+    return this.apiClient.get('realtor/all', { page, searchString, isDisabled });
+  },
+  loadRealtor(id) {
+    return this.apiClient.get('realtor', { id });
+  },
+  deleteRealtor(id) {
+    return this.apiClient.delete('realtor', {}, { id });
+  }
 };

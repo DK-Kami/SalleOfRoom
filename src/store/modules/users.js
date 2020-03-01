@@ -10,6 +10,8 @@ const initialUser = () => ({
   email: '',
   role: '',
   phone: '+7 (',
+  name: '',
+  estates: [],
 });
 
 export const initialState = () => ({
@@ -29,6 +31,8 @@ export const mutations = {
     state.user.password = user.Password;
     state.user.email = user.Email;
     state.user.role = user.Role;
+    state.user.name = user.Name;
+    state.user.estates = user.Estates;
   },
 };
 
@@ -51,6 +55,36 @@ export const actions = {
       error: false,
       data: user,
     };
+  },
+
+  async loadRealtors({ commit }, { page, search, isDisabled }) {
+    const { Realtors, RealtorCount } = (await UserService.loadRealtors(page, search, isDisabled)).data;
+    commit('SET_USERS', Realtors);
+    return {
+      error: false,
+      data: RealtorCount,
+    };
+  },
+  async deleteRealtor({ dispatch }, id) {
+    await UserService.deleteRealtor(id);
+    dispatch('notification/set', {
+      message: 'Риелтор удалён',
+      type: 'success',
+    }, { root: true });
+    return { error: false };
+  },
+  async loadRealtor({ commit }, id) {
+    const realtor = (await UserService.loadRealtor(id)).data;
+    commit('SET_USER', realtor);
+    return {
+      error: false,
+      data: realtor,
+    };
+  },
+
+  async deleteUser(_, id) {
+    await UserService.deleteUser(id);
+    return { error: false };
   },
 
   async createUser({ dispatch, state }, isAdmin) {
