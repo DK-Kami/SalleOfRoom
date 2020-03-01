@@ -5,25 +5,30 @@
     :headers="headers"
     :loading="loading"
     :page.sync="page"
-    :items="users"
+    :items="realtors"
   >
-    <template #item.Role="{ item }">
-      {{ russRole(item.Role) }}
-    </template>
     <template #item.actions="{ item }">
       <v-layout>
         <tooltip-button
-          tooltip="Редактирование пользователя"
+          tooltip="Просмотр риелтора"
+          color="primary"
+          icon="mdi-eye"
+          @action="viewRealtor(item.Id)"
+        />
+        <tooltip-button
+          v-if="!isDisabled"
+          tooltip="Редактирование риелтора"
           icon="mdi-pencil"
           color="primary"
-          @action="editUser(item.Id)"
+          @action="editRealtor(item.Id)"
         />
-        <!-- <tooltip-button
-          tooltip="Удаление пользователя"
+        <tooltip-button
+          v-if="!isDisabled"
+          tooltip="Удаление риелтора"
           icon="mdi-delete"
           color="error"
-          @action="deleteUser(item.Id)"
-        /> -->
+          @action="deleteRealtor(item.Id)"
+        />
       </v-layout>
     </template>
   </v-data-table>
@@ -33,16 +38,16 @@
 import TooltipButton from '@/components/helper/TooltipButton';
 
 const headers = [
-  { text: 'Email',    value: 'Email'    },
-  { text: 'Роль',     value: 'Role'     },
+  { text: 'ФИО',      value: 'Name'     },
+  { text: 'Телефон',  value: 'Phone'    },
   { text: 'Действия', value: 'actions'  },
 ];
 
 export default {
-  name: 'UsersTable',
+  name: 'RealtorsTable',
 
   created() {
-    this.loadUsers();
+    this.loadRealtors();
   },
 
   components: {
@@ -50,6 +55,7 @@ export default {
   },
 
   props: {
+    isDisabled: Boolean,
     search: String,
   },
 
@@ -62,15 +68,16 @@ export default {
   }),
 
   computed: {
-    users() {
+    realtors() {
       return this.$store.getters['users/getUsers'];
     },
   },
 
   methods: {
-    async loadUsers() {
+    async loadRealtors() {
       this.loading = true;
-      const { error, data } = await this.$store.dispatch('users/loadUsers', {
+      const { error, data } = await this.$store.dispatch('users/loadRealtors', {
+        isDisabled: this.isDisabled,
         search: this.search,
         page: this.page,
       });
@@ -79,31 +86,32 @@ export default {
       }
       this.loading = false;
     },
-    async deleteUser(id) {
-      this.$store.dispatch('user/deleteUser', id);
+    async deleteRealtor(id) {
+      await this.$store.dispatch('users/deleteRealtor', id);
+      this.loadRealtors();
     },
 
-    searchInUsers() {
+    searchInRealtors() {
       clearTimeout(this.timer);
       this.timer = null;
 
-      this.timer = setTimeout(this.loadUsers, 500);
+      this.timer = setTimeout(this.loadRealtors, 500);
     },
 
-    editUser(id) {
+    editRealtor(id) {
       this.$router.push({ name: 'users.edit', params: { id }});
     },
-
-    russRole(role) {
-      if (role.toLowerCase() === 'admin') return 'Администратор';
-      if (role.toLowerCase() === 'realtor') return 'Риелтор';
-      return '';
-    }
+    viewRealtor(id) {
+      this.$router.push({ name: 'realtors.view', params: { id }});
+    },
   },
 
   watch: {
     search() {
-      this.searchInUsers();
+      this.searchInRealtors();
+    },
+    isDisabled() {
+      this.searchInRealtors();
     },
   },
 };

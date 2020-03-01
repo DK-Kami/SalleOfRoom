@@ -58,9 +58,11 @@ import TheFooter from '@/components/layout/TheFooter';
 import TheMenu from '@/components/layout/TheMenu';
 
 const menu = [
-  { title: 'Персонал',      path: '/users',           icon: 'mdi-account-group' },
+  { title: 'Пользователи',  path: '/users',           icon: 'mdi-account-group' },
+  { title: 'Риелторы',      path: '/realtors',        icon: 'mdi-account-tie'   },
   { title: 'Контрагенты',   path: '/counterparties',  icon: 'mdi-file-document' },
   { title: 'Недвижимость',  path: '/realties',        icon: 'mdi-home-city'     },
+  { title: 'История',       path: '/history',         icon: 'mdi-history'       },
 ];
 
 export default {
