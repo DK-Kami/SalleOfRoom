@@ -4,7 +4,15 @@
       v-model="search"
       title="Недвижимость"
       @action="addRealties"
-    />
+    >
+      <template #beforeSearch>
+        <v-checkbox
+          v-model="isDisabled"
+          label="Архив"
+          class="mr-8 mt-7 headline"
+        />
+      </template>
+    </top-bar>
 
     <v-flex xs12 class="my-4 px-4">
       <realties-filters @apply-filters="applyFilters" />

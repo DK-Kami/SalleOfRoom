@@ -1,6 +1,6 @@
 export default {
-  loadRealties(page, searchString) {
-    return this.apiClient.get('estate/all', { page, searchString });
+  loadRealties(page, searchString, isDisabled) {
+    return this.apiClient.get('estate/all', { page, searchString, isDisabled });
   },
   createRealty({ realty }) {
     return this.apiClient.post('Estate', realty);
@@ -19,7 +19,7 @@ export default {
   },
 
   applyFilters(filters, page, searchString, isDisabled) {
-    return this.apiClient.post('estate/all', filters, { page, searchString, isDisabled});
+    return this.apiClient.post('estate/all', filters, { page, searchString, isDisabled });
   },
   loadReadyState() {
     return this.apiClient.get('service/ready-state');

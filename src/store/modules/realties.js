@@ -215,7 +215,7 @@ export const actions = {
   async deleteRealty({ dispatch }, id) {
     await RealtiesService.deleteRealty(id);
     dispatch('notification/set', {
-      message: 'Контрагент был добавлен в архив',
+      message: 'Недвижимость была добавлен в архив',
       type: 'error',
     }, { root: true });
     return { error: false };
