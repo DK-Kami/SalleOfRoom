@@ -2,18 +2,20 @@
   <v-layout justify-center align-center wrap>
     <span class="title">{{ realtor.name }}</span>
     <v-flex xs12>
-      {{realtor.estates}}
+      <realties-card :realties="realtor.estates" />
     </v-flex>
   </v-layout>
 </template>
 
 <script>
+import RealtiesCard from '@/views/Realties/RealtiesList/RealtiesCard'
 import FormBase from '@/components/base/FormBase';
 
 export default {
   name: 'RealtorView',
 
   components: {
+    RealtiesCard,
     FormBase,
   },
 
