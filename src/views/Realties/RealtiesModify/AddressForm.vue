@@ -1,6 +1,6 @@
 <template>
   <v-card class="px-4">
-    <v-card-title>Адресс недвижимости</v-card-title>
+    <v-card-title>Адрес недвижимости</v-card-title>
 
     <v-card-text>
       <v-layout wrap>

@@ -9,14 +9,28 @@
           @submit="handleSubmit"
         >
           <template #afterTitle>
-            <v-text-field
-              v-model="realty.price"
-              style="max-width: 250px"
-              class="pr-3"
-              type="number"
-              label="Цена"
-              min="0"
-            />
+            <v-layout justify-space-around>
+              <v-flex xs5>
+                <v-select
+                  v-model="realty.type"
+                  :items="types"
+                  label="Тип объявления"
+                  item-value="Value"
+                  item-text="Text"
+                />
+              </v-flex>
+
+              <v-flex xs5>
+                <v-text-field
+                  v-model="realty.price"
+                  style="max-width: 250px"
+                  class="pr-3"
+                  type="number"
+                  label="Цена"
+                  min="0"
+                />
+              </v-flex>
+            </v-layout>
           </template>
 
           <v-layout
@@ -24,16 +38,20 @@
             justify-space-around
             wrap
           >
-            <v-flex xs4>
+            <v-flex xs6>
               <types-form />
             </v-flex>
 
-            <v-flex xs4>
+            <v-flex xs6>
               <measuring-form />
             </v-flex>
 
-            <v-flex xs4>
+            <v-flex xs6>
               <address-form />
+            </v-flex>
+
+            <v-flex xs6>
+              <huita-form />
             </v-flex>
 
             <v-flex xs6>
@@ -65,8 +83,15 @@ import MeasuringForm from './MeasuringForm';
 import AddressForm from './AddressForm';
 import PhotosForm from './PhotosForm';
 import TypesForm from './TypesForm';
+import HuitaForm from './HuitaForm';
 import MapForm from './MapForm';
+
 import { mask } from 'vue-the-mask';
+
+const types = [
+  { Value: 'Sale', Text: 'Продажа'  },
+  { Value: 'Rent', Text: 'Аренда'   },
+];
 
 export default {
   name: 'RealtiesModify',
@@ -76,6 +101,7 @@ export default {
     AddressForm,
     PhotosForm,
     TypesForm,
+    HuitaForm,
     FormBase,
     MapForm,
   },
@@ -94,6 +120,7 @@ export default {
   data: () => ({
     phoneMask: '+7 (###) ###-##-##',
     loading: false,
+    types
   }),
 
   computed: {
