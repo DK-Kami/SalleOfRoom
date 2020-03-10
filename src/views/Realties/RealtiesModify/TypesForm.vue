@@ -19,7 +19,17 @@
             label="Контрагент"
             item-text="Name"
             item-value="Id"
-          />
+            @input="selectCounterparty"
+          >
+            <template slot="prepend-item">
+              <v-text-field
+                v-model="searchCounterparty"
+                label="Поиск по телефону"
+                class="mx-3"
+              />
+              <v-divider />
+            </template>
+          </v-select>
 
           <dialog-base
             v-model="counterpartyDialog"
@@ -38,6 +48,17 @@
             <v-icon>mdi-plus</v-icon>
           </v-btn>
         </v-layout>
+
+        <toggle-element
+          v-if="counterpartyHaveEstates"
+          title="Недвижимости контрагента"
+        >
+          <v-layout justify-center align-center wrap>
+            <v-flex xs12>
+              <realties-card :realties="currentCounterparty.estates" small />
+            </v-flex>
+          </v-layout>
+        </toggle-element>
 
         <v-select
           v-model="realty.transactionTypeId"
@@ -69,6 +90,8 @@
 
 <script>
 import CounterpartiesModify from '@/views/Counterparties/CounterpartiesModify';
+import RealtiesCard from '@/views/Realties/RealtiesList/RealtiesCard'
+import ToggleElement from '@/components/base/ToggleElement';
 import DialogBase from '@/components/base/DialogBase';
 
 export default {
@@ -76,6 +99,8 @@ export default {
 
   components: {
     CounterpartiesModify,
+    ToggleElement,
+    RealtiesCard,
     DialogBase,
   },
 
@@ -89,6 +114,7 @@ export default {
 
   data: () => ({
     counterpartyDialog: false,
+    searchCounterparty: '',
   }),
 
   computed: {
@@ -96,8 +122,27 @@ export default {
       return this.$store.getters['realties/getRealty'];
     },
 
+    currentCounterparty() {
+      return this.$store.getters['counterparties/getCounterparty'];
+    },
+    counterpartyHaveEstates() {
+      return this.currentCounterparty
+          && this.currentCounterparty.estates
+          && this.currentCounterparty.estates.length;
+    },
+
     counterparty() {
-      return this.$store.getters['counterparties/getCounterparties'];
+      return this.$store.getters['counterparties/getCounterparties']
+        .filter(c => {
+          const search = this.searchCounterparty
+            .toString()
+            .trim()
+            .replace('+', '')
+            .replace('(', '')
+            .replace(')', '');
+
+          return c.Phone.match(new RegExp(search));
+        });
     },
     wallMaterial() {
       return this.$store.getters['types/getWallMaterial'];
@@ -114,6 +159,10 @@ export default {
   },
 
   methods: {
+    async loadCurrentCounterparty(id) {
+      await this.$store.dispatch('counterparties/loadCounterparty', id);
+    },
+
     async loadCounterparty() {
       await this.$store.dispatch('counterparties/loadCounterparties', { page: 1 });
     },
@@ -141,7 +190,11 @@ export default {
       this.loadCounterparty();
       this.realty.counterpartyId = counterpartyId;
       this.closeCounterpartyDialog();
-    }
+    },
+
+    selectCounterparty(counterparty) {
+      this.loadCurrentCounterparty(counterparty);
+    },
   },
 };
 </script>

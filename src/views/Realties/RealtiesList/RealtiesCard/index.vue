@@ -3,7 +3,7 @@
     <v-layout>
       <v-flex
         v-for="realty in realties"
-        xs3
+        :class="small ? 'xs12' : 'xs3'"
       >
         <realty-card :realty="realty" with-actions />
       </v-flex>
@@ -24,6 +24,7 @@ export default {
   props: {
     withActions: Boolean,
     realties: Array,
+    small: Boolean,
   },
 };
 </script>

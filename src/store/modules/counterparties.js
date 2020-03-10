@@ -21,6 +21,7 @@ export const mutations = {
     state.counterparty.firstName = counterparty.FirstName;
     state.counterparty.lastName = counterparty.LastName;
     state.counterparty.phone = counterparty.Phone;
+    state.counterparty.estates = counterparty.Estates;
   },
 };
 
