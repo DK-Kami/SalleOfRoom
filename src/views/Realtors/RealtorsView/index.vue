@@ -9,14 +9,12 @@
 
 <script>
 import RealtiesCard from '@/views/Realties/RealtiesList/RealtiesCard'
-import FormBase from '@/components/base/FormBase';
 
 export default {
   name: 'RealtorView',
 
   components: {
     RealtiesCard,
-    FormBase,
   },
 
   created() {
