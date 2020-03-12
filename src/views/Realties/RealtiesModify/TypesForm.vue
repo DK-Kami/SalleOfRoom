@@ -63,7 +63,7 @@
         <v-select
           v-model="realty.transactionTypeId"
           :items="transaction"
-          label="Тип транзакции"
+          label="Тип сделки"
           item-text="Name"
           item-value="Id"
         />

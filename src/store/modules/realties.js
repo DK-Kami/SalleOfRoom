@@ -53,6 +53,15 @@ export const mutations = {
       })),
 
   SET_REALTY: (state, realty) => {
+    state.realty.сadastralNumber   = realty.CadastralNumber;
+    state.realty.storeysNumber     = realty.StoreysNumber;
+    state.realty.commission        = realty.Commission;
+    state.realty.roomType          = realty.RommType;
+    state.realty.message           = realty.Message;
+    state.realty.repairs           = realty.Repairs;
+    state.realty.header            = realty.Header;
+    state.realty.status            = realty.Status;
+
     state.realty.transactionType   = realty.TransactionType;
     state.realty.transactionTypeId = realty.TransactionType && realty.TransactionType.Id;
     state.realty.counterparty      = realty.Counterparty;
@@ -131,6 +140,15 @@ export const actions = {
   async createRealty({ dispatch, state }) {
     const data = (await RealtiesService.createRealty({
       realty: {
+        CadastralNumber:   state.realty.сadastralNumber,
+        StoreysNumber:     state.realty.storeysNumber,
+        Commission:        state.realty.commission,
+        RommType:          state.realty.roomType,
+        Message:           state.realty.message,
+        Repairs:           state.realty.repairs,
+        Header:            state.realty.header,
+        Status:            state.realty.status,
+
         TransactionTypeId: state.realty.transactionTypeId,
         CounterpartyId:    state.realty.counterpartyId,
         WallMaterialId:    state.realty.wallMaterialId,
@@ -173,6 +191,15 @@ export const actions = {
   async updateRealty({ dispatch, state }, id) {
     const data = (await RealtiesService.updateRealty({
       realty: createFormData({
+        CadastralNumber:   state.realty.сadastralNumber,
+        StoreysNumber:     state.realty.storeysNumber,
+        Commission:        state.realty.commission,
+        RommType:          state.realty.roomType,
+        Message:           state.realty.message,
+        Repairs:           state.realty.repairs,
+        Header:            state.realty.header,
+        Status:            state.realty.status,
+
         TransactionTypeId: state.realty.transactionTypeId,
         CounterpartyId:    state.realty.counterpartyId,
         WallMaterialId:    state.realty.wallMaterialId,

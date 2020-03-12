@@ -29,6 +29,24 @@
             label="Регион"
           />
         </v-flex>
+
+        <v-flex xs6>
+          <v-text-field
+            v-model="realty.houseNumber"
+            label="Номер дома"
+            type="number"
+            min="0"
+          />
+        </v-flex>
+        <v-flex xs6>
+          <v-text-field
+            v-model="realty.flatNumber"
+            label="Номер квартиры"
+            type="number"
+            min="0"
+          />
+        </v-flex>
+
         <v-flex xs12>
           <v-text-field
             v-model="realty.street"

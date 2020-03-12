@@ -13,54 +13,26 @@
 
         <v-flex xs6>
           <v-text-field
-            v-model="realty.roomTypes"
-            label="Тип комнат"
-          />
-        </v-flex>
-        <v-flex xs6>
-          <v-text-field
             v-model="realty.commission"
             label="Комииссия"
             type="number"
             min="0"
           />
         </v-flex>
-        <v-flex xs6>
-          <v-text-field
-            v-model="realty.floors"
-            label="Этажность"
-            type="number"
-            min="0"
-          />
-        </v-flex>
-        <v-flex xs6>
-          <v-text-field
-            v-model="realty.cadastralNumber"
-            label="Кадастравый номер"
-            v-mask="cadastralNumber"
-          />
-        </v-flex>
 
-        <v-flex xs6>
+        <v-flex xs12>
           <v-select
-            v-model="realty.state"
-            :items="states"
+            v-model="realty.repairs"
+            :items="repairs"
             item-value="Value"
-            label="Состояние"
+            label="Ремонт"
             item-text="Text"
           />
         </v-flex>
 
         <v-flex xs12>
-          <v-checkbox
-            v-model="realty.withRepair"
-            label="С ремонтом"
-          />
-        </v-flex>
-
-        <v-flex xs12>
           <v-textarea
-            v-model="realty.text"
+            v-model="realty.message"
             label="Текст"
             filled
           />
@@ -71,30 +43,22 @@
 </template>
 
 <script>
-import { mask } from 'vue-the-mask';
-
-const states = [
-  { Value: 'good',    Text: 'Хорошее' },
-  { Value: 'middle',  Text: 'Средне'  },
-  { Value: 'bad',     Text: 'Плохое'  },
+const repairs = [
+  { Value: 'european',  Text: 'Европейский' },
+  { Value: 'Soviet',    Text: 'Советский' },
 ];
 
 export default {
   name: 'AddressForm',
 
-  directives: {
-    mask,
-  },
+  data: () => ({
+    repairs,
+  }),
 
   computed: {
     realty() {
       return this.$store.getters['realties/getRealty'];
     },
   },
-
-  data: () => ({
-    cadastralNumber: '##:##:#######:#####',
-    states,
-  }),
 };
 </script>

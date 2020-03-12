@@ -48,43 +48,76 @@
             min="0"
           />
         </v-flex>
+        <v-flex xs6>
+          <v-select
+            v-model="realty.readyState"
+            :items="readyStates"
+            item-value="Value"
+            item-text="Text"
+            label="Статус недвижимости"
+          />
+        </v-flex>
 
         <v-flex xs6>
           <v-text-field
-            v-model="realty.houseNumber"
-            label="Номер дома"
+            v-model="realty.roomType"
+            label="Тип комнат"
+          />
+        </v-flex>
+        <v-flex xs6>
+          <v-text-field
+            v-model="realty.storeysNumber"
+            label="Этажность"
             type="number"
             min="0"
           />
         </v-flex>
         <v-flex xs6>
           <v-text-field
-            v-model="realty.flatNumber"
-            label="Номер квартиры"
-            type="number"
-            min="0"
+            v-model="realty.cadastralNumber"
+            label="Кадастравый номер"
+            v-mask="cadastralNumber"
+          />
+        </v-flex>
+
+        <v-flex xs6>
+          <v-select
+            v-model="realty.status"
+            :items="states"
+            item-value="Value"
+            label="Состояние"
+            item-text="Text"
           />
         </v-flex>
       </v-layout>
-
-      <v-select
-        v-model="realty.readyState"
-        :items="readyStates"
-        item-value="Value"
-        item-text="Text"
-        label="Статус недвижимости"
-      />
     </v-card-text>
   </v-card>
 </template>
 
 <script>
+import { mask } from 'vue-the-mask';
+
+const states = [
+  { Value: 'good',    Text: 'Хорошее' },
+  { Value: 'middle',  Text: 'Средне'  },
+  { Value: 'bad',     Text: 'Плохое'  },
+];
+
 export default {
   name: 'MeasuringForm',
+
+  directives: {
+    mask,
+  },
 
   created() {
     this.loadReadyStates();
   },
+
+  data: () => ({
+    cadastralNumber: '##:##:#######:#####',
+    states,
+  }),
 
   computed: {
     realty() {
