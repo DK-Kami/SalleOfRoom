@@ -65,5 +65,5 @@ class WebClient {
   }
 };
 
-const url = 'http://mayak-reality.com/v1/api';
+const url = 'https://mayak-reality.com/v1/api';
 export default new WebClient(url);
