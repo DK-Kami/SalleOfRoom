@@ -120,7 +120,6 @@ export default {
   },
 
   created() {
-    this.$store.dispatch('realties/clearRealty');
     if (this.id) {
       this.loadRealty();
     }
