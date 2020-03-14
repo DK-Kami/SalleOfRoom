@@ -17,6 +17,9 @@ export default {
   loadEstateState() {
     return this.apiClient.get('service/estate-state');
   },
+  loadRoomType() {
+    return this.apiClient.get('service/room-type');
+  },
   loadModels() {
     return {
       data: [

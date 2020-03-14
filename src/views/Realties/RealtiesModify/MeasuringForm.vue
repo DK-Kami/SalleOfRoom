@@ -59,9 +59,12 @@
         </v-flex>
 
         <v-flex xs6>
-          <v-text-field
+          <v-select
             v-model="realty.roomType"
+            :items="roomTypes"
+            item-value="Value"
             label="Тип комнат"
+            item-text="Text"
           />
         </v-flex>
         <v-flex xs6>
@@ -107,6 +110,7 @@ export default {
   created() {
     this.loadReadyStates();
     this.loadEstateStates();
+    this.loadRoomTypes();
   },
 
   data: () => ({
@@ -123,6 +127,9 @@ export default {
     estateStates() {
       return this.$store.getters['types/getEstateStates'];
     },
+    roomTypes() {
+      return this.$store.getters['types/getRoomTypes'];
+    },
   },
 
   methods: {
@@ -131,6 +138,9 @@ export default {
     },
     loadEstateStates() {
       this.$store.dispatch('types/loadEstateStates');
+    },
+    loadRoomTypes() {
+      this.$store.dispatch('types/loadRoomTypes');
     },
   },
 };
