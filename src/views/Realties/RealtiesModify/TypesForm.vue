@@ -60,13 +60,13 @@
           </v-layout>
         </toggle-element>
 
-        <v-select
+        <!-- <v-select
           v-model="realty.transactionTypeId"
           :items="transaction"
           label="Тип сделки"
           item-text="Name"
           item-value="Id"
-        />
+        /> -->
 
         <v-select
           v-model="realty.categoryId"

@@ -11,15 +11,6 @@
           />
         </v-flex>
 
-        <v-flex xs6>
-          <v-text-field
-            v-model="realty.commission"
-            label="Комииссия"
-            type="number"
-            min="0"
-          />
-        </v-flex>
-
         <v-flex xs12>
           <v-select
             v-model="realty.repairs"

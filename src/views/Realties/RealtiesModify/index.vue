@@ -10,7 +10,7 @@
         >
           <template #afterTitle>
             <v-layout justify-space-around>
-              <v-flex xs5>
+              <v-flex xs4>
                 <v-select
                   v-model="realty.type"
                   :items="types"
@@ -20,7 +20,16 @@
                 />
               </v-flex>
 
-              <v-flex xs5>
+              <v-flex xs4>
+                <v-text-field
+                  v-model="realty.commission"
+                  label="Комииссия"
+                  type="number"
+                  min="0"
+                />
+              </v-flex>
+
+              <v-flex xs4>
                 <v-text-field
                   v-model="realty.price"
                   style="max-width: 250px"
