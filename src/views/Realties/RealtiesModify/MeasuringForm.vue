@@ -77,9 +77,9 @@
         </v-flex>
         <v-flex xs6>
           <v-text-field
-            v-model="realty.cadastralNumber"
+            v-model="realty.сadastralNumber"
             label="Кадастравый номер"
-            v-mask="cadastralNumber"
+            v-mask="сadastralNumber"
           />
         </v-flex>
 
@@ -115,7 +115,7 @@ export default {
   },
 
   data: () => ({
-    cadastralNumber: '##:##:#######:#####',
+    сadastralNumber: '##:##:#######:#####',
   }),
 
   computed: {

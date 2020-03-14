@@ -12,11 +12,11 @@
             <v-layout justify-space-around>
               <v-flex xs4>
                 <v-select
-                  v-model="realty.type"
-                  :items="types"
+                  v-model="realty.transactionTypeId"
+                  :items="transaction"
                   label="Тип объявления"
-                  item-value="Value"
-                  item-text="Text"
+                  item-text="Name"
+                  item-value="Id"
                 />
               </v-flex>
 
@@ -97,11 +97,6 @@ import MapForm from './MapForm';
 
 import { mask } from 'vue-the-mask';
 
-const types = [
-  { Value: 'Sale', Text: 'Продажа'  },
-  { Value: 'Rent', Text: 'Аренда'   },
-];
-
 export default {
   name: 'RealtiesModify',
 
@@ -123,12 +118,12 @@ export default {
     if (this.id) {
       this.loadRealty();
     }
+    this.loadTransaction();
   },
 
   data: () => ({
     phoneMask: '+7 (###) ###-##-##',
     loading: false,
-    types
   }),
 
   computed: {
@@ -138,11 +133,17 @@ export default {
     id() {
       return this.$route.params.id;
     },
+    transaction() {
+      return this.$store.getters['types/getTransaction'];
+    },
   },
 
   methods: {
     async loadRealty() {
       await this.$store.dispatch('realties/loadRealty', this.id);
+    },
+    async loadTransaction() {
+      await this.$store.dispatch('types/loadTransaction');
     },
 
     async handleSubmit() {
@@ -157,6 +158,8 @@ export default {
       }
       this.loading = false;
       const { error, data } = response;
+
+      console.log(error);
 
       if (error) {
         const error = Object.values(data.ModelState)[0][0];

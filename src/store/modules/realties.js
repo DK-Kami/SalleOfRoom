@@ -2,6 +2,15 @@ import services from '@/middleware';
 const { RealtiesService } = services;
 
 const initialRealty = () => ({
+  сadastralNumber: '',
+  storeysNumber: '',
+  commission: '',
+  roomType: '',
+  message: '',
+  repairs: '',
+  header: '',
+  status: '',
+
   transactionTypeId: '',
   counterpartyId: '',
   wallMaterialId: '',
@@ -94,7 +103,7 @@ export const mutations = {
     state.realty.coord             = realty.Coord || '55.751435, 37.620260';
     state.realty.pictures          = realty.Picture;
     state.realty.previewPictures   = realty.Picture
-      ? realty.Picture.map(p => 'https://localhost:44388/api/service/image?id=' + p)
+      ? realty.Picture.map(p => 'https://mayak-reality.com/v1/api/service/image?id=' + p)
       : [];
   },
 };
@@ -178,7 +187,7 @@ export const actions = {
       id: data.Id,
     });
 
-    if (data.Message) {
+    if (data.Message && data.ModelState) {
       return { error: true, data };
     }
 

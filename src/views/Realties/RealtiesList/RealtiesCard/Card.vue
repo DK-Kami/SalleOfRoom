@@ -140,7 +140,7 @@ export default {
     // },
 
     photoLink(photo) {
-      return 'https://localhost:44388/api/service/image?id=' + photo;
+      return 'https://mayak-reality.com/v1/api/service/image?id=' + photo;
     },
     viewRealty() {
       this.$router.push({

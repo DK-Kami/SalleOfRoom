@@ -109,7 +109,6 @@ export default {
   created() {
     this.loadCounterparty();
     this.loadWallMaterial();
-    this.loadTransaction();
     this.loadCategory();
     this.loadRealtor();
   },
@@ -123,7 +122,6 @@ export default {
     ...mapGetters({
       currentCounterparty: 'counterparties/getCounterparty',
       wallMaterial: 'types/getWallMaterial',
-      transaction: 'types/getTransaction',
       category: 'types/getCategory',
       realty: 'realties/getRealty',
       realtor: 'users/getRealtor',
@@ -160,9 +158,6 @@ export default {
     },
     async loadWallMaterial() {
       await this.$store.dispatch('types/loadWallMaterial');
-    },
-    async loadTransaction() {
-      await this.$store.dispatch('types/loadTransaction');
     },
     async loadCategory() {
       await this.$store.dispatch('types/loadCategory');
