@@ -11,6 +11,9 @@ export default {
   loadHistory({ tableName, page }) {
     return this.apiClient.get('history/all', { tableName, page });
   },
+  loadRepairs() {
+    return this.apiClient.get('service/repair');
+  },
   loadModels() {
     return {
       data: [

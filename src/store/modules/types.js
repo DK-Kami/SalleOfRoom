@@ -6,6 +6,7 @@ export const initialState = () => ({
   transaction: [],
   category: [],
   history: [],
+  repairs: [],
   models: [],
 });
 
@@ -14,6 +15,7 @@ export const mutations = {
   SET_TRANSACTION: (state, transaction) => state.transaction = transaction,
   SET_CATEGORY: (state, category) => state.category = category,
   SET_HISTORY: (state, history) => state.history = history,
+  SET_REPAIRS: (state, repairs) => state.repairs = repairs,
   SET_MODELS: (state, models) => state.models = models,
 };
 
@@ -42,12 +44,17 @@ export const actions = {
     const data = (await TypeService.loadModels()).data;
     commit('SET_MODELS', data);
   },
+  async loadRepairs({ commit }) {
+    const data = (await TypeService.loadRepairs()).data;
+    commit('SET_REPAIRS', data);
+  },
 };
 
 export const getters = {
   getWallMaterial: state => state.wallMaterial,
   getTransaction: state => state.transaction,
   getCategory: state => state.category,
+  getRepairs: state => state.repairs,
   getHistory: state => state.history,
   getModels: state => state.models,
 };

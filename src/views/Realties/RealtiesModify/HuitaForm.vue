@@ -34,21 +34,26 @@
 </template>
 
 <script>
-const repairs = [
-  { Value: 'european',  Text: 'Европейский' },
-  { Value: 'Soviet',    Text: 'Советский' },
-];
 
 export default {
   name: 'AddressForm',
 
-  data: () => ({
-    repairs,
-  }),
+  created() {
+    this.loadRepairs();
+  },
 
   computed: {
     realty() {
       return this.$store.getters['realties/getRealty'];
+    },
+    repairs() {
+      return this.$store.getters['types/getRepairs'];
+    },
+  },
+
+  methods: {
+    async loadRepairs() {
+      await this.$store.dispatch('types/loadRepairs');
     },
   },
 };
