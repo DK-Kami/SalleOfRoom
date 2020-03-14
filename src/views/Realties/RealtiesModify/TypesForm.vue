@@ -188,5 +188,11 @@ export default {
       this.loadCurrentCounterparty(counterparty);
     },
   },
+
+  watch: {
+    'realty.categoryId'(categoryId) {
+      if (categoryId === 2) this.realty.kitchenArea = 0;
+    },
+  },
 };
 </script>

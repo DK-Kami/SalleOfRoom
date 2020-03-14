@@ -22,7 +22,7 @@
           />
         </v-flex>
 
-        <v-flex xs6>
+        <v-flex xs6 v-if="realty.categoryId !== 2">
           <v-text-field
             v-model="realty.kitchenArea"
             label="Площадь кухни"
