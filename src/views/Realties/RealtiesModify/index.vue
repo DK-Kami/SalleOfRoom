@@ -169,7 +169,7 @@ export default {
       else {
         setTimeout(() => {
           this.$router.push({ name: 'realties.list' });
-          this.$store.dispatch('users/clearUser');
+          this.$store.dispatch('realties/clearRealty');
         }, 1000)
       }
     },
