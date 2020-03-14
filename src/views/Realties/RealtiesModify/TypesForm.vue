@@ -94,6 +94,8 @@ import RealtiesCard from '@/views/Realties/RealtiesList/RealtiesCard'
 import ToggleElement from '@/components/base/ToggleElement';
 import DialogBase from '@/components/base/DialogBase';
 
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'TypesForm',
 
@@ -118,13 +120,15 @@ export default {
   }),
 
   computed: {
-    realty() {
-      return this.$store.getters['realties/getRealty'];
-    },
+    ...mapGetters({
+      currentCounterparty: 'counterparties/getCounterparty',
+      wallMaterial: 'types/getWallMaterial',
+      transaction: 'types/getTransaction',
+      category: 'types/getCategory',
+      realty: 'realties/getRealty',
+      realtor: 'users/getRealtor',
+    }),
 
-    currentCounterparty() {
-      return this.$store.getters['counterparties/getCounterparty'];
-    },
     counterpartyHaveEstates() {
       return this.currentCounterparty
           && this.currentCounterparty.estates
@@ -143,18 +147,6 @@ export default {
 
           return c.Phone.match(new RegExp(search));
         });
-    },
-    wallMaterial() {
-      return this.$store.getters['types/getWallMaterial'];
-    },
-    transaction() {
-      return this.$store.getters['types/getTransaction'];
-    },
-    category() {
-      return this.$store.getters['types/getCategory'];
-    },
-    realtor() {
-      return this.$store.getters['users/getRealtor'];
     },
   },
 

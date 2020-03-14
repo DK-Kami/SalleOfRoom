@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'AddressForm',
@@ -43,12 +44,10 @@ export default {
   },
 
   computed: {
-    realty() {
-      return this.$store.getters['realties/getRealty'];
-    },
-    repairs() {
-      return this.$store.getters['types/getRepairs'];
-    },
+    ...mapGetters({
+      realty: 'realties/getRealty',
+      repairs: 'types/getRepairs',
+    }),
   },
 
   methods: {

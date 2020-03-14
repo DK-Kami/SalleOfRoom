@@ -99,6 +99,7 @@
 
 <script>
 import { mask } from 'vue-the-mask';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'MeasuringForm',
@@ -118,18 +119,12 @@ export default {
   }),
 
   computed: {
-    realty() {
-      return this.$store.getters['realties/getRealty'];
-    },
-    readyStates() {
-      return this.$store.getters['realties/getReadyStates'];
-    },
-    estateStates() {
-      return this.$store.getters['types/getEstateStates'];
-    },
-    roomTypes() {
-      return this.$store.getters['types/getRoomTypes'];
-    },
+    ...mapGetters({
+      readyStates: 'realties/getReadyStates',
+      estateStates: 'types/getEstateStates',
+      roomTypes: 'types/getRoomTypes',
+      realty: 'realties/getRealty',
+    }),
   },
 
   methods: {
