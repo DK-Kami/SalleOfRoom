@@ -2,6 +2,7 @@ import services from '@/middleware';
 const { TypeService } = services;
 
 export const initialState = () => ({
+  estateStates: [],
   wallMaterial: [],
   transaction: [],
   category: [],
@@ -11,6 +12,7 @@ export const initialState = () => ({
 });
 
 export const mutations = {
+  SET_ESTATE_STATES: (state, estateStates) => state.estateStates = estateStates,
   SET_WALL_MATERIAL: (state, wallMaterial) => state.wallMaterial = wallMaterial,
   SET_TRANSACTION: (state, transaction) => state.transaction = transaction,
   SET_CATEGORY: (state, category) => state.category = category,
@@ -44,6 +46,11 @@ export const actions = {
     const data = (await TypeService.loadModels()).data;
     commit('SET_MODELS', data);
   },
+  async loadEstateStates({ commit }) {
+    const data = (await TypeService.loadEstateState()).data;
+    console.log(data);
+    commit('SET_ESTATE_STATES', data);
+  },
   async loadRepairs({ commit }) {
     const data = (await TypeService.loadRepairs()).data;
     commit('SET_REPAIRS', data);
@@ -51,6 +58,7 @@ export const actions = {
 };
 
 export const getters = {
+  getEstateStates: state => state.estateStates,
   getWallMaterial: state => state.wallMaterial,
   getTransaction: state => state.transaction,
   getCategory: state => state.category,

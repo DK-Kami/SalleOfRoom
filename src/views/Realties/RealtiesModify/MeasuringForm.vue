@@ -83,7 +83,7 @@
         <v-flex xs6>
           <v-select
             v-model="realty.status"
-            :items="states"
+            :items="estateStates"
             item-value="Value"
             label="Состояние"
             item-text="Text"
@@ -97,12 +97,6 @@
 <script>
 import { mask } from 'vue-the-mask';
 
-const states = [
-  { Value: 'good',    Text: 'Хорошее' },
-  { Value: 'middle',  Text: 'Средне'  },
-  { Value: 'bad',     Text: 'Плохое'  },
-];
-
 export default {
   name: 'MeasuringForm',
 
@@ -112,11 +106,11 @@ export default {
 
   created() {
     this.loadReadyStates();
+    this.loadEstateStates();
   },
 
   data: () => ({
     cadastralNumber: '##:##:#######:#####',
-    states,
   }),
 
   computed: {
@@ -126,11 +120,17 @@ export default {
     readyStates() {
       return this.$store.getters['realties/getReadyStates'];
     },
+    estateStates() {
+      return this.$store.getters['types/getEstateStates'];
+    },
   },
 
   methods: {
     loadReadyStates() {
       this.$store.dispatch('realties/loadReadyState');
+    },
+    loadEstateStates() {
+      this.$store.dispatch('types/loadEstateStates');
     },
   },
 };

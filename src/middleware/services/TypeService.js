@@ -14,6 +14,9 @@ export default {
   loadRepairs() {
     return this.apiClient.get('service/repair');
   },
+  loadEstateState() {
+    return this.apiClient.get('service/estate-state');
+  },
   loadModels() {
     return {
       data: [
