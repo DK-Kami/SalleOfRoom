@@ -41,6 +41,7 @@ const initialRealty = () => ({
 
 export const initialState = () => ({
   realty: initialRealty(),
+  realtiesTable: [],
   realties: [],
 
   readyStates: [
@@ -52,14 +53,20 @@ export const initialState = () => ({
 export const mutations = {
   CLEAR_REALTY: state => state.realty = initialRealty(),
   SET_READY_STATE: (state, readyStates) => state.readyStates = readyStates,
-  SET_REALTIES: (state, realties) =>
-    state.realties = realties
+  SET_REALTIES: (state, { realties, isTable}) => {
+    const currentRealties = realties
       .map(realty => ({
         ...realty,
         russReadyState: russianState(state.readyStates, realty.ReadyState),
-        CounterpartyName: realty.Counterparty.Name,
-        RealtorName: realty.Realtor.Name,
-      })),
+        CounterpartyName: realty.Counterparty && realty.Counterparty.Name,
+        RealtorName: realty.Realtor && realty.Realtor.Name,
+      }));
+
+    if (isTable) {
+      return state.realtiesTable = currentRealties;
+    }
+    return state.realties = currentRealties;
+  },
 
   SET_REALTY: (state, realty) => {
     state.realty.сadastralNumber   = realty.CadastralNumber;
@@ -111,18 +118,18 @@ export const mutations = {
 export const actions = {
   clearRealty: ({ commit }) => commit('CLEAR_REALTY'),
 
-  async loadRealties({ commit }, { page, search, isDisabled }) {
-    const { Estates, EstateCount } = (await RealtiesService.loadRealties(page, search, isDisabled)).data;
-    commit('SET_REALTIES', Estates);
+  async loadRealties({ commit }, { page, search, isDisabled, isTable }) {
+    const { Estates, EstateCount } = (await RealtiesService.loadRealties(page, search, isDisabled, isTable)).data;
+    commit('SET_REALTIES', { realties: Estates, isTable });
     return {
       error: false,
       data: EstateCount,
     };
   },
 
-  async applyFilters({ commit }, { filters, page, search, isDisabled }) {
-    const { Estates, EstateCount } = (await RealtiesService.applyFilters(filters, page, search, isDisabled)).data;
-    commit('SET_REALTIES', Estates);
+  async applyFilters({ commit }, { filters, page, search, isDisabled, isTable }) {
+    const { Estates, EstateCount } = (await RealtiesService.applyFilters(filters, page, search, isDisabled, isTable)).data;
+    commit('SET_REALTIES', { realties: Estates, isTable });
     return {
       error: false,
       data: EstateCount,
@@ -267,7 +274,9 @@ export const actions = {
 
 export const getters = {
   getReadyStates: state => state.readyStates,
-  getRealties: state => state.realties,
+  getRealties: state =>
+    (isTable = false) =>
+      isTable ? state.realtiesTable : state.realties,
   getRealty: state => state.realty,
 };
 

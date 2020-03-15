@@ -19,7 +19,7 @@
     </v-flex>
 
     <v-flex xs12>
-      <v-tabs>
+      <v-tabs v-model="tabs">
         <v-tab>Карта</v-tab>
         <v-tab>Плитка</v-tab>
         <v-tab>Список</v-tab>
@@ -72,21 +72,24 @@ export default {
     totalItems: 1,
     search: '',
     page: 1,
+
+    tabs: '',
   }),
 
   computed: {
     realties() {
-      return this.$store.getters['realties/getRealties'];
+      return this.$store.getters['realties/getRealties'](false);
     },
   },
 
   methods: {
-    async loadRealties() {
+    async loadRealties(isTable = false) {
       this.loading = true;
       const { error, data } = await this.$store.dispatch('realties/loadRealties', {
         isDisabled: this.isDisabled,
         search: this.search,
         page: this.page,
+        isTable: isTable,
       });
       if (!error) {
         this.totalItems = data;
@@ -109,6 +112,12 @@ export default {
         this.totalItems = data;
       }
       this.loading = false;
+    },
+  },
+
+  watch: {
+    tabs(newVal) {
+      this.loadRealties(newVal === 2);
     },
   },
 };

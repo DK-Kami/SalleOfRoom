@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-carousel v-if="realty.Picture.length" style="height: 280px">
+    <v-carousel v-if="realty.Picture && realty.Picture.length" style="height: 280px">
       <v-carousel-item
         v-for="(photo, index) in realty.Picture"
         :key="'picture-' + index"

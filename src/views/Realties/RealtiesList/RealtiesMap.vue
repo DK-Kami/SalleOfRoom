@@ -50,7 +50,7 @@ export default {
 
   computed: {
     realties() {
-      return this.$store.getters['realties/getRealties'];
+      return this.$store.getters['realties/getRealties'](false);
     },
     realtiesObjects() {
       if (!ymaps) return;
