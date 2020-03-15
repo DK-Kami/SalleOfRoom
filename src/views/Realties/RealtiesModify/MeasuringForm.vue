@@ -6,7 +6,8 @@
       <v-layout wrap>
         <v-flex xs6>
           <v-text-field
-            v-model="realty.livingArea"
+            v-model="realty.area"
+            :rules="[rulesList.required]"
             label="Общая площадь"
             type="number"
             min="0"
@@ -15,8 +16,7 @@
 
         <v-flex xs6>
           <v-text-field
-            v-model="realty.area"
-            :rules="[rulesList.required]"
+            v-model="realty.livingArea"
             label="Жилая площадь"
             type="number"
             min="0"

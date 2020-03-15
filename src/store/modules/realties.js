@@ -22,7 +22,7 @@ const initialRealty = () => ({
   flatNumber: '',
   livingArea: '',
   roomCount: '',
-  price: 0.0,
+  price: '',
   floor: '',
   
   readyState: 'ready',
