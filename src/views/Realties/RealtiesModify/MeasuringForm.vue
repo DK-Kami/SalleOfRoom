@@ -17,7 +17,7 @@
           <v-text-field
             v-model="realty.area"
             :rules="[rulesList.required]"
-            label="Площадь"
+            label="Жилая площадь"
             type="number"
             min="0"
           />
