@@ -16,6 +16,7 @@
         <v-flex xs6>
           <v-text-field
             v-model="realty.area"
+            :rules="[rulesList.required]"
             label="Площадь"
             type="number"
             min="0"
@@ -43,6 +44,7 @@
         <v-flex xs6>
           <v-text-field
             v-model="realty.roomCount"
+            :rules="[rulesList.required]"
             label="Количество комнат"
             type="number"
             min="0"
@@ -51,6 +53,7 @@
         <v-flex xs6>
           <v-select
             v-model="realty.readyState"
+            :rules="[rulesList.required]"
             :items="readyStates"
             item-value="Value"
             item-text="Text"

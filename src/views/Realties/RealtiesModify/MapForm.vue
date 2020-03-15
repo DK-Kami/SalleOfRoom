@@ -6,6 +6,8 @@
       <v-layout column>
         <v-text-field
           v-model="realty.coord"
+          :rules="[rulesList.required]"
+          label="Координаты"
         />
 
         <realty-map :coords="realty.coord" />

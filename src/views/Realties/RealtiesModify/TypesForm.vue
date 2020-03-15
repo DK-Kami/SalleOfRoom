@@ -6,6 +6,7 @@
       <v-layout column class="px-3">
         <v-select
           v-model="realty.realtorId"
+          :rules="[rulesList.required]"
           :items="realtor"
           item-text="Name"
           item-value="Id"
@@ -15,6 +16,7 @@
         <v-layout class="px-3">
           <v-select
             v-model="realty.counterpartyId"
+            :rules="[rulesList.required]"
             :items="counterparty"
             label="Контрагент"
             item-text="Name"
@@ -70,6 +72,7 @@
 
         <v-select
           v-model="realty.categoryId"
+          :rules="[rulesList.required]"
           :items="category"
           label="Категория"
           item-text="Name"
@@ -79,6 +82,7 @@
 
       <v-select
         v-model="realty.wallMaterialId"
+        :rules="[rulesList.required]"
         :items="wallMaterial"
         label="Материал стены"
         item-text="Name"

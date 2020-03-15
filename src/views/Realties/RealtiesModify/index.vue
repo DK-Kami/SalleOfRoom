@@ -13,6 +13,7 @@
               <v-flex xs4>
                 <v-select
                   v-model="realty.transactionTypeId"
+                  :rules="[rulesList.required]"
                   :items="transaction"
                   label="Тип объявления"
                   item-text="Name"
@@ -23,6 +24,7 @@
               <v-flex xs4>
                 <v-text-field
                   v-model="realty.commission"
+                  :rules="[rulesList.required]"
                   label="Комииссия"
                   type="number"
                   min="0"
@@ -32,6 +34,7 @@
               <v-flex xs4>
                 <v-text-field
                   v-model="realty.price"
+                  :rules="[rulesList.required]"
                   style="max-width: 250px"
                   class="pr-3"
                   type="number"
@@ -158,8 +161,6 @@ export default {
       }
       this.loading = false;
       const { error, data } = response;
-
-      console.log(error);
 
       if (error) {
         const error = Object.values(data.ModelState)[0][0];

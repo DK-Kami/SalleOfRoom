@@ -7,6 +7,7 @@
         <v-flex xs6>
           <v-text-field
             v-model="realty.header"
+            :rules="[rulesList.required]"
             label="Заголовок"
           />
         </v-flex>
@@ -24,6 +25,7 @@
         <v-flex xs12>
           <v-textarea
             v-model="realty.message"
+            :rules="[rulesList.required]"
             label="Текст"
             filled
           />

@@ -7,6 +7,7 @@
         <v-flex xs6>
           <v-text-field
             v-model="realty.city"
+            :rules="[rulesList.required]"
             label="Город"
           />
         </v-flex>
@@ -20,12 +21,14 @@
         <v-flex xs6>
           <v-text-field
             v-model="realty.district"
+            :rules="[rulesList.required]"
             label="Район"
           />
         </v-flex>
         <v-flex xs6>
           <v-text-field
             v-model="realty.region"
+            :rules="[rulesList.required]"
             label="Регион"
           />
         </v-flex>
@@ -33,6 +36,7 @@
         <v-flex xs6>
           <v-text-field
             v-model="realty.houseNumber"
+            :rules="[rulesList.required]"
             label="Номер дома"
             type="number"
             min="0"
@@ -50,6 +54,7 @@
         <v-flex xs12>
           <v-text-field
             v-model="realty.street"
+            :rules="[rulesList.required]"
             label="Улица"
           />
         </v-flex>
