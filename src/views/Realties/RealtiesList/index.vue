@@ -6,11 +6,18 @@
       @action="addRealties"
     >
       <template #beforeSearch>
-        <v-checkbox
-          v-model="isDisabled"
-          label="Архив"
-          class="mr-8 mt-7 headline"
-        />
+        <v-layout>
+          <v-checkbox
+            v-model="onlyMy"
+            label="Мои объекты"
+            class="mr-8 mt-7 headline"
+          />
+          <v-checkbox
+            v-model="isDisabled"
+            label="Архив"
+            class="mr-8 mt-7 headline"
+          />
+        </v-layout>
       </template>
     </top-bar>
 
@@ -34,10 +41,10 @@
 
         <v-tab-item>
           <realties-table
-            :is-disabled="isDisabled"
             :total-items="totalItems"
             :page.sync="page"
             :search="search"
+            @apply-filters="applyFilters"
           />
         </v-tab-item>
       </v-tabs>
@@ -69,6 +76,8 @@ export default {
 
   data: () => ({
     isDisabled: false,
+    onlyMy: false,
+
     totalItems: 1,
     search: '',
     page: 1,
@@ -80,16 +89,21 @@ export default {
     realties() {
       return this.$store.getters['realties/getRealties'](false);
     },
+    isTable() {
+      return this.tabs === 2;
+    },
   },
 
   methods: {
-    async loadRealties(isTable = false) {
+    async loadRealties() {
       this.loading = true;
       const { error, data } = await this.$store.dispatch('realties/loadRealties', {
         isDisabled: this.isDisabled,
+        isTable: this.isTable,
         search: this.search,
+        onlyMy: this.onlyMy,
         page: this.page,
-        isTable: isTable,
+        my: this.onlyMy,
       });
       if (!error) {
         this.totalItems = data;
@@ -104,8 +118,11 @@ export default {
     async applyFilters(filters) {
       const { error, data } = (await this.$store.dispatch('realties/applyFilters', {
         isDisabled: this.isDisabled,
+        isTable: this.isTable,
         search: this.search,
+        onlyMy: this.onlyMy,
         page: this.page,
+        my: this.onlyMy,
         filters,
       }));
       if (!error) {
@@ -113,11 +130,28 @@ export default {
       }
       this.loading = false;
     },
+
+    searchInRealties() {
+      clearTimeout(this.timer);
+      this.timer = null;
+
+      this.timer = setTimeout(this.applyFilters, 500);
+    },
   },
 
   watch: {
     tabs(newVal) {
-      this.loadRealties(newVal === 2);
+      this.loadRealties();
+    },
+
+    search() {
+      this.searchInRealties();
+    },
+    isDisabled() {
+      this.loadRealties();
+    },
+    onlyMy() {
+      this.loadRealties();
     },
   },
 };

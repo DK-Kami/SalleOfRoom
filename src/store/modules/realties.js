@@ -118,8 +118,8 @@ export const mutations = {
 export const actions = {
   clearRealty: ({ commit }) => commit('CLEAR_REALTY'),
 
-  async loadRealties({ commit }, { page, search, isDisabled, isTable }) {
-    const { Estates, EstateCount } = (await RealtiesService.loadRealties(page, search, isDisabled, isTable)).data;
+  async loadRealties({ commit }, { page, search, isDisabled, isTable, my }) {
+    const { Estates, EstateCount } = (await RealtiesService.loadRealties(page, search, isDisabled, isTable, my)).data;
     commit('SET_REALTIES', { realties: Estates, isTable });
     return {
       error: false,
@@ -127,8 +127,8 @@ export const actions = {
     };
   },
 
-  async applyFilters({ commit }, { filters, page, search, isDisabled, isTable }) {
-    const { Estates, EstateCount } = (await RealtiesService.applyFilters(filters, page, search, isDisabled, isTable)).data;
+  async applyFilters({ commit }, { filters, page, search, isDisabled, isTable, my }) {
+    const { Estates, EstateCount } = (await RealtiesService.applyFilters(filters, page, search, isDisabled, isTable, my)).data;
     commit('SET_REALTIES', { realties: Estates, isTable });
     return {
       error: false,

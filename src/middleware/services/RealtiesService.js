@@ -1,6 +1,6 @@
 export default {
-  loadRealties(page, searchString, isDisabled, isTable) {
-    return this.apiClient.get('estate/all', { page, searchString, isDisabled, isTable });
+  loadRealties(page, searchString, isDisabled, isTable, my) {
+    return this.apiClient.get('estate/all', { page, searchString, isDisabled, isTable, my });
   },
   createRealty({ realty }) {
     return this.apiClient.post('Estate', realty);
@@ -18,8 +18,8 @@ export default {
     return this.apiClient.delete('Estate', {}, { id });
   },
 
-  applyFilters(filters, page, searchString, isDisabled, isTable) {
-    return this.apiClient.post('estate/all', filters, { page, searchString, isDisabled, isTable });
+  applyFilters(filters, page, searchString, isDisabled, isTable, my) {
+    return this.apiClient.post('estate/all', filters, { page, searchString, isDisabled, isTable, my });
   },
   loadReadyState() {
     return this.apiClient.get('service/ready-state');

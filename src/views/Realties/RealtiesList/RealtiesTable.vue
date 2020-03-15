@@ -70,9 +70,7 @@ export default {
   },
 
   props: {
-    isDisabled: Boolean,
     totalItems: Number,
-    search: String,
     page: Number,
   },
 
@@ -91,14 +89,15 @@ export default {
   methods: {
     async loadRealties() {
       this.loading = true;
-      const { error, data } = await this.$store.dispatch('realties/loadRealties', {
-        isDisabled: this.isDisabled,
-        search: this.search,
-        page: this.page,
-      });
-      if (!error) {
-        this.totalItems = data;
-      }
+      this.$emit('apply-filters')
+      // const { error, data } = await this.$store.dispatch('realties/loadRealties', {
+      //   isDisabled: this.isDisabled,
+      //   search: this.search,
+      //   page: this.page,
+      // });
+      // if (!error) {
+      //   this.totalItems = data;
+      // }
       this.loading = false;
     },
 
@@ -114,24 +113,8 @@ export default {
       this.$router.push({ name: 'realties.view', params: { id }});
     },
 
-    searchInRealties() {
-      clearTimeout(this.timer);
-      this.timer = null;
-
-      this.timer = setTimeout(this.loadRealties, 500);
-    },
-
     photoLink(photo) {
       return 'https://mayak-reality.com/v1/api/service/image?id=' + photo;
-    },
-  },
-
-  watch: {
-    search() {
-      this.searchInRealties();
-    },
-    isDisabled() {
-      this.loadRealties();
     },
   },
 };
