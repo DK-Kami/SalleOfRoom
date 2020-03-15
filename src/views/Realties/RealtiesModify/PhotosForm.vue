@@ -5,7 +5,7 @@
     <v-card-text>
       <v-layout column>
         <v-flex class="my-4">
-          <photo-upload @upload="uploadFile" />
+          <photo-upload @upload="uploadFile" multiple />
         </v-flex>
 
         <v-divider class="my-5" />

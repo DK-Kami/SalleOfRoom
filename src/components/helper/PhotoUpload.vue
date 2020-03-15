@@ -5,8 +5,9 @@
       ref="myVueDropzone"
       id="dropzone"
       duplicate-check
-      @vdropzone-complete="uploadFile"
+      @vdropzone-queue-complete="queueComplete"
       @vdropzone-file-added="fileAdded"
+      @vdropzone-complete="uploadFile"
     />
   </v-layout>
 </template>
@@ -22,14 +23,11 @@ export default {
     vueDropzone: vue2Dropzone,
   },
 
-  data: () => ({
+  data: vm => ({
     dropzoneOptions: {
       paramName: "image",
       acceptedFiles: "image/*",
       url: 'https://httpbin.org/post',
-
-      maxFiles: 1,
-      maxFilesize: 2,
 
       addRemoveLinks: true,
       withCredentials: true,
@@ -114,6 +112,9 @@ export default {
       }
 
       this.$emit('upload', e);
+    },
+
+    queueComplete() {
       this.$refs.myVueDropzone.removeAllFiles();
     },
   },
@@ -133,6 +134,7 @@ export default {
   justify-content: center;
   align-items: center;
   border: 2px dashed #00695c;
+  overflow-x: auto;
 }
 .dz-preview,
 .dz-processing,
