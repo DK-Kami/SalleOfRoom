@@ -122,8 +122,8 @@ export default {
       await this.$store.dispatch('realties/loadReadyState');
     },
     async deleteRealty(id) {
-      this.$store.dispatch('realties/deleteRealty', id);
-      this.loadRealties();
+      await this.$store.dispatch('realties/deleteRealty', id);
+      await this.loadRealties();
     },
 
     editRealty(id) {
