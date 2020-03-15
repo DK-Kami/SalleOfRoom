@@ -7,7 +7,19 @@
     :page.sync="page"
     :items="realties"
     customise-header
+    with-index
   >
+    <template #item.photos="{ item }">
+      <v-carousel v-if="item.Pictures && item.Pictures.length" style="height: 280px">
+        <v-carousel-item
+          v-for="(photo, index) in item.Pictures"
+          :key="'picture-' + index"
+        >
+          <v-img :src="photoLink(photo)" :aspect-ratio="15/10" />
+        </v-carousel-item>
+      </v-carousel>
+    </template>
+
     <template #item.actions="{ item }">
       <v-layout>
         <tooltip-button
@@ -38,18 +50,15 @@ import TooltipButton from '@/components/helper/TooltipButton';
 import FilteredTable from '@/components/base/FilteredTable';
 
 const headers = [
-  { text: 'Состояние',          value: 'russReadyState',    isSelected: true, },
-  { text: 'Цена',               value: 'Price',             isSelected: true  },
-  { text: 'Риелтор',            value: 'RealtorName',       isSelected: true, },
-  { text: 'Контагент',          value: 'CounterpartyName',  isSelected: true, },
-  { text: 'Этаж',               value: 'Floor',             isSelected: true  },
-  { text: 'Номер квартиры',     value: 'FlatNumber',        isSelected: true  },
-  { text: 'Количество комнат',  value: 'RoomCount',         isSelected: true  },
-  { text: 'Площадь',            value: 'Area',              isSelected: true  },
-  { text: 'Жилая площадь',      value: 'LivingArea',        isSelected: true  },
-  { text: 'Площадь кухни',      value: 'KitchenArea',       isSelected: true  },
-  { text: 'Коммментарий',       value: 'Comment',           isSelected: false },
-  { text: 'Действия',           value: 'actions' ,          isSelected: true  },
+  { text: '№',                  value: 'Number',      isSelected: true, width: '3%' },
+  { text: 'Категория',          value: 'Category',    isSelected: true, width: '5%' },
+  { text: 'Адрес',              value: 'Address',     isSelected: true, width: '15%' },
+  { text: 'Информация',         value: 'Info',        isSelected: true, width: '20%' },
+  { text: 'Цена',               value: 'Price',       isSelected: true, width: '7%' },
+  { text: 'Риелтор',            value: 'RealtorName', isSelected: true, width: '10%' },
+  { text: 'Дата поступления',   value: 'CreatedAt',   isSelected: true, width: '5%' },
+  { text: 'Фотографии',         value: 'photos',      isSelected: true, width: '30%' },
+  { text: 'Действия',           value: 'actions',     isSelected: true, width: '5%' },
 ];
 
 export default {
@@ -75,7 +84,7 @@ export default {
 
   computed: {
     realties() {
-      return this.$store.getters['realties/getRealties'];
+      return this.$store.getters['realties/getRealties'](true);
     },
   },
 
@@ -110,6 +119,10 @@ export default {
       this.timer = null;
 
       this.timer = setTimeout(this.loadRealties, 500);
+    },
+
+    photoLink(photo) {
+      return 'https://mayak-reality.com/v1/api/service/image?id=' + photo;
     },
   },
 
