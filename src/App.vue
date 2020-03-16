@@ -9,12 +9,16 @@
     <v-content v-else>
       <!-- <the-toolbar /> -->
       <v-app-bar color="primary" dark>
-        <div>
-          Добро пожаловать, {{ username }}
-        </div>
+        <v-layout align-center>
+          <v-btn icon @click="openAside">
+            <v-icon>mdi-menu</v-icon>
+          </v-btn>
+
+          <span>Добро пожаловать, {{ username }}</span>
+        </v-layout>
         <v-spacer />
 
-        <v-toolbar-items>
+        <v-toolbar-items class="hidden-sm-and-down">
           <v-btn
             v-for="item in menu"
             :key="item.path"
@@ -38,7 +42,6 @@
           </v-btn>
         </v-toolbar-items>
       </v-app-bar>
-      
 
       <v-container class="mt-4">
         <v-layout fill-height justify-center>
@@ -76,6 +79,7 @@ export default {
   },
 
   data: () => ({
+    asideMenu: false,
     menu,
   }),
 
@@ -98,6 +102,10 @@ export default {
     async logout() {
       await this.$store.dispatch('logout');
       this.$router.replace({ name: 'ping' });
+    },
+
+    openAside() {
+      this.asideMenu = true;
     },
   },
 };

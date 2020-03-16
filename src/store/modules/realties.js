@@ -206,7 +206,7 @@ export const actions = {
   },
   async updateRealty({ dispatch, state }, id) {
     const data = (await RealtiesService.updateRealty({
-      realty: createFormData({
+      realty: {
         CadastralNumber:   state.realty.сadastralNumber,
         StoreysNumber:     state.realty.storeysNumber,
         Commission:        state.realty.commission,
@@ -237,8 +237,7 @@ export const actions = {
         Area:              state.realty.area,
         City:              state.realty.city,
         Coord:             state.realty.coord,
-        Pictures:          state.realty.pictures,
-      }),
+      },
       id,
     })).data;
 
@@ -247,7 +246,7 @@ export const actions = {
       id: data.Id,
     });
 
-    if (data.Message) {
+    if (data.Message && data.ModelState) {
       return { error: true, data };
     }
 
