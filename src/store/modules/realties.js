@@ -71,7 +71,7 @@ export const mutations = {
   },
 
   SET_REALTY: (state, realty) => {
-    state.realty.priceArea         = realty.PriceArea
+    state.realty.priceArea         = parseFloat(realty.PriceArea).toFixed(2)
 
     state.realty.сadastralNumber   = realty.CadastralNumber;
     state.realty.storeysNumber     = realty.StoreysNumber;

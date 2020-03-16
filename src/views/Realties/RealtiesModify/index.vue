@@ -10,7 +10,7 @@
         >
           <template #afterTitle>
             <v-layout justify-space-around>
-              <v-flex xs4>
+              <v-flex xs3>
                 <v-select
                   v-model="realty.transactionTypeId"
                   :rules="[rulesList.required]"
@@ -21,7 +21,17 @@
                 />
               </v-flex>
 
-              <v-flex xs4>
+              <v-flex xs3 v-if="id">
+                <v-text-field
+                  v-model="realty.priceArea"
+                  :rules="[rulesList.required]"
+                  label="р/м2"
+                  type="number"
+                  min="0"
+                />
+              </v-flex>
+
+              <v-flex xs3>
                 <v-text-field
                   v-model="realty.commission"
                   :rules="[rulesList.required]"
@@ -31,7 +41,7 @@
                 />
               </v-flex>
 
-              <v-flex xs4>
+              <v-flex xs3>
                 <v-text-field
                   v-model="realty.price"
                   :rules="[rulesList.required]"
