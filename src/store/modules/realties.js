@@ -2,6 +2,8 @@ import services from '@/middleware';
 const { RealtiesService } = services;
 
 const initialRealty = () => ({
+  priceArea: '',
+
   сadastralNumber: '',
   storeysNumber: '',
   commission: '',
@@ -69,6 +71,8 @@ export const mutations = {
   },
 
   SET_REALTY: (state, realty) => {
+    state.realty.priceArea         = realty.PriceArea
+
     state.realty.сadastralNumber   = realty.CadastralNumber;
     state.realty.storeysNumber     = realty.StoreysNumber;
     state.realty.commission        = realty.Commission;
@@ -146,6 +150,7 @@ export const actions = {
   },
 
   async setImages(_, { id, photos }) {
+    if (!photos) return;
     const fd = new FormData();
     for (let i = 0; i < photos.length; i++)
       fd.append('file', photos[i]);
@@ -207,6 +212,8 @@ export const actions = {
   async updateRealty({ dispatch, state }, id) {
     const data = (await RealtiesService.updateRealty({
       realty: {
+        PriceArea:         state.realty.priceArea,
+
         CadastralNumber:   state.realty.сadastralNumber,
         StoreysNumber:     state.realty.storeysNumber,
         Commission:        state.realty.commission,
@@ -243,7 +250,7 @@ export const actions = {
 
     await dispatch('setImages', {
       photos: state.realty.pictures,
-      id: data.Id,
+      id,
     });
 
     if (data.Message && data.ModelState) {

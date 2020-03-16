@@ -3,7 +3,7 @@
     <v-layout justify-center>
       <v-flex xs10>
         <form-base
-          title="Добавление недвижимости"
+          :title="`${id ? 'Редактирование' : 'Добавление'} недвижимости`"
           ref="form"
           with-back-button
           @submit="handleSubmit"
