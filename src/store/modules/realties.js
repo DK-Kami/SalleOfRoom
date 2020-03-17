@@ -62,6 +62,7 @@ export const mutations = {
         russReadyState: russianState(state.readyStates, realty.ReadyState),
         CounterpartyName: realty.Counterparty && realty.Counterparty.Name,
         RealtorName: realty.Realtor && realty.Realtor.Name,
+        PriceArea: parseFloat(realty.PriceArea).toFixed(2),
       }));
 
     if (isTable) {
@@ -113,8 +114,8 @@ export const mutations = {
 
     state.realty.coord             = realty.Coord || '55.751435, 37.620260';
     state.realty.pictures          = realty.Picture;
-    state.realty.previewPictures   = realty.Picture
-      ? realty.Picture.map(p => 'https://mayak-reality.com/v1/api/service/image?id=' + p)
+    state.realty.previewPictures   = realty.Pictures
+      ? realty.Pictures.map(p => 'https://mayak-reality.com/v1/api/service/image?id=' + p)
       : [];
   },
 };

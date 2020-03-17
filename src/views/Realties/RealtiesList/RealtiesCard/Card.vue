@@ -79,6 +79,7 @@ const realtyData = [
   { title: 'Площадь',           value: 'Area'         },
   { title: 'Жилая площадь',     value: 'LivingArea'   },
   { title: 'Площадь кухни',     value: 'KitchenArea'  },
+  { title: 'руб./м2',           value: 'PriceArea'    },
 ];
 
 export default {
