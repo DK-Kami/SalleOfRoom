@@ -1,6 +1,6 @@
 <template>
   <v-container pa-0 ma-0 grid-list-xl>
-    <v-layout>
+    <v-layout wrap>
       <v-flex
         v-for="realty in realties"
         :class="small ? 'xs12' : 'xs3'"
