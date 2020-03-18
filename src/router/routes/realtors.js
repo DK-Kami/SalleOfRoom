@@ -13,7 +13,7 @@ const routes = [
     path: '/:id/view',
     name: 'realtors.view',
     meta: {
-      role: 'admin',
+      role: ['admin', 'realtor'],
     },
     component: () => import('@/views/Realtors/RealtorsView'),
   },

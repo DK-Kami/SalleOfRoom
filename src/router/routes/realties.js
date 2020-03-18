@@ -5,7 +5,7 @@ const routes = [
     path: '/',
     name: 'realties.list',
     meta: {
-      role: 'admin',
+      role: ['admin', 'realtor'],
     },
     component: () => import('@/views/Realties/RealtiesList'),
   },
@@ -13,7 +13,7 @@ const routes = [
     path: '/create',
     name: 'realties.create',
     meta: {
-      role: 'admin',
+      role: ['admin', 'realtor'],
     },
     component: () => import('@/views/Realties/RealtiesModify'),
   },
@@ -21,7 +21,7 @@ const routes = [
     path: '/:id/edit',
     name: 'realties.edit',
     meta: {
-      role: 'admin',
+      role: ['admin', 'realtor'],
     },
     component: () => import('@/views/Realties/RealtiesModify'),
   },
@@ -29,7 +29,7 @@ const routes = [
     path: '/:id/view',
     name: 'realties.view',
     meta: {
-      role: 'admin',
+      role: ['admin', 'realtor'],
     },
     component: () => import('@/views/Realties/RealtiesView'),
   },
