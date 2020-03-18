@@ -6,7 +6,6 @@
     :loading="loading"
     :page.sync="page"
     :items="realties"
-    customise-header
     with-index
   >
     <template #item.photos="{ item }">
@@ -50,13 +49,13 @@ import TooltipButton from '@/components/helper/TooltipButton';
 import FilteredTable from '@/components/base/FilteredTable';
 
 const headers = [
-  { text: '№',                  value: 'Number',      isSelected: true, width: '3%' },
-  { text: 'Категория',          value: 'Category',    isSelected: true, width: '5%' },
+  { text: '№',                  value: 'Number',      isSelected: true, width: '4%' },
+  { text: 'Категория',          value: 'Category',    isSelected: true, width: '8%' },
   { text: 'Адрес',              value: 'Address',     isSelected: true, width: '15%' },
   { text: 'Информация',         value: 'Info',        isSelected: true, width: '20%' },
   { text: 'Цена',               value: 'Price',       isSelected: true, width: '7%' },
   { text: 'Риелтор',            value: 'RealtorName', isSelected: true, width: '10%' },
-  { text: 'Дата поступления',   value: 'CreatedAt',   isSelected: true, width: '5%' },
+  { text: 'Дата поступления',   value: 'CreatedAt',   isSelected: true, width: '8%' },
   { text: 'Фотографии',         value: 'photos',      isSelected: true, width: '30%' },
   { text: 'Действия',           value: 'actions',     isSelected: true, width: '5%' },
 ];
