@@ -2,8 +2,8 @@
  * Роли приложения
  */
 export const ROLES = [
-  { name: 'Администратор',  value: 'admin',     route: '/users' },
-  { name: 'Риелтор',        value: 'rieltor',   route: '/users' },
+  { name: 'Администратор',  value: 'admin',     route: '/users'     },
+  { name: 'Риелтор',        value: 'realtor',   route: '/realties'  },
 ];
 
 /**
