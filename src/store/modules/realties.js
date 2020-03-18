@@ -2,6 +2,7 @@ import services from '@/middleware';
 const { RealtiesService } = services;
 
 const initialRealty = () => ({
+  housingNumber: '',
   priceArea: '',
 
   сadastralNumber: '',
@@ -72,7 +73,8 @@ export const mutations = {
   },
 
   SET_REALTY: (state, realty) => {
-    state.realty.priceArea         = parseFloat(realty.PriceArea).toFixed(2)
+    state.realty.priceArea         = parseFloat(realty.PriceArea).toFixed(2);
+    state.realtor.housingNumber    = realty.HousingNumber;
 
     state.realty.сadastralNumber   = realty.CadastralNumber;
     state.realty.storeysNumber     = realty.StoreysNumber;
@@ -162,6 +164,8 @@ export const actions = {
   async createRealty({ dispatch, state }) {
     const data = (await RealtiesService.createRealty({
       realty: {
+        HousingNumber:     state.realty.housingNumber,
+
         CadastralNumber:   state.realty.сadastralNumber,
         StoreysNumber:     state.realty.storeysNumber,
         Commission:        state.realty.commission,
@@ -213,6 +217,7 @@ export const actions = {
   async updateRealty({ dispatch, state }, id) {
     const data = (await RealtiesService.updateRealty({
       realty: {
+        HousingNumber:     state.realty.housingNumber,
         PriceArea:         state.realty.priceArea,
 
         CadastralNumber:   state.realty.сadastralNumber,

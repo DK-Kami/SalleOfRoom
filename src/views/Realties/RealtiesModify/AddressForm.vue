@@ -51,7 +51,15 @@
           />
         </v-flex>
 
-        <v-flex xs12>
+        <v-flex xs6>
+          <v-text-field
+            v-model="realty.housingNumber"
+            label="Корпус"
+            type="number"
+            min="0"
+          />
+        </v-flex>
+        <v-flex xs6>
           <v-text-field
             v-model="realty.street"
             :rules="[rulesList.required]"
