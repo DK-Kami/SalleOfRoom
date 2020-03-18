@@ -9,14 +9,20 @@
     with-index
   >
     <template #item.photos="{ item }">
-      <v-carousel v-if="item.Pictures && item.Pictures.length" style="height: 280px">
+      <v-img
+        v-if="item.Pictures && item.Pictures.length"
+        :src="photoLink(item.Pictures[1])"
+        :aspect-ratio="15/10"
+        style="height: 280px"
+      />
+      <!-- <v-carousel v-if="item.Pictures && item.Pictures.length" style="height: 280px">
         <v-carousel-item
           v-for="(photo, index) in item.Pictures"
           :key="'picture-' + index"
         >
           <v-img :src="photoLink(photo)" :aspect-ratio="15/10" />
         </v-carousel-item>
-      </v-carousel>
+      </v-carousel> -->
     </template>
 
     <template #item.actions="{ item }">
