@@ -5,7 +5,7 @@ const routes = [
     path: '/',
     name: 'counterparties.list',
     meta: {
-      role: 'admin',
+      role: ['admin', 'realtor'],
     },
     component: () => import('@/views/Counterparties/CounterpartiesList'),
   },
@@ -13,7 +13,7 @@ const routes = [
     path: '/create',
     name: 'counterparties.create',
     meta: {
-      role: 'admin',
+      role: ['admin', 'realtor'],
     },
     component: () => import('@/views/Counterparties/CounterpartiesModify'),
   },
@@ -21,7 +21,7 @@ const routes = [
     path: '/:id/edit',
     name: 'counterparties.edit',
     meta: {
-      role: 'admin',
+      role: ['admin', 'realtor'],
     },
     component: () => import('@/views/Counterparties/CounterpartiesModify'),
   },
