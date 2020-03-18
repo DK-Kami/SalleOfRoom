@@ -19,17 +19,19 @@
         <v-spacer />
 
         <v-toolbar-items class="hidden-sm-and-down">
-          <v-btn
-            v-for="item in menu"
-            :key="item.path"
-            :to="item.path"
-            class="px-3"
-            large
-            text
-          >
-            <v-icon class="mr-2" middle>{{ item.icon }}</v-icon>
-            <span>{{ item.title }}</span>
-          </v-btn>
+          <template v-for="item in menu">
+            <v-btn
+              v-if="currentRole(item.roles)"
+              :key="item.path"
+              :to="item.path"
+              class="px-3"
+              large
+              text
+            >
+              <v-icon class="mr-2" middle>{{ item.icon }}</v-icon>
+              <span>{{ item.title }}</span>
+            </v-btn>
+          </template>
 
           <v-btn
             @click.stop="logout"
@@ -61,11 +63,11 @@ import TheFooter from '@/components/layout/TheFooter';
 import TheMenu from '@/components/layout/TheMenu';
 
 const menu = [
-  { title: 'Пользователи',  path: '/users',           icon: 'mdi-account-group' },
-  { title: 'Риелторы',      path: '/realtors',        icon: 'mdi-account-tie'   },
-  { title: 'Контрагенты',   path: '/counterparties',  icon: 'mdi-file-document' },
-  { title: 'Недвижимость',  path: '/realties',        icon: 'mdi-home-city'     },
-  { title: 'История',       path: '/history',         icon: 'mdi-history'       },
+  { title: 'Пользователи',  path: '/users',           icon: 'mdi-account-group',  roles: ['admin']},
+  { title: 'Риелторы',      path: '/realtors',        icon: 'mdi-account-tie',    roles: ['admin']},
+  { title: 'Контрагенты',   path: '/counterparties',  icon: 'mdi-file-document',  roles: ['admin']},
+  { title: 'Недвижимость',  path: '/realties',        icon: 'mdi-home-city',      roles: ['admin', 'realtor']},
+  { title: 'История',       path: '/history',         icon: 'mdi-history',        roles: ['admin']},
 ];
 
 export default {
@@ -76,6 +78,19 @@ export default {
     TheToolbar,
     TheFooter,
     TheMenu,
+  },
+
+  created() {
+    // Добавление личного кабинета риелтора
+    // if (this.currentRole(['realtor'])) {
+    //   const id = ''
+    //   this.menu.push({
+    //     path: `/realtors/${id}/view`,
+    //     title: 'Личный кабинет', 
+    //     icon: 'mdi-account',
+    //     roles: ['realtor']
+    //   });
+    // }
   },
 
   data: () => ({
@@ -102,6 +117,10 @@ export default {
     async logout() {
       await this.$store.dispatch('logout');
       this.$router.replace({ name: 'ping' });
+    },
+
+    currentRole(roles) {
+      return roles.includes(this.$store.getters['auth/getUserRole']);
     },
 
     openAside() {
