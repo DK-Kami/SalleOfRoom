@@ -2,9 +2,9 @@
   <filtered-table
     :server-items-length="totalItems"
     :footer-props="footerTableProps"
+    :page.sync="pageComp"
     :headers="headers"
     :loading="loading"
-    :page.sync="page"
     :items="realties"
     with-index
   >
@@ -86,6 +86,14 @@ export default {
   }),
 
   computed: {
+    pageComp: {
+      get() {
+        return this.page;
+      },
+      set(page) {
+        this.$emit('update:page', page);
+      },
+    },
     realties() {
       return this.$store.getters['realties/getRealties'](true);
     },

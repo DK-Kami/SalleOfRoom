@@ -8,10 +8,10 @@
       :show-all="showSelect"
       :items="filteredItems"
       :sort-desc="sortDesc"
+      :page.sync="pageComp"
       :loading="loading"
       :sort-by="sortBy"
       :search="search"
-      :page.sync="page"
       @pagination="updatePagination"
     >
       <!-- :options.sync="options" -->
@@ -128,6 +128,14 @@ export default {
       },
       set(value) {
         this.$emit('input', value);
+      },
+    },
+    pageComp: {
+      get() {
+        return this.page;
+      },
+      set(page) {
+        this.$emit('update:page', page);
       },
     },
 

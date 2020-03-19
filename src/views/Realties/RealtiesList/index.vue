@@ -150,6 +150,9 @@ export default {
     isDisabled() {
       this.loadRealties();
     },
+    page() {
+      this.loadRealties();
+    },
     onlyMy() {
       this.loadRealties();
     },
