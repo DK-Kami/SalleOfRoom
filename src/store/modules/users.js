@@ -21,7 +21,7 @@ export const initialState = () => ({
 
 export const mutations = {
   CLEAR_USER: state => state.user = initialUser(),
-  SET_USERS: (state, users) => state.users = users,
+  SET_USERS: (state, users) => state.users = users || [],
   SET_USER: (state, user) => {
     state.user.confirmPassword = user.Password;
     state.user.secondName = user.SecondName;

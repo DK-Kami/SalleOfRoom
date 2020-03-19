@@ -5,6 +5,7 @@
     <v-card-text>
       <v-layout column class="px-3">
         <v-select
+          v-if="isAdmin"
           v-model="realty.realtorId"
           :rules="[rulesList.required]"
           :items="realtor"
@@ -111,6 +112,10 @@ export default {
   },
 
   created() {
+    if (!this.isAdmin) {
+      this.realty.realtorId = this.$store.getters['auth/getUserId'];
+    }
+
     this.loadCounterparty();
     this.loadWallMaterial();
     this.loadCategory();
@@ -130,6 +135,10 @@ export default {
       realty: 'realties/getRealty',
       realtor: 'users/getRealtor',
     }),
+
+    isAdmin() {
+      return this.$store.getters['auth/getUserRole'] === 'admin';
+    },
 
     counterpartyHaveEstates() {
       return this.currentCounterparty

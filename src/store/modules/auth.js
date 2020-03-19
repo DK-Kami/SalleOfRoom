@@ -7,6 +7,7 @@ export const initialState = () => ({
   email: '',
   token: '',
   role: '',
+  id: '',
 });
 
 export const mutations = {
@@ -16,6 +17,7 @@ export const mutations = {
     state.token = data.token;
     state.role = data.role;
     state.isSigned = true;
+    state.id = data.id;
   },
 };
 
@@ -41,6 +43,7 @@ export const actions = {
       token: data.access_token,
       userName: data.userName,
       email: user.Email,
+      id: data.Id,
     }
     commit('LOGIN', userData);
     dispatch('saveToLocaleStorage', userData, { root: true });
@@ -52,9 +55,11 @@ export const getters = {
   isSigned: state => state.isSigned,
   getUserRole: state => state.role,
   getToken: state => state.token,
+  getUserId: state => state.id,
   getUser: state => ({
     userName: state.userName,
     email: state.email,
     role: state.role,
+    id: state.id,
   }),
 };

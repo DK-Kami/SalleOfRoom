@@ -15,7 +15,7 @@ export const initialState = () => ({
 
 export const mutations = {
   CLEAR_COUNTERPARTY: state => state.counterparty = initialCounterparty(),
-  SET_COUNTERPARTIES: (state, counterparties) => state.counterparties = counterparties,
+  SET_COUNTERPARTIES: (state, counterparties) => state.counterparties = counterparties || [],
   SET_COUNTERPARTY: (state, counterparty) => {
     state.counterparty.secondName = counterparty.SecondName;
     state.counterparty.firstName = counterparty.FirstName;
