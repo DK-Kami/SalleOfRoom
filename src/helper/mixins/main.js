@@ -1,7 +1,7 @@
 export default {
   data: () => ({
     footerTableProps:{
-      'items-per-page-options': [15],
+      'items-per-page-options': [25],
     },
   }),
   computed: {
