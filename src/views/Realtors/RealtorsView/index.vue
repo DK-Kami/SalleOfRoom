@@ -1,20 +1,29 @@
 <template>
   <v-layout justify-center align-center wrap>
-    <span class="title mb-4">{{ realtor.name }}</span>
+    <span class="headline font-weight-medium mb-4">{{ realtor.name }}</span>
     <v-flex xs12>
-      <realties-card :realties="realtor.estates" />
+      <realties-table
+        v-if="realtor.estates && realtor.estates.length"
+        :realties="realtor.estates"
+      />
+
+      <div
+        v-else
+        class="title text-center font-weight-regular grey--text"
+      >Нет данных</div>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
-import RealtiesCard from '@/views/Realties/RealtiesList/RealtiesCard'
+// import RealtiesCard from '@/views/Realties/RealtiesList/RealtiesCard'
+import RealtiesTable from '@/views/Realties/RealtiesList/RealtiesTable';
 
 export default {
   name: 'RealtorView',
 
   components: {
-    RealtiesCard,
+    RealtiesTable,
   },
 
   created() {

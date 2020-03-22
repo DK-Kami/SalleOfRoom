@@ -2,10 +2,10 @@
   <filtered-table
     :server-items-length="totalItems"
     :footer-props="footerTableProps"
+    :items="currentRealties"
     :page.sync="pageComp"
     :headers="headers"
     :loading="loading"
-    :items="realties"
     with-index
   >
     <template #item.photos="{ item }">
@@ -76,6 +76,7 @@ export default {
 
   props: {
     totalItems: Number,
+    realties: Array,
     page: Number,
   },
 
@@ -94,8 +95,9 @@ export default {
         this.$emit('update:page', page);
       },
     },
-    realties() {
-      return this.$store.getters['realties/getRealties'](true);
+    currentRealties() {
+      return this.realties
+          || this.$store.getters['realties/getRealties'](true);
     },
   },
 

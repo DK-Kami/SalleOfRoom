@@ -65,5 +65,6 @@ class WebClient {
   }
 };
 
-const url = 'https://mayak-reality.com/v1/api';
+// const url = 'https://mayak-reality.com/v1/api';
+const url = 'https://localhost:44388/api';
 export default new WebClient(url);
