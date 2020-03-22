@@ -29,6 +29,7 @@
                 v-model="searchCounterparty"
                 label="Поиск по телефону"
                 class="mx-3"
+                @input="searchCounterpartyByPhone"
               />
               <v-divider />
             </template>
@@ -123,6 +124,7 @@ export default {
   },
 
   data: () => ({
+    searchCounterpartyTimer: null,
     counterpartyDialog: false,
     searchCounterparty: '',
   }),
@@ -141,23 +143,24 @@ export default {
     },
 
     counterpartyHaveEstates() {
+      console.log(this.currentCounterparty);
       return this.currentCounterparty
           && this.currentCounterparty.estates
           && this.currentCounterparty.estates.length;
     },
 
     counterparty() {
-      return this.$store.getters['counterparties/getCounterparties']
-        .filter(c => {
-          const search = this.searchCounterparty
-            .toString()
-            .trim()
-            .replace('+', '')
-            .replace('(', '')
-            .replace(')', '');
+      return this.$store.getters['counterparties/getCounterparties'];
+        // .filter(c => {
+        //   const search = this.searchCounterparty
+        //     .toString()
+        //     .trim()
+        //     .replace('+', '')
+        //     .replace('(', '')
+        //     .replace(')', '');
 
-          return c.Phone.match(new RegExp(search));
-        });
+        //   return c.Phone.match(new RegExp(search));
+        // });
     },
   },
 
@@ -167,7 +170,10 @@ export default {
     },
 
     async loadCounterparty() {
-      await this.$store.dispatch('counterparties/loadCounterparties', { page: 1 });
+      await this.$store.dispatch('counterparties/loadCounterparties', {
+        search: this.searchCounterparty,
+        page: 1,
+      });
     },
     async loadWallMaterial() {
       await this.$store.dispatch('types/loadWallMaterial');
@@ -177,6 +183,11 @@ export default {
     },
     async loadRealtor() {
       await this.$store.dispatch('users/loadUsers', { page: 1 });
+    },
+
+    searchCounterpartyByPhone(value) {
+      clearTimeout(this.searchCounterpartyTimer);
+      this.searchCounterpartyTimer = setTimeout(this.loadCounterparty, 300)
     },
 
     openCounterpartyDialog() {
