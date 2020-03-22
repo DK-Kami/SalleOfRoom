@@ -1,10 +1,10 @@
 <template>
   <v-layout justify-center align-center wrap>
-    <span class="headline font-weight-medium mb-4">{{ realtor.name }}</span>
+    <span class="headline font-weight-medium mb-4">{{ counterparty.name }}</span>
     <v-flex xs12>
       <realties-table
-        v-if="realtor.estates && realtor.estates.length"
-        :realties="realtor.estates"
+        v-if="counterparty.estates && counterparty.estates.length"
+        :realties="counterparty.estates"
       />
 
       <div
@@ -20,15 +20,15 @@
 import RealtiesTable from '@/views/Realties/RealtiesList/RealtiesTable';
 
 export default {
-  name: 'RealtorView',
+  name: 'CounterpartyView',
 
   components: {
     RealtiesTable,
   },
 
   created() {
-    this.$store.dispatch('users/clearUser');
-    this.loadRealtor();
+    this.$store.dispatch('counterparties/clearCounterparty');
+    this.loadCounterparty();
   },
 
   data: () => ({
@@ -36,8 +36,8 @@ export default {
   }),
 
   computed: {
-    realtor() {
-      return this.$store.getters['users/getUser'];
+    counterparty() {
+      return this.$store.getters['counterparties/getCounterparties'];
     },
     id() {
       return this.$route.params.id;
@@ -45,8 +45,8 @@ export default {
   },
 
   methods: {
-    async loadRealtor() {
-      await this.$store.dispatch('users/loadRealtor', this.id);
+    async loadCounterparty() {
+      await this.$store.dispatch('counterparties/loadCounterparty', this.id);
     },
   },
 };

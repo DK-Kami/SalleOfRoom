@@ -9,7 +9,10 @@
       </v-carousel-item>
     </v-carousel>
 
-    <v-card-title class="ma-4">
+    <v-card-title
+      v-if="realty.Counterparty"
+      class="ma-4"
+    >
       <v-layout justify-space-between>
         <span>Контрагент:</span>
         <span>{{ realty.Counterparty.Name }}</span>

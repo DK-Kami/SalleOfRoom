@@ -84,10 +84,15 @@ export default {
                   <span class="subtitle-2 font-weight-regular">${realty.Realtor.Name}</span>
                 </div>
                 
-                <div>
-                  <span class="subtitle-1 font-weight-medium">Контрагент:</span>
-                  <span class="subtitle-2 font-weight-regular">${realty.Counterparty.Name}</span>
-                </div>
+                ${realty.Counterparty ?
+                  [
+                    '<div><span class="subtitle-1 font-weight-medium">Контрагент:</span>',
+                    '<span class="subtitle-2 font-weight-regular">',
+                    realty.Counterparty.Name,
+                    '</span></div>',
+                  ].join('')
+                  : ''
+                }
 
                 <div class="flex xs12">
                   <hr role="separator" aria-orientation="horizontal" class="v-divider theme--light">
