@@ -1,6 +1,6 @@
 <template>
   <v-layout justify-center align-center wrap>
-    <span class="title">{{ realtor.name }}</span>
+    <span class="title mb-4">{{ realtor.name }}</span>
     <v-flex xs12>
       <realties-card :realties="realtor.estates" />
     </v-flex>

@@ -94,10 +94,6 @@ export default {
     realty: Object,
   },
 
-  created() {
-    this.loadReadyStates();
-  },
-
   data: () => ({
     realtyData,
   }),
@@ -119,9 +115,6 @@ export default {
   },
 
   methods: {
-    async loadReadyStates() {
-      await this.$store.dispatch('realties/loadReadyState');
-    },
     async deleteRealty(id) {
       await this.$store.dispatch('realties/deleteRealty', id);
       await this.loadRealties();

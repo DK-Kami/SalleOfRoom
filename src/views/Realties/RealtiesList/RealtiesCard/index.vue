@@ -26,5 +26,15 @@ export default {
     realties: Array,
     small: Boolean,
   },
+
+  created() {
+    this.loadReadyStates();
+  },
+
+  methods: {
+    async loadReadyStates() {
+      await this.$store.dispatch('realties/loadReadyState');
+    },
+  },
 };
 </script>
