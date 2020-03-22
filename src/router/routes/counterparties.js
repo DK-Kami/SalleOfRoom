@@ -25,6 +25,14 @@ const routes = [
     },
     component: () => import('@/views/Counterparties/CounterpartiesModify'),
   },
+  {
+    path: '/:id/view',
+    name: 'counterparties.view',
+    meta: {
+      role: ['admin', 'realtor'],
+    },
+    component: () => import('@/views/Counterparties/CounterpartyView'),
+  },
 ];
 
 export default routes.map(route => ({

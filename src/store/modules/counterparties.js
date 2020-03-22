@@ -6,6 +6,8 @@ const initialCounterparty = () => ({
   secondName: '',
   lastName: '',
   phone: '+7 (',
+  name: '',
+  estates: [],
 });
 
 export const initialState = () => ({
@@ -21,6 +23,7 @@ export const mutations = {
     state.counterparty.firstName = counterparty.FirstName;
     state.counterparty.lastName = counterparty.LastName;
     state.counterparty.phone = counterparty.Phone;
+    state.counterparty.name = counterparty.Name;
     state.counterparty.estates = counterparty.Estates;
   },
 };

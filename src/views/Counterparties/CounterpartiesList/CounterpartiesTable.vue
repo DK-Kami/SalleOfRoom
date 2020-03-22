@@ -10,6 +10,12 @@
     <template #item.actions="{ item }" v-if="!isDisabled">
       <v-layout>
         <tooltip-button
+          tooltip="Просмотреть контрагента"
+          icon="mdi-eye"
+          color="primary"
+          @action="viewCounterparty(item.Id)"
+        />
+        <tooltip-button
           tooltip="Редактирование контрагента"
           icon="mdi-pencil"
           color="primary"
@@ -86,6 +92,9 @@ export default {
 
     editCounterparty(id) {
       this.$router.push({ name: 'counterparties.edit', params: { id }});
+    },
+    viewCounterparty(id) {
+      this.$router.push({ name: 'counterparties.view', params: { id }});
     },
 
     searchInCounterparties() {
