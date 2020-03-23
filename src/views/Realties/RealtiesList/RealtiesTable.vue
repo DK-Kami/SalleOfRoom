@@ -25,6 +25,10 @@
       </v-carousel> -->
     </template>
 
+    <template #item.RealtorName="{ item }">
+      {{ item.Realtor.Name }}
+    </template>
+
     <template #item.actions="{ item }">
       <v-layout>
         <tooltip-button
