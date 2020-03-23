@@ -5,6 +5,7 @@
       <realties-table
         v-if="realtor.estates && realtor.estates.length"
         :realties="realtor.estates"
+        hide-default-footer
       />
 
       <div

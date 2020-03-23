@@ -2,6 +2,7 @@
   <v-layout column>
     <v-data-table
       :no-data-text="loading ? 'Данные загружаются' : 'Данных нет'"
+      :hide-default-footer="hideDefaultFooter"
       :server-items-length="serverItemsLength"
       :footer-props="footerProps"
       :headers="visibleHeaders"
@@ -100,6 +101,7 @@ export default {
       type: Array,
       default: () => [],
     },
+    hideDefaultFooter: Boolean,
     serverItemsLength: Number,
     customiseHeader: Boolean,
     withActions: Boolean,

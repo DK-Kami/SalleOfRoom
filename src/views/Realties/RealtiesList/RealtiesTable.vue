@@ -1,5 +1,6 @@
 <template>
   <filtered-table
+    :hide-default-footer="hideDefaultFooter"
     :server-items-length="totalItems"
     :footer-props="footerTableProps"
     :items="currentRealties"
@@ -79,6 +80,7 @@ export default {
   },
 
   props: {
+    hideDefaultFooter: Boolean,
     totalItems: Number,
     realties: Array,
     page: Number,
