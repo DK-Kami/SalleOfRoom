@@ -36,9 +36,10 @@
 import TooltipButton from '@/components/helper/TooltipButton';
 
 const headers = [
-  { text: 'ФИО',      value: 'Name'     },
-  { text: 'Телефон',  value: 'Phone'    },
-  { text: 'Действия', value: 'actions'  },
+  { text: 'ФИО',                      value: 'Name'         },
+  { text: 'Телефон',                  value: 'Phone'        },
+  { text: 'Количество недвижимости',  value: 'EstateCount'  },
+  { text: 'Действия',                 value: 'actions'      },
 ];
 
 export default {
