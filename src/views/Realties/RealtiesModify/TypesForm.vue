@@ -20,7 +20,7 @@
             :rules="[rulesList.required]"
             :items="counterparty"
             label="Контрагент"
-            item-text="Name"
+            item-text="displayName"
             item-value="Id"
             @input="selectCounterparty"
           >
@@ -59,7 +59,7 @@
         >
           <v-layout justify-center align-center wrap>
             <v-flex xs12>
-              <realties-card :realties="currentCounterparty.estates" small />
+              <realties-table :realties="currentCounterparty.estates" small />
             </v-flex>
           </v-layout>
         </toggle-element>
@@ -96,7 +96,7 @@
 
 <script>
 import CounterpartiesModify from '@/views/Counterparties/CounterpartiesModify';
-import RealtiesCard from '@/views/Realties/RealtiesList/RealtiesCard'
+import RealtiesTable from '@/views/Realties/RealtiesList/RealtiesTable'
 import ToggleElement from '@/components/base/ToggleElement';
 import DialogBase from '@/components/base/DialogBase';
 
@@ -108,7 +108,7 @@ export default {
   components: {
     CounterpartiesModify,
     ToggleElement,
-    RealtiesCard,
+    RealtiesTable,
     DialogBase,
   },
 
@@ -150,7 +150,11 @@ export default {
     },
 
     counterparty() {
-      return this.$store.getters['counterparties/getCounterparties'];
+      return this.$store.getters['counterparties/getCounterparties']
+        .map(counterparty => ({
+          ...counterparty,
+          displayName: counterparty.Name + '(Недвижимости: ' + counterparty.EstateCount + ')',
+        }));
         // .filter(c => {
         //   const search = this.searchCounterparty
         //     .toString()
