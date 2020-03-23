@@ -110,6 +110,9 @@ export default {
     search() {
       this.searchInCounterparties();
     },
+    page() {
+      this.loadCounterparties();
+    },
     isDisabled() {
       this.loadCounterparties();
     },

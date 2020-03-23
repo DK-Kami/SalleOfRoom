@@ -56,7 +56,7 @@ export const initialState = () => ({
 export const mutations = {
   CLEAR_REALTY: state => state.realty = initialRealty(),
   SET_READY_STATE: (state, readyStates) => state.readyStates = readyStates,
-  SET_REALTIES: (state, { realties, isTable}) => {
+  SET_REALTIES: (state, { realties, isTable }) => {
     const currentRealties = realties
       .map(realty => ({
         ...realty,
