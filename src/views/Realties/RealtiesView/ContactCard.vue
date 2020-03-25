@@ -5,21 +5,25 @@
 
     <v-card-text class="black--text">
       <v-layout
-        v-if="realtor && counterparty"
-        class="px-3"
+        v-if=""
+        class="px-3 pb-2"
         column
       >
-        <span class="title mt-4">Риелтор</span>
-        <span class="subtitle-1">{{ realtor.Name }}</span>
-        <span class="subtitle-2">
-          <a :href="'tel:' + realtor.Phone">{{ realtor.Phone }}</a>
-        </span>
+        <template v-if="realtor">
+          <span class="title mt-4">Риелтор</span>
+          <span class="subtitle-1">{{ realtor.Name }}</span>
+          <span class="subtitle-2">
+            <a :href="'tel:' + realtor.Phone">{{ realtor.Phone }}</a>
+          </span>
+        </template>
 
-        <span class="title mt-5">Контрагент</span>
-        <span class="subtitle-1">{{ counterparty.Name }}</span>
-        <span class="subtitle-2">
-          <a :href="'tel:' + counterparty.Phone">{{ counterparty.Phone }}</a>
-        </span>
+        <template v-if="counterparty">
+          <span class="title mt-5">Контрагент</span>
+          <span class="subtitle-1">{{ counterparty.Name }}</span>
+          <span class="subtitle-2">
+            <a :href="'tel:' + counterparty.Phone">{{ counterparty.Phone }}</a>
+          </span>
+        </template>
       </v-layout>
     </v-card-text>
   </v-card>
