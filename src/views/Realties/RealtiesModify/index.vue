@@ -132,6 +132,11 @@ export default {
       this.loadRealty();
     }
     this.loadTransaction();
+
+    if (this.$store.getters['auth/getUserRole'] === 'realtor') {
+      console.log('da', this.$store.getters['auth/getUserId']);
+      this.realty.realtorId = this.$store.getters['auth/getUserId'];
+    }
   },
 
   data: () => ({

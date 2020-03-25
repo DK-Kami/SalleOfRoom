@@ -43,7 +43,7 @@ export const actions = {
       token: data.access_token,
       userName: data.userName,
       email: user.Email,
-      id: data.Id,
+      id: user.Id,
     }
     commit('LOGIN', userData);
     dispatch('saveToLocaleStorage', userData, { root: true });

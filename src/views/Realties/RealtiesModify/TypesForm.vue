@@ -143,7 +143,6 @@ export default {
     },
 
     counterpartyHaveEstates() {
-      console.log(this.currentCounterparty);
       return this.currentCounterparty
           && this.currentCounterparty.estates
           && this.currentCounterparty.estates.length;
