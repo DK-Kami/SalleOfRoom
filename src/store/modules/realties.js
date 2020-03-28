@@ -119,6 +119,7 @@ export const mutations = {
 
     state.realty.coord             = realty.Coord || '55.751435, 37.620260';
     state.realty.imagesId          = realty.Pictures;
+    state.realty.uploadImages      = new Array(realty.Pictures.length);
     state.realty.previewImages     = realty.Pictures
       ? realty.Pictures.map(p => 'https://mayak-reality.com/v1/api/service/image?id=' + p)
       : [];
@@ -165,7 +166,6 @@ export const actions = {
   },
 
   async createRealty({ dispatch, state }) {
-    console.log(state.realty.realtorId);
     const data = (await RealtiesService.createRealty({
       realty: {
         HousingNumber:     state.realty.housingNumber,
@@ -204,7 +204,7 @@ export const actions = {
     })).data;
 
     await dispatch('setImages', {
-      photos: state.realty.pictures,
+      photos: state.realty.uploadImages,
       id: data.Id,
     });
 
@@ -261,7 +261,7 @@ export const actions = {
     })).data;
 
     await dispatch('setImages', {
-      photos: state.realty.pictures,
+      photos: state.realty.uploadImages,
       id,
     });
 

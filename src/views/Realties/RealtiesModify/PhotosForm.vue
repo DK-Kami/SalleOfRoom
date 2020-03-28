@@ -28,9 +28,7 @@
                 >Удалить</v-btn>
 
                 <v-flex xs12>
-                  <v-responsive :aspect-ratio="9/10">
-                    <v-img :src="picture" height="100%" />
-                  </v-responsive>
+                    <v-img :src="picture" :aspect-ratio="9/10" />
                 </v-flex>
               </v-layout>
             </v-carousel-item>
