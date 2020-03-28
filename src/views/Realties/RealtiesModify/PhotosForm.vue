@@ -9,25 +9,30 @@
         </v-flex>
 
         <v-divider class="my-5" />
-
         <v-flex>
-          <v-responsive v-if="!realty.previewPictures.length" :aspect-ratio="9/10">
-            <v-layout
-              justify-center
-              align-center
-              fill-height
-              class="title"
-            >
-              Загрузите изображения
-            </v-layout>
+          <v-responsive v-if="!realty.previewImages.length" :aspect-ratio="9/10">
+            <v-layout justify-center align-center fill-height class="title">Загрузите изображения</v-layout>
           </v-responsive>
 
           <v-carousel v-else>
             <v-carousel-item
-              v-for="(picture, index) in realty.previewPictures"
+              v-for="(picture, index) in realty.previewImages"
               :key="'picture-' + index"
             >
-              <v-img :src="picture" height="100%" />
+              <v-layout wrap justify-end class="ma-5">
+                <v-btn
+                  class="mt-3 mr-3"
+                  color="error"
+                  outlined
+                  @click="deletePhoto(index)"
+                >Удалить</v-btn>
+
+                <v-flex xs12>
+                  <v-responsive :aspect-ratio="9/10">
+                    <v-img :src="picture" height="100%" />
+                  </v-responsive>
+                </v-flex>
+              </v-layout>
             </v-carousel-item>
           </v-carousel>
         </v-flex>
@@ -37,27 +42,37 @@
 </template>
 
 <script>
-import PhotoUpload from '@/components/helper/PhotoUpload';
+import TooltipButton from "@/components/helper/TooltipButton";
+import PhotoUpload from "@/components/helper/PhotoUpload";
 
 export default {
-  name: 'PhotosForm',
+  name: "PhotosForm",
 
   components: {
-    PhotoUpload,
+    TooltipButton,
+    PhotoUpload
   },
 
   computed: {
     realty() {
-      return this.$store.getters['realties/getRealty'];
-    },
+      return this.$store.getters["realties/getRealty"];
+    }
   },
 
   methods: {
     uploadFile(e) {
-      const blob = new Blob([e], {type: e.type});
+      const blob = new Blob([e], { type: e.type });
       const photo = window.URL.createObjectURL(blob);
-      this.realty.previewPictures.push(photo);
-      this.realty.pictures.push(e);
+
+      this.realty.imagesId.push(e.upload.uuid);
+      this.realty.previewImages.push(photo);
+      this.realty.uploadImages.push(e);
+    },
+    deletePhoto(index) {
+      this.realty.imagesId.splice(index, 1);
+      this.realty.previewImages.splice(index, 1);
+      this.realty.uploadImages.splice(index, 1);
+      index
     },
   },
 };

@@ -17,7 +17,7 @@
         <v-layout class="px-3">
           <v-select
             v-model="realty.counterpartyId"
-            :rules="[rulesList.required]"
+            
             :items="counterparty"
             label="Контрагент"
             item-text="displayName"
