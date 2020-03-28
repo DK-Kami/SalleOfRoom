@@ -3,6 +3,7 @@ import App from './App.vue';
 import routerInit from './router';
 import store from './store';
 import vuetify from './plugins/vuetify';
+import WebClient from './middleware/WebClient';
 import 'roboto-fontface/css/roboto/roboto-fontface.css';
 import '@mdi/font/css/materialdesignicons.css';
 
@@ -12,12 +13,16 @@ import RStore from './helper/RStore';
 Vue.config.productionTip = false;
 Vue.mixin(mainMixin);
 
+const router = routerInit(store);
+
+WebClient.$router = router;
+WebClient.$store = store;
+
 RStore.subscribe('afterUpdate', state => {
   store.dispatch(state ? 'auth/loginFromState' : 'unsetUserData', state);
   if (state) router.push('/ping');
 });
 
-const router = routerInit(store);
 new Vue({
   router,
   store,

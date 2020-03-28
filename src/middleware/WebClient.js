@@ -6,6 +6,9 @@ class WebClient {
   constructor(baseURL) {
     this.baseURL = baseURL;
 
+    this.$store = null;
+    this.$router = null;
+
     this.axios = axios.create({
       baseURL,
       headers: {
@@ -19,8 +22,20 @@ class WebClient {
 
   setInterceptors() {
     this.axios.interceptors.response.use(null, error => {
-      if (error.response && error.response.config && (error.response.status === 401 || error.response.status === 403)) {
-        // return router(store).push({ name: "login" });
+      const {
+        status,
+        config,
+      } = error.response;
+
+      if (config) {
+        if (status === 401 && config.url !== 'account/users') {
+          this.$store.dispatch('notification/set', {
+            message: 'Нет прав доступа',
+            type: 'error',
+          });
+          this.$router.back();
+        }
+        else if (status === 403) {}
       }
       return Promise.resolve(error.response);
     });
