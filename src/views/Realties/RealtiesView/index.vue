@@ -12,7 +12,7 @@
         </v-btn>
       </v-layout>
 
-      <view-photos :photos="realty.previewPictures" />
+      <view-photos :photos="realty.previewImages" />
 
       <v-layout wrap>
         <v-flex class="display-1 font-weight-bold pa-4 mx-4 pb-3" xs12>
