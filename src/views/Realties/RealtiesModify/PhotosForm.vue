@@ -67,10 +67,12 @@ export default {
       this.realty.uploadImages.push(e);
     },
     deletePhoto(index) {
-      this.realty.imagesId.splice(index, 1);
       this.realty.previewImages.splice(index, 1);
+      console.log(this.realty.previewImages);
       this.realty.uploadImages.splice(index, 1);
-      index
+      console.log(this.realty.uploadImages)
+      this.realty.deletedImages.push(this.realty.imagesId.splice(index, 1));
+      console.log(this.realty.deletedImages)
     },
   },
 };

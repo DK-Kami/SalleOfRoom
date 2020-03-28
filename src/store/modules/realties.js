@@ -261,7 +261,7 @@ export const actions = {
     })).data;
 
     await dispatch('setImages', {
-      photos: state.realty.uploadImages,
+      photos: state.realty.uploadImages.filter(i => !!i),
       id,
     });
 
