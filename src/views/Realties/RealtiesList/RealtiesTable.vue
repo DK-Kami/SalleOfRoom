@@ -38,18 +38,21 @@
           color="primary"
           @action="openRealtyView(item.Id)"
         />
-        <tooltip-button
-          tooltip="Редактирование недвижимости"
-          icon="mdi-pencil"
-          color="primary"
-          @action="editRealty(item.Id)"
-        />
-        <tooltip-button
-          tooltip="Удаление недвижимости"
-          icon="mdi-delete"
-          color="error"
-          @action="deleteRealty(item.Id)"
-        />
+
+        <template v-if="mayEdit(item.Realtor.Id)">
+          <tooltip-button
+            tooltip="Редактирование недвижимости"
+            icon="mdi-pencil"
+            color="primary"
+            @action="editRealty(item.Id)"
+          />
+          <tooltip-button
+            tooltip="Удаление недвижимости"
+            icon="mdi-delete"
+            color="error"
+            @action="deleteRealty(item.Id)"
+          />
+        </template>
       </v-layout>
     </template>
   </filtered-table>
@@ -105,6 +108,13 @@ export default {
       return this.realties
           || this.$store.getters['realties/getRealties'](true);
     },
+
+    isRealtor() {
+      return this.$store.getters['auth/getUserRole'] === 'realtor';
+    },
+    realtorId() {
+      return this.$store.getters['auth/getUserId'];
+    },
   },
 
   methods: {
@@ -124,6 +134,13 @@ export default {
     },
     openRealtyView(id) {
       this.$router.push({ name: 'realties.view', params: { id }});
+    },
+
+    mayEdit(id) {
+      if (this.isRealtor) {
+        return this.realtorId === id;
+      }
+      return true;
     },
 
     photoLink(photo) {
