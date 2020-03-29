@@ -71,7 +71,7 @@ export default {
       console.log(this.realty.previewImages);
       this.realty.uploadImages.splice(index, 1);
       console.log(this.realty.uploadImages)
-      this.realty.deletedImages.push(this.realty.imagesId.splice(index, 1));
+      this.realty.deletedImages.push(...this.realty.imagesId.splice(index, 1));
       console.log(this.realty.deletedImages)
     },
   },
