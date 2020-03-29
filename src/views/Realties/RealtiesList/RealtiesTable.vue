@@ -12,7 +12,7 @@
     <template #item.photos="{ item }">
       <v-img
         v-if="item.Pictures && item.Pictures.length"
-        :src="photoLink(item.Pictures[1])"
+        :src="photoLink(item.Pictures[0])"
         :aspect-ratio="15/10"
         style="height: 280px"
       />
@@ -145,6 +145,7 @@ export default {
 
     photoLink(photo) {
       return 'https://mayak-reality.com/v1/api/service/image?id=' + photo;
+      // return 'https://localhost:44388/api/service/image?id=' + photo;
     },
   },
 };
