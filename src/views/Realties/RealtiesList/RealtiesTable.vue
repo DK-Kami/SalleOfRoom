@@ -13,8 +13,8 @@
       <v-img
         v-if="item.Pictures && item.Pictures.length"
         :src="photoLink(item.Pictures[0])"
-        :aspect-ratio="15/10"
-        style="height: 280px"
+        style="height: 140px"
+        contain
       />
       <!-- <v-carousel v-if="item.Pictures && item.Pictures.length" style="height: 280px">
         <v-carousel-item
