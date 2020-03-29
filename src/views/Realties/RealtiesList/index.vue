@@ -28,16 +28,16 @@
     <v-flex xs12>
       <v-tabs v-model="tabs">
         <v-tab>Карта</v-tab>
-        <v-tab>Плитка</v-tab>
+        <!-- <v-tab>Плитка</v-tab> -->
         <v-tab>Список</v-tab>
 
         <v-tab-item>
           <realties-map :search="search" />
         </v-tab-item>
 
-        <v-tab-item class="pa-4">
+        <!-- <v-tab-item class="pa-4">
           <realties-card :realties="realties" with-actions />
-        </v-tab-item>
+        </v-tab-item> -->
 
         <v-tab-item>
           <realties-table
@@ -90,7 +90,7 @@ export default {
       return this.$store.getters['realties/getRealties'](false);
     },
     isTable() {
-      return this.tabs === 2;
+      return this.tabs === 1;
     },
   },
 
