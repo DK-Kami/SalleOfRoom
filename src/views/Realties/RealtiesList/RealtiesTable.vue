@@ -13,7 +13,7 @@
       <v-img
         v-if="item.Pictures && item.Pictures.length"
         :src="photoLink(item.Pictures[0])"
-        style="height: 140px"
+        style="height: 140px; max-width: 200px"
         contain
       />
       <!-- <v-carousel v-if="item.Pictures && item.Pictures.length" style="height: 280px">
@@ -70,7 +70,7 @@ const headers = [
   { text: 'Цена',               value: 'Price',       isSelected: true, width: '7%' },
   { text: 'Риелтор',            value: 'RealtorName', isSelected: true, width: '10%' },
   { text: 'Дата поступления',   value: 'CreatedAt',   isSelected: true, width: '8%' },
-  { text: 'Фотографии',         value: 'photos',      isSelected: true, width: '30%' },
+  { text: 'Фотографии',         value: 'photos',      isSelected: true, width: '10%' },
   { text: 'Действия',           value: 'actions',     isSelected: true, width: '5%' },
 ];
 
