@@ -121,8 +121,8 @@ export const mutations = {
     state.realty.imagesId          = realty.Pictures;
     state.realty.uploadImages      = new Array(realty.Pictures.length);
     state.realty.previewImages     = realty.Pictures
-      // ? realty.Pictures.map(p => 'https://mayak-reality.com/v1/api/service/image?id=' + p)
-      ? realty.Pictures.map(p => 'https://localhost:44388/api/service/image?id=' + p)
+      ? realty.Pictures.map(p => 'https://mayak-reality.com/v1/api/service/image?id=' + p)
+      // ? realty.Pictures.map(p => 'https://localhost:44388/api/service/image?id=' + p)
       : [];
   },
 };
