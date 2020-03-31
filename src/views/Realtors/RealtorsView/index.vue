@@ -16,8 +16,7 @@
   </v-layout>
 </template>
 
-<script>
-// import RealtiesCard from '@/views/Realties/RealtiesList/RealtiesCard'
+<script>ы
 import RealtiesTable from '@/views/Realties/RealtiesList/RealtiesTable';
 
 export default {
