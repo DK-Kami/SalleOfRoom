@@ -1,6 +1,6 @@
 <template>
   <v-layout justify-center>
-    <v-flex xs7 xl5 class="elevation-4">
+    <v-flex xs12 lg7 xl5 class="elevation-4 ma-0">
       <form-base
         :title="id ? 'Редактирование персонала' : 'Добавление персонала'"
         ref="form"
@@ -8,22 +8,25 @@
         @submit="handleSubmit"
       >
         <v-layout column>
-          <v-layout v-if="!isAdmin">
-            <v-text-field
-              v-model="user.secondName"
-              label="Фамилия"
-              class="mr-8"
-            />
-            <v-text-field
-              v-model="user.firstName"
-              label="Имя"
-              class="mx-4"
-            />
-            <v-text-field
-              v-model="user.lastName"
-              label="Отчество"
-              class="ml-8"
-            />
+          <v-layout v-if="!isAdmin" wrap justify-space-between>
+            <v-flex xs12 lg3>
+              <v-text-field
+                v-model="user.secondName"
+                label="Фамилия"
+              />
+            </v-flex>
+            <v-flex xs12 lg3>
+              <v-text-field
+                v-model="user.firstName"
+                label="Имя"
+              />
+            </v-flex>
+            <v-flex xs12 lg3>
+              <v-text-field
+                v-model="user.lastName"
+                label="Отчество"
+              />
+            </v-flex>
           </v-layout>
 
           <v-text-field
