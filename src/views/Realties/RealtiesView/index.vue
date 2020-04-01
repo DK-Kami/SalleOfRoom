@@ -1,7 +1,6 @@
 <template>
-  <v-container pa-0 ma-0 fluid grid-list-xl>
     <v-layout column>
-      <v-layout justify-end class="pa-3">
+      <v-layout class="pa-3" justify-end>
         <v-btn
           color="primary"
           large
@@ -14,16 +13,16 @@
 
       <view-photos :photos="realty.previewImages" />
 
-      <v-layout wrap>
+      <v-layout wrap justify-space-between>
         <v-flex class="display-1 font-weight-bold pa-4 mx-4 pb-3" xs12>
           {{ Number(parseFloat(realty.price)).toLocaleString() }} руб.
         </v-flex>
 
-        <v-flex xs12 lg8>
+        <v-flex xs12 lg8 class="mb-6">
           <info-card :realty="realty" />
         </v-flex>
 
-        <v-flex xs12 lg4>
+        <v-flex xs12 lg3>
           <contact-card
             :counterparty="realty.counterparty"
             :realtor="realty.realtor"
@@ -31,7 +30,6 @@
         </v-flex>
       </v-layout>
     </v-layout>
-  </v-container>
 </template>
 
 <script>

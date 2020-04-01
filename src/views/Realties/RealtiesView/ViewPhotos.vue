@@ -10,7 +10,7 @@
     </v-carousel>
 
     <v-layout v-else>
-      <v-responsive aspect-ratio="2.7">
+      <v-responsive aspect-ratio="2.5">
         <v-layout
           class="display-2"
           justify-center
