@@ -18,7 +18,7 @@ export const mutations = {
   SET_TRANSACTION: (state, transaction) => state.transaction = transaction,
   SET_ROOM_TYPES: (state, roomTypes) => state.roomTypes = roomTypes,
   SET_CATEGORY: (state, category) => state.category = category,
-  SET_HISTORY: (state, history) => state.history = history,
+  SET_HISTORY: (state, history) => state.history = history || [],
   SET_REPAIRS: (state, repairs) => state.repairs = repairs,
   SET_MODELS: (state, models) => state.models = models,
 };

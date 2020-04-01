@@ -10,7 +10,6 @@
           v-model="tableName"
           :items="models"
           label="Название сущности"
-          class="mr-8 mt-4"
           item-value="Value"
           item-text="Text"
         />

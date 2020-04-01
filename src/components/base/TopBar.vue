@@ -20,13 +20,13 @@
       </v-layout>
     </v-flex>
 
-    <v-flex xs12 lg4>
+    <v-flex xs12 lg5>
       <v-layout align-center wrap justify-space-between>
         <v-flex shrink>
           <slot name="beforeSearch" />
         </v-flex>
 
-        <v-flex xs12 lg9 v-if="withSearch">
+        <v-flex xs12 lg8 v-if="withSearch">
           <v-text-field
             v-model="searchComp"
             append-icon="mdi-magnify"
