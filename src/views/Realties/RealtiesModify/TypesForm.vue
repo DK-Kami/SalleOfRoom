@@ -1,5 +1,5 @@
 <template>
-  <v-card class="px-4">
+  <v-card>
     <v-card-title>Типа типы</v-card-title>
 
     <v-card-text>

@@ -1,35 +1,41 @@
 <template>
   <form-validate @submit="handleSubmit" @fail-validation="handleFailValidation">
-    <v-card :elevation="elevation" min-width="300" class="pa-4 pt-0">
+    <v-card :elevation="elevation" min-width="300" class="pa-4 pt-3">
       <v-card-title class="pa-0">
         <v-layout column>
-          <v-layout align-center>
-            <div v-if="withBackButton">
-              <v-btn
-                @click="goToBack"
-                text
-                icon
-              >
-                <v-icon>mdi-arrow-left</v-icon>
-              </v-btn>
-            </div>
+          <v-layout align-center wrap>
+            <v-flex shrink>
+              <v-layout align-center>
+                <div v-if="withBackButton">
+                  <v-btn
+                    @click="goToBack"
+                    text
+                    icon
+                  >
+                    <v-icon>mdi-arrow-left</v-icon>
+                  </v-btn>
+                </div>
 
-            <slot name="title">
-              <span
-                class="font-weight-regular"
-                :class="{ 'pa-4' : title }"
-              >{{ title }}</span>
-            </slot>
+                <slot name="title">
+                  <span
+                    class="font-weight-regular"
+                    :class="{ 'pa-4' : title }"
+                  >{{ title }}</span>
+                </slot>
+              </v-layout>
+            </v-flex>
 
             <v-spacer />
-            <slot name="afterTitle">
-              <span class="caption secondary--text cursor--pointer change-form-button" @click="$emit('after-title-action')">
-                {{ afterTitle }}
-              </span>
-            </slot>
+            <v-flex grow>
+              <slot name="afterTitle">
+                <span class="caption secondary--text cursor--pointer change-form-button" @click="$emit('after-title-action')">
+                  {{ afterTitle }}
+                </span>
+              </slot>
+            </v-flex>
           </v-layout>
 
-          <v-flex xs12>
+          <v-flex xs12 class="pa-0">
             <v-slide-y-transition>
               <v-alert
                 v-if="error"
@@ -42,7 +48,7 @@
             </v-slide-y-transition>
           </v-flex>
 
-          <v-divider v-if="title" />
+          <v-divider v-if="title" class="mb-5" />
         </v-layout>
       </v-card-title>
 

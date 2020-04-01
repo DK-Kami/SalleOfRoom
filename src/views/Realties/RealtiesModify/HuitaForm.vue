@@ -1,10 +1,10 @@
 <template>
-  <v-card class="px-4">
+  <v-card>
     <v-card-title>Прочее</v-card-title>
 
     <v-card-text>
       <v-layout wrap>
-        <v-flex xs6>
+        <v-flex xs12 lg6>
           <v-text-field
             v-model="realty.header"
             :rules="[rulesList.required]"

@@ -1,7 +1,7 @@
 <template>
   <v-container grid-list-xl>
     <v-layout justify-center>
-      <v-flex xs10>
+      <v-flex xs12 lg10>
         <form-base
           :title="`${id ? 'Редактирование' : 'Добавление'} недвижимости`"
           ref="form"
@@ -9,8 +9,8 @@
           @submit="handleSubmit"
         >
           <template #afterTitle>
-            <v-layout justify-space-around>
-              <v-flex xs3>
+            <v-layout justify-space-around wrap>
+              <v-flex xs6 lg3>
                 <v-select
                   v-model="realty.transactionTypeId"
                   :rules="[rulesList.required]"
@@ -21,7 +21,7 @@
                 />
               </v-flex>
 
-              <v-flex xs3 v-if="id">
+              <v-flex xs6 lg3 v-if="id">
                 <v-text-field
                   v-model="realty.priceArea"
                   :rules="[rulesList.required]"
@@ -31,7 +31,7 @@
                 />
               </v-flex>
 
-              <v-flex xs3>
+              <v-flex xs6 lg3>
                 <v-text-field
                   v-model="realty.commission"
                   :rules="[rulesList.required]"
@@ -41,7 +41,7 @@
                 />
               </v-flex>
 
-              <v-flex xs3>
+              <v-flex xs6 lg3>
                 <v-text-field
                   v-model="realty.price"
                   :rules="[rulesList.required]"
@@ -56,31 +56,31 @@
           </template>
 
           <v-layout
-            class="py-7"
+            class="py-2"
             justify-space-around
             wrap
           >
-            <v-flex xs6>
+            <v-flex xs12 lg6 class="pa-0">
               <types-form />
             </v-flex>
 
-            <v-flex xs6>
+            <v-flex xs12 lg6 class="pa-0">
               <measuring-form />
             </v-flex>
 
-            <v-flex xs6>
+            <v-flex xs12 lg6 class="pa-0">
               <address-form />
             </v-flex>
 
-            <v-flex xs6>
+            <v-flex xs12 lg6 class="pa-0">
               <huita-form />
             </v-flex>
 
-            <v-flex xs6>
+            <v-flex xs12 lg6 class="pa-0">
               <map-form />
             </v-flex>
 
-            <v-flex xs6>
+            <v-flex xs12 lg6 class="pa-0">
               <photos-form />
             </v-flex>
           </v-layout>

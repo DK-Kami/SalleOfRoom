@@ -1,5 +1,5 @@
 <template>
-  <v-card class="px-4">
+  <v-card>
     <v-card-title>Замеры недвижимости</v-card-title>
 
     <v-card-text>
@@ -51,6 +51,15 @@
           />
         </v-flex>
         <v-flex xs6>
+          <v-text-field
+            v-model="realty.storeysNumber"
+            label="Этажность"
+            type="number"
+            min="0"
+          />
+        </v-flex>
+
+        <v-flex xs12 lg6>
           <v-select
             v-model="realty.readyState"
             :rules="[rulesList.required]"
@@ -60,8 +69,7 @@
             label="Статус недвижимости"
           />
         </v-flex>
-
-        <v-flex xs6>
+        <v-flex xs12 lg6>
           <v-select
             v-model="realty.roomType"
             :items="roomTypes"
@@ -70,15 +78,8 @@
             item-text="Text"
           />
         </v-flex>
-        <v-flex xs6>
-          <v-text-field
-            v-model="realty.storeysNumber"
-            label="Этажность"
-            type="number"
-            min="0"
-          />
-        </v-flex>
-        <v-flex xs6>
+
+        <v-flex xs12 lg6>
           <v-text-field
             v-model="realty.сadastralNumber"
             label="Кадастравый номер"
@@ -86,7 +87,7 @@
           />
         </v-flex>
 
-        <v-flex xs6>
+        <v-flex xs12 lg6>
           <v-select
             v-model="realty.status"
             :items="estateStates"

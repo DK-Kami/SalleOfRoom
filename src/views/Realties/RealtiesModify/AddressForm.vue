@@ -1,31 +1,31 @@
 <template>
-  <v-card class="px-4">
+  <v-card>
     <v-card-title>Адрес недвижимости</v-card-title>
 
     <v-card-text>
       <v-layout wrap>
-        <v-flex xs6>
+        <v-flex xs12 lg6>
           <v-text-field
             v-model="realty.city"
             :rules="[rulesList.required]"
             label="Город"
           />
         </v-flex>
-        <v-flex xs6>
+        <v-flex xs12 lg6>
           <v-text-field
             v-model="realty.cityDistrict"
             label="Округ"
           />
         </v-flex>
 
-        <v-flex xs6>
+        <v-flex xs12 lg6>
           <v-text-field
             v-model="realty.district"
             :rules="[rulesList.required]"
             label="Район"
           />
         </v-flex>
-        <v-flex xs6>
+        <v-flex xs12 lg6>
           <v-text-field
             v-model="realty.region"
             :rules="[rulesList.required]"
@@ -33,7 +33,7 @@
           />
         </v-flex>
 
-        <v-flex xs6>
+        <v-flex xs12 lg6>
           <v-text-field
             v-model="realty.houseNumber"
             :rules="[rulesList.required]"
@@ -42,7 +42,7 @@
             min="0"
           />
         </v-flex>
-        <v-flex xs6>
+        <v-flex xs12 lg6>
           <v-text-field
             v-model="realty.flatNumber"
             label="Номер квартиры"
@@ -51,7 +51,7 @@
           />
         </v-flex>
 
-        <v-flex xs6>
+        <v-flex xs12 lg6>
           <v-text-field
             v-model="realty.housingNumber"
             label="Корпус"
@@ -59,7 +59,7 @@
             min="0"
           />
         </v-flex>
-        <v-flex xs6>
+        <v-flex xs12 lg6>
           <v-text-field
             v-model="realty.street"
             :rules="[rulesList.required]"
