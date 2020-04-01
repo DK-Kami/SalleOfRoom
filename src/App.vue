@@ -45,7 +45,7 @@
         </v-toolbar-items>
       </v-app-bar>
 
-      <v-container class="mt-4">
+      <v-container class="pa-0" :class="$vuetify.breakpoint.xs ? 'mt-0' : 'mt-6'">
         <v-navigation-drawer
           v-model="asideMenu"
           color="blue-grey lighten-5"
