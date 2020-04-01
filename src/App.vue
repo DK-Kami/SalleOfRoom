@@ -9,8 +9,8 @@
     <v-content v-else>
       <!-- <the-toolbar /> -->
       <v-app-bar color="primary" dark>
-        <v-layout align-center>
-          <v-btn icon @click="openAside">
+        <v-layout align-center justify-space-between>
+          <v-btn icon @click="openAside" class="hidden-sm-and-up">
             <v-icon>mdi-menu</v-icon>
           </v-btn>
 
@@ -46,6 +46,49 @@
       </v-app-bar>
 
       <v-container class="mt-4">
+        <v-navigation-drawer
+          v-model="asideMenu"
+          color="blue-grey lighten-5"
+          class="drawer"
+          temporary
+          app
+        >
+          <v-list>
+            <v-list-item @click.stop="asideMenu = false">
+              <v-list-item-icon>
+                <v-icon>mdi-close</v-icon>
+              </v-list-item-icon>
+
+              <v-list-item-title>Скрыть</v-list-item-title>
+            </v-list-item>
+
+            <v-divider />
+
+            <template v-for="item in menu">
+              <v-list-item
+                v-if="currentRole(item.roles)"
+                :key="item.path"
+                :to="item.path"
+                class="px-3"
+              >
+                <v-list-item-icon>
+                  <v-icon>{{ item.icon }}</v-icon>
+                </v-list-item-icon>
+
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+              </v-list-item>
+            </template>
+
+            <v-list-item @click.stop="logout">
+              <v-list-item-icon>
+                <v-icon>mdi-logout</v-icon>
+              </v-list-item-icon>
+
+              <v-list-item-title>Выход</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-navigation-drawer>
+
         <v-layout fill-height justify-center>
           <v-slide-y-transition mode="out-in">
             <router-view />
@@ -110,6 +153,12 @@ export default {
     },
     username() {
       return this.user.userName || this.user.email;
+    },
+
+    firstWord() {
+      if (!this.username) return;
+      console.log(this.username);
+      return this.username.charAt(0).toUpperCase();
     },
   },
 
