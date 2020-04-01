@@ -1,8 +1,9 @@
 <template>
   <v-layout justify-center>
     <v-flex
-      class="elevation-4"
-      :class="{ 'xs7 xl5': !dialogView }"
+      :class="{ 'xs12 xl5': !dialogView }"
+      class="elevation-4 ma-0"
+      xs12 lg7 xl5
     >
       <form-base
         :title="currentTitle"
@@ -11,22 +12,25 @@
         @submit="handleSubmit"
       >
         <v-layout column>
-          <v-layout>
-            <v-text-field
-              v-model="counterparty.secondName"
-              label="Фамилия"
-              class="mr-8"
-            />
-            <v-text-field
-              v-model="counterparty.firstName"
-              label="Имя"
-              class="mx-4"
-            />
-            <v-text-field
-              v-model="counterparty.lastName"
-              label="Отчество"
-              class="ml-8"
-            />
+          <v-layout justify-space-between wrap>
+            <v-flex xs12 lg3>
+              <v-text-field
+                v-model="counterparty.secondName"
+                label="Фамилия"
+              />
+            </v-flex>
+            <v-flex xs12 lg3>
+              <v-text-field
+                v-model="counterparty.firstName"
+                label="Имя"
+              />
+            </v-flex>
+            <v-flex xs12 lg3>
+              <v-text-field
+                v-model="counterparty.lastName"
+                label="Отчество"
+              />
+            </v-flex>
           </v-layout>
 
           <v-text-field
