@@ -1,5 +1,5 @@
 <template>
-  <v-layout class="px-7 pt-6" align-center>
+  <v-layout class="px-4 pt-6" align-center wrap>
     <v-flex shrink class="display-1 mr-6">
       <slot name="title">{{ title }}</slot>
     </v-flex>
@@ -21,7 +21,7 @@
       <slot name="beforeSearch" />
     </v-flex>
 
-    <v-flex xs3 v-if="withSearch">
+    <v-flex xs12 lg3 v-if="withSearch">
       <v-text-field
         v-model="searchComp"
         append-icon="mdi-magnify"
