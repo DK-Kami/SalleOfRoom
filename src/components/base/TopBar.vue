@@ -1,35 +1,42 @@
 <template>
-  <v-layout class="px-4 pt-6" align-center wrap>
-    <v-flex shrink class="display-1 mr-6">
-      <slot name="title">{{ title }}</slot>
+  <v-layout class="px-4 pt-6" align-center wrap justify-space-between>
+    <v-flex xs12 lg6 class="mb-3">
+      <v-layout align-center>
+        <v-flex shrink class="display-1 mr-6">
+          <slot name="title">{{ title }}</slot>
+        </v-flex>
+
+        <v-flex shrink v-if="withActions">
+          <slot name="actions">
+            <v-btn
+              color="primary"
+              fab
+              @click="action"
+            >
+              <v-icon>mdi-plus</v-icon>
+            </v-btn>
+          </slot>
+        </v-flex>
+      </v-layout>
     </v-flex>
 
-    <v-flex shrink v-if="withActions">
-      <slot name="actions">
-        <v-btn
-          color="primary"
-          fab
-          @click="action"
-        >
-          <v-icon>mdi-plus</v-icon>
-        </v-btn>
-      </slot>
-    </v-flex>
-    <v-spacer />
+    <v-flex xs12 lg4>
+      <v-layout align-center wrap justify-space-between>
+        <v-flex shrink>
+          <slot name="beforeSearch" />
+        </v-flex>
 
-    <v-flex shrink>
-      <slot name="beforeSearch" />
-    </v-flex>
-
-    <v-flex xs12 lg3 v-if="withSearch">
-      <v-text-field
-        v-model="searchComp"
-        append-icon="mdi-magnify"
-        label="Поиск"
-        class="pt-0"
-        hide-details
-        single-line
-      />
+        <v-flex xs12 lg9 v-if="withSearch">
+          <v-text-field
+            v-model="searchComp"
+            append-icon="mdi-magnify"
+            label="Поиск"
+            class="pt-0"
+            hide-details
+            single-line
+          />
+        </v-flex>
+      </v-layout>
     </v-flex>
   </v-layout>
 </template>
