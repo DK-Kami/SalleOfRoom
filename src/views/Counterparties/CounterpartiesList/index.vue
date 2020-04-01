@@ -9,7 +9,7 @@
         <v-checkbox
           v-model="isDisabled"
           label="Архив"
-          class="mr-8 mt-7 headline"
+          class="headline"
         />
       </template>
     </top-bar>
