@@ -1,13 +1,11 @@
 <template>
-  <filtered-table
-    :hide-default-footer="hideDefaultFooter"
+  <v-data-table
     :server-items-length="totalItems"
     :footer-props="footerTableProps"
     :items="currentRealties"
-    :page.sync="pageComp"
     :headers="headers"
     :loading="loading"
-    with-index
+    :page.sync="page"
   >
     <template #item.photos="{ item }">
       <v-img
@@ -55,7 +53,7 @@
         </template>
       </v-layout>
     </template>
-  </filtered-table>
+  </v-data-table>
 </template>
 
 <script>
