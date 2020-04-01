@@ -3,6 +3,7 @@
     <top-bar
       v-model="search"
       title="Недвижимость"
+      typografy="headline"
       @action="addRealties"
     >
       <template #beforeSearch>
@@ -10,12 +11,12 @@
           <v-checkbox
             v-model="onlyMy"
             label="Мои объекты"
-            class="mr-8 mt-7 headline"
+            class="mr-8 headline"
           />
           <v-checkbox
             v-model="isDisabled"
             label="Архив"
-            class="mr-8 mt-7 headline"
+            class="mr-8 headline"
           />
         </v-layout>
       </template>

@@ -2,7 +2,7 @@
   <v-layout class="px-4 pt-6" align-center wrap justify-space-between>
     <v-flex xs12 lg6 class="mb-3">
       <v-layout align-center>
-        <v-flex shrink class="display-1 mr-6">
+        <v-flex shrink class="mr-6" :class="typografy">
           <slot name="title">{{ title }}</slot>
         </v-flex>
 
@@ -53,6 +53,10 @@ export default {
     withSearch: {
       type: Boolean,
       default: true,
+    },
+    typografy: {
+      type: String,
+      default: 'display-1',
     },
     search: String,
     title: String,

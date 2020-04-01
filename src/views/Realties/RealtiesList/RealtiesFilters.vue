@@ -1,5 +1,5 @@
 <template>
-  <v-layout justify-end wrap class="mx-4  ">
+  <v-layout justify-end wrap>
     <v-btn
       color="primary"
       text
