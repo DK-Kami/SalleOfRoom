@@ -3,9 +3,9 @@
     :server-items-length="totalItems"
     :footer-props="footerTableProps"
     :items="currentRealties"
+    :page.sync="pageComp"
     :headers="headers"
     :loading="loading"
-    :page.sync="page"
   >
     <template #item.photos="{ item }">
       <v-img
