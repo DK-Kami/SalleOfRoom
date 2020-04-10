@@ -43,7 +43,17 @@ export default {
 };
 </script>
 
-<style>
+<style lang="sass">
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,700&display=swap&subset=cyrillic')
+$body-font-family: 'Montserrat'
+$title-font: 'Montserrat'
+
+.v-application
+  font-family: $body-font-family, sans-serif !important
+  .title
+    font-family: $title-font, sans-serif !important
+
+
 .v-card,
 .v-stepper,
 .custom-elevation,
@@ -55,34 +65,30 @@ export default {
 .v-expansion-panel-header,
 .v-expansion-panel-content,
 .v-expansion-panel::before,
-.v-data-table {
-  /* box-shadow: 0 7px 15px rgba(0,0,0,.03) !important; */
-  box-shadow: none !important;
-}
-.v-card, .v-expansion-panel {
-  border: 1px solid #e6eef5 !important;
-  border-radius: 6px !important;
-  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.07) !important;
-}
-.v-data-table {
-  background: transparent !important;
-}
-.v-application .elevation-0 {
-  border: none !important;
-}
+.v-data-table
+  box-shadow: none !important
 
-.elevation-3 {
-  box-shadow: 0 7px 15px rgba(0,0,0,.03) !important;
-  border: none !important;
-}
-.cursor--pointer {
-  cursor: pointer;
-}
-.v-navigation-drawer {
-  pointer-events: inherit;
-}
+.v-card, .v-expansion-panel
+  border: 1px solid #e6eef5 !important
+  border-radius: 6px !important
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.07) !important
 
-.no-select {
-  user-select: none;
-}
+.v-data-table
+  background: transparent !important
+
+.v-application .elevation-0
+  border: none !important
+
+.elevation-3
+  box-shadow: 0 7px 15px rgba(0,0,0,.03) !important
+  border: none !important
+
+.cursor--pointer
+  cursor: pointer
+
+.v-navigation-drawer
+  pointer-events: inherit
+
+.no-select
+  user-select: none
 </style>

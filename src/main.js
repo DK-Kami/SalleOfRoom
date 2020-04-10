@@ -4,7 +4,6 @@ import routerInit from './router';
 import store from './store';
 import vuetify from './plugins/vuetify';
 import WebClient from './middleware/WebClient';
-import 'roboto-fontface/css/roboto/roboto-fontface.css';
 import '@mdi/font/css/materialdesignicons.css';
 
 import mainMixin from './helper/mixins/main';
