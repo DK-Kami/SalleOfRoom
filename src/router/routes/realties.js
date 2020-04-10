@@ -6,6 +6,7 @@ const routes = [
     name: 'realties.list',
     meta: {
       role: ['admin', 'realtor'],
+      layout: 'admin',
     },
     component: () => import('@/views/Realties/RealtiesList'),
   },
@@ -14,6 +15,7 @@ const routes = [
     name: 'realties.create',
     meta: {
       role: ['admin', 'realtor'],
+      layout: 'admin',
     },
     component: () => import('@/views/Realties/RealtiesModify'),
   },
@@ -22,6 +24,7 @@ const routes = [
     name: 'realties.edit',
     meta: {
       role: ['admin', 'realtor'],
+      layout: 'admin',
     },
     component: () => import('@/views/Realties/RealtiesModify'),
   },
@@ -30,6 +33,7 @@ const routes = [
     name: 'realties.view',
     meta: {
       role: ['admin', 'realtor'],
+      layout: 'admin',
     },
     component: () => import('@/views/Realties/RealtiesView'),
   },

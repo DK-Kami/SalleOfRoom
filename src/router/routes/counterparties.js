@@ -6,6 +6,7 @@ const routes = [
     name: 'counterparties.list',
     meta: {
       role: ['admin', 'realtor'],
+      layout: 'admin',
     },
     component: () => import('@/views/Counterparties/CounterpartiesList'),
   },
@@ -14,6 +15,7 @@ const routes = [
     name: 'counterparties.create',
     meta: {
       role: ['admin', 'realtor'],
+      layout: 'admin',
     },
     component: () => import('@/views/Counterparties/CounterpartiesModify'),
   },
@@ -22,6 +24,7 @@ const routes = [
     name: 'counterparties.edit',
     meta: {
       role: ['admin', 'realtor'],
+      layout: 'admin',
     },
     component: () => import('@/views/Counterparties/CounterpartiesModify'),
   },
@@ -30,6 +33,7 @@ const routes = [
     name: 'counterparties.view',
     meta: {
       role: ['admin', 'realtor'],
+      layout: 'admin',
     },
     component: () => import('@/views/Counterparties/CounterpartyView'),
   },

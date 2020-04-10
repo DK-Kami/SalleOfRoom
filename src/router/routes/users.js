@@ -6,6 +6,7 @@ const routes = [
     name: 'users.list',
     meta: {
       role: 'admin',
+      layout: 'admin',
     },
     component: () => import('@/views/Users/UsersList'),
   },
@@ -14,6 +15,7 @@ const routes = [
     name: 'users.create',
     meta: {
       role: 'admin',
+      layout: 'admin',
     },
     component: () => import('@/views/Users/UsersModify'),
   },
@@ -22,6 +24,7 @@ const routes = [
     name: 'users.edit',
     meta: {
       role: 'admin',
+      layout: 'admin',
     },
     component: () => import('@/views/Users/UsersModify'),
   },

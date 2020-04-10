@@ -6,6 +6,7 @@ const routes = [
     name: 'realtors.list',
     meta: {
       role: 'admin',
+      layout: 'admin',
     },
     component: () => import('@/views/Realtors/RealtorsList'),
   },
@@ -14,6 +15,7 @@ const routes = [
     name: 'realtors.view',
     meta: {
       role: ['admin', 'realtor'],
+      layout: 'admin',
     },
     component: () => import('@/views/Realtors/RealtorsView'),
   },
