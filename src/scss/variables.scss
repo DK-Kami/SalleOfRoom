@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,700,900&display=swap&subset=cyrillic')
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,700,900&display=swap&subset=cyrillic');
 
-$heading-font-family: 'Montserrat'
-$body-font-family: 'Montserrat'
-$title-font: 'Montserrat'
+$heading-font-family: 'Montserrat';
+$body-font-family: 'Montserrat';
+$title-font: 'Montserrat';
 
-$border-radius-root: 0px
-$font-size-root: 16px
+$border-radius-root: 0px;
+$font-size-root: 16px;
 
-map-deep-merge(
+$headings: (
   (
     'h1': (
       'size': 6rem,
@@ -94,5 +94,4 @@ map-deep-merge(
       'font-family': $body-font-family
     )
   ),
-  $headings
-);
+)
