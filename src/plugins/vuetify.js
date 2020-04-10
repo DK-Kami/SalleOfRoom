@@ -13,11 +13,14 @@ export default new Vuetify({
         accent: '#FFB800',
         warning: '#fe891f',
 
+        success: '#4CAF50',
         error: '#FF5252',
         info: '#2196F3',
-        success: '#4CAF50',
       },
     },
+  },
+  options: {
+    customProperties: true,
   },
   lang: {
     locales: { ru },
