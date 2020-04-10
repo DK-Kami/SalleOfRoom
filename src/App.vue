@@ -44,14 +44,6 @@ export default {
 </script>
 
 <style lang="sass">
-@import url('https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,700&display=swap&subset=cyrillic')
-$body-font-family: 'Montserrat'
-$title-font: 'Montserrat'
-
-.v-application
-  font-family: $body-font-family, sans-serif !important
-  .title
-    font-family: $title-font, sans-serif !important
 
 
 .v-card,
