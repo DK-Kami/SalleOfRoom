@@ -30,7 +30,7 @@
                   :key="index"
                   column
                 >
-                  <div class="footer__item">{{ item.title }}</div>
+                  <div class="footer__item mb-2">{{ item.title }}</div>
 
                   <div v-for="text in item.discribe">
                     <a class="grey--text text--lighten-2" :href="text.to || item.to">{{ text.title || text }}</a>
