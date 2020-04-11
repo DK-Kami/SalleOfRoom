@@ -97,4 +97,9 @@ export default {
 .v-divider
   border: 1px solid #60697C
 
+.headline
+  font-size: 18px
+.display-1
+  font-size: 28px
+
 </style>

@@ -9,17 +9,21 @@
         </v-slide-y-transition>
       </v-layout>
     </v-container>
+
+    <the-footer />
   </v-content>
 </template>
 
 <script>
 import TheToolbar from './TheToolbar';
+import TheFooter from './TheFooter';
 
 export default {
   name: 'NonPrivatelayout',
 
   components: {
     TheToolbar,
+    TheFooter,
   },
 };
 </script>

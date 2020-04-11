@@ -13,7 +13,7 @@
       >Продажа</v-btn>
 
       <v-btn
-        to="/buy/list"
+        to="/sale/list"
         class="subtitle-1 elevation-0"
         text
       >Аренда</v-btn>
