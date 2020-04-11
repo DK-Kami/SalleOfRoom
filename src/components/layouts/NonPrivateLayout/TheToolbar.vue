@@ -2,40 +2,46 @@
   <v-app-bar color="white" class="toolbar" flat>
     <template class="cursor--pointer">
       <v-img src="/logo.png" max-width="60px" contain />
-      <span class="headline ml-3">Маяк</span>
+      <span class="display-1 ml-3">Маяк</span>
     </template>
 
     <v-toolbar-items class="ml-6">
       <v-btn
         to="/sale/list"
-        class="body-2"
+        class="subtitle-1 elevation-0"
         text
       >Продажа</v-btn>
 
       <v-btn
         to="/buy/list"
-        class="body-2"
+        class="subtitle-1 elevation-0"
         text
       >Аренда</v-btn>
 
       <v-btn
         to="/services"
-        class="body-2"
+        class="subtitle-1 elevation-0"
         text
       >Услуги</v-btn>
 
       <v-btn
         to="/about"
-        class="body-2"
+        class="subtitle-1 elevation-0"
         text
       >О нас</v-btn>
 
       <v-btn
         to="/contacts"
-        class="body-2"
+        class="subtitle-1 elevation-0"
         text
       >Контакты</v-btn>
     </v-toolbar-items>
+
+    <v-spacer />
+    <span class="mr-3">+7 (926) 811-11-18</span>
+    <v-btn to="favorite" style="background-color: #fff;">
+      <v-icon class="grey--text text--darken-1">mdi-heart-outline</v-icon>
+    </v-btn>
   </v-app-bar>
 </template>
 
