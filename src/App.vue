@@ -87,4 +87,14 @@ export default {
 .v-btn
   border: 0.5px solid #C7C7C7
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12) !important
+
+.v-application--wrap
+  a
+    text-decoration: none
+  .v-content
+    padding: 0 !important
+
+.v-divider
+  border: 1px solid #60697C
+
 </style>
