@@ -83,4 +83,8 @@ export default {
 
 .no-select
   user-select: none
+
+.v-btn
+  border: 0.5px solid #C7C7C7
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12) !important
 </style>
