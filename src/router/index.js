@@ -28,6 +28,14 @@ const routes = [
   ...saleRoutes,
 
   {
+    path: '/',
+    name: 'main',
+    meta: {
+      header: 'main.png',
+    },
+    component: () => import('@/views/MainPage'),
+  },
+  {
     path: '/favorite',
     name: 'favorite',
     component: () => import('@/views/FavoritePage'),
@@ -35,6 +43,9 @@ const routes = [
   {
     path: '/about',
     name: 'about',
+    meta: {
+      header: 'about.png',
+    },
     component: () => import('@/views/AboutPage'),
   },
   {
@@ -45,21 +56,33 @@ const routes = [
   {
     path: '/job',
     name: 'job',
+    meta: {
+      header: 'job.png',
+    },
     component: () => import('@/views/JobPage'),
   },
   {
     path: '/reviews',
     name: 'reviews',
+    meta: {
+      header: 'reviews.png',
+    },
     component: () => import('@/views/ReviewsPage'),
   },
   {
     path: '/privacy',
     name: 'privacy',
+    meta: {
+      header: 'condition.png',
+    },
     component: () => import('@/views/PrivacyPage'),
   },
   {
     path: '/condition',
     name: 'condition',
+    meta: {
+      header: 'condition.png',
+    },
     component: () => import('@/views/ConditionPage'),
   },
 
@@ -77,7 +100,7 @@ const routes = [
     name: 'ping',
   },
   {
-    path: '/',
+    path: '/*',
     redirect: '/login',
   },
 ];
