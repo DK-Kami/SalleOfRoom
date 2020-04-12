@@ -43,7 +43,7 @@ export default {
 };
 </script>
 
-<style lang="sass">
+<style lang="scss">
 .v-card,
 .v-stepper,
 .custom-elevation,
@@ -55,50 +55,75 @@ export default {
 .v-expansion-panel-header,
 .v-expansion-panel-content,
 .v-expansion-panel::before,
-.v-data-table
-  box-shadow: none !important
+.v-data-table {
+  box-shadow: none !important;
+}
 
-.v-card, .v-expansion-panel
+.v-card, .v-expansion-panel {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1) !important
+}
 
-.v-data-table
+.v-data-table {
   background: transparent !important
+}
 
-.v-application .elevation-0
+.v-application .elevation-0 {
   border: none !important
+}
 
-.elevation-custom
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1)
+.elevation-custom {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   border: none !important
+}
 
-.cursor--pointer
+.cursor--pointer {
   cursor: pointer
+}
 
-.v-navigation-drawer
+.v-navigation-drawer {
   pointer-events: inherit
+}
 
-.no-select
+.no-select {
   user-select: none
+}
 
-.v-btn
-  border: 0.5px solid #C7C7C7
+.v-btn {
+  border: 0.5px solid #C7C7C7;
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12) !important
+}
 
-.v-application--wrap
-  a
+.v-application--wrap {
+  a {
     text-decoration: none
-  .v-content
+  }
+  .v-content {
     padding: 0 !important
+  }
+}
 
-.v-divider
+.v-divider {
   border: 1px solid #60697C
+}
 
-.headline
+.subtitle {
   font-size: 18px
-.display-1
+}
+.display-1 {
   font-size: 28px
-.main_title
-  font-size: 40px
+}
+.main_title {
+  font-size: 40px;
   line-height: 49px
+}
+
+.text_content {
+  div {
+    margin-bottom: 20px
+  }
+  .list > span {
+    display: block;
+  }
+}
 
 </style>
