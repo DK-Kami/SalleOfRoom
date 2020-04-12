@@ -93,7 +93,7 @@ const footerItems = [
   {
     title: 'Контакты ',
     discribe: ['Вакансии'],
-    to: '/'
+    to: '/job'
   },
 ];
 
