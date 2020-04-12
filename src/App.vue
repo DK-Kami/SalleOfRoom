@@ -44,8 +44,6 @@ export default {
 </script>
 
 <style lang="sass">
-
-
 .v-card,
 .v-stepper,
 .custom-elevation,
@@ -61,9 +59,7 @@ export default {
   box-shadow: none !important
 
 .v-card, .v-expansion-panel
-  border: 1px solid #e6eef5 !important
-  border-radius: 6px !important
-  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.07) !important
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1) !important
 
 .v-data-table
   background: transparent !important
@@ -71,8 +67,8 @@ export default {
 .v-application .elevation-0
   border: none !important
 
-.elevation-3
-  box-shadow: 0 7px 15px rgba(0,0,0,.03) !important
+.elevation-custom
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1)
   border: none !important
 
 .cursor--pointer
@@ -101,5 +97,8 @@ export default {
   font-size: 18px
 .display-1
   font-size: 28px
+.main_title
+  font-size: 40px
+  line-height: 49px
 
 </style>
