@@ -45,6 +45,7 @@ const routes = [
     name: 'about',
     meta: {
       header: 'about.png',
+      title: 'Наш Маяк ориентир к Вашему процветанию в море недвижимости',
     },
     component: () => import('@/views/AboutPage'),
   },
@@ -58,6 +59,7 @@ const routes = [
     name: 'job',
     meta: {
       header: 'job.png',
+      title: 'Присоединяйся к нашей команде специалистов',
     },
     component: () => import('@/views/JobPage'),
   },
@@ -66,6 +68,7 @@ const routes = [
     name: 'reviews',
     meta: {
       header: 'reviews.png',
+      title: 'Отзывы',
     },
     component: () => import('@/views/ReviewsPage'),
   },
@@ -74,6 +77,7 @@ const routes = [
     name: 'privacy',
     meta: {
       header: 'condition.png',
+      title: 'Кофиденциальность',
     },
     component: () => import('@/views/PrivacyPage'),
   },
@@ -82,6 +86,7 @@ const routes = [
     name: 'condition',
     meta: {
       header: 'condition.png',
+      title: 'Условия',
     },
     component: () => import('@/views/ConditionPage'),
   },
