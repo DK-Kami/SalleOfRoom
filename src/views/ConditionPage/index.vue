@@ -240,7 +240,5 @@
 <script>
 export default {
   name: 'ConditionPage',
-
-  // 
 };
 </script>

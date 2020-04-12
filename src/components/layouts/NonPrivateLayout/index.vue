@@ -52,7 +52,7 @@ export default {
 
 <style lang="scss">
   .main__container {
-    margin-bottom: 250px;
+    margin-bottom: 325px;
   }
   .image__header {
     background-color: rgba(0, 0, 0);
