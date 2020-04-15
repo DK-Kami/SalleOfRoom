@@ -31,6 +31,7 @@ const routes = [
     path: '/',
     name: 'main',
     meta: {
+      title: 'Продажа и аренда недвижимости с Маяком',
       header: 'main.png',
     },
     component: () => import('@/views/MainPage'),
