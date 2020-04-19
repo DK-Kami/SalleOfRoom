@@ -1,8 +1,12 @@
 <template>
   <v-app-bar color="white" class="toolbar" flat>
     <template class="cursor--pointer">
-      <v-img src="/logo.png" max-width="60px" contain />
-      <span class="display-1 ml-3">Маяк</span>
+      <div class="logo" @click="openMain">
+        <v-img src="/logo.png" max-width="60px" contain />
+        <span class="display-1 ml-3">
+          <a href="/" class="black--text">Маяк</a>
+        </span>
+      </div>
     </template>
 
     <v-toolbar-items class="ml-6">
@@ -48,11 +52,21 @@
 <script>
 export default {
   name: 'TheToolbar',
+
+  methods: {
+    openMain() {
+      console.log('main');
+    }
+  },
 };
 </script>
 
-<style>
+<style lang="scss">
   .toolbar {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  .logo {
+    display: flex;
+    align-items: center;
   }
 </style>
