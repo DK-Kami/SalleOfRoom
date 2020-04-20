@@ -60,7 +60,7 @@ export default {
 }
 
 .v-card, .v-expansion-panel {
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1) !important
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1) !important;
 }
 
 .v-data-table {
