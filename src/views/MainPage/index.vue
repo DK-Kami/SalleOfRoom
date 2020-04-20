@@ -11,12 +11,17 @@
     <v-flex class="after--header">
       <after-header />
     </v-flex>
+
+    <v-flex>
+      <last-section />
+    </v-flex>
   </v-layout>
 </template>
 
 <script>
 import SearchBar from './SearchBar';
 import AfterHeader from './AfterHeader';
+import LastSection from './LastSection';
 
 export default {
   name: 'MainPage',
@@ -24,6 +29,7 @@ export default {
   components: {
     SearchBar,
     AfterHeader,
+    LastSection,
   },
 };
 </script>
