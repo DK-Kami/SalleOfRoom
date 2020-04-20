@@ -54,11 +54,8 @@ export default {
   .main__container {
     margin-bottom: 325px;
   }
-  .image__header {
-    background-color: rgba(0, 0, 0);
-    .v-image__image {
-      filter: opacity(30%);
-    }
+  .main_title {
+    z-index: 1;
   }
   .header__content {
     margin-top: -580px;
