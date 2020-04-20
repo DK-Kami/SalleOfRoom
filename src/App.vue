@@ -106,6 +106,9 @@ export default {
   border: 1px solid #60697C
 }
 
+.subheadline {
+  font-size: 20px
+}
 .subtitle {
   font-size: 18px
 }
