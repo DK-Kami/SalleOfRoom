@@ -12,6 +12,10 @@
       <after-header />
     </v-flex>
 
+    <v-flex mt-10>
+      <form-section />
+    </v-flex>
+
     <v-flex>
       <last-section />
     </v-flex>
@@ -21,6 +25,7 @@
 <script>
 import SearchBar from './SearchBar';
 import AfterHeader from './AfterHeader';
+import FormSection from './FormSection';
 import LastSection from './LastSection';
 
 export default {
@@ -29,6 +34,7 @@ export default {
   components: {
     SearchBar,
     AfterHeader,
+    FormSection,
     LastSection,
   },
 };
