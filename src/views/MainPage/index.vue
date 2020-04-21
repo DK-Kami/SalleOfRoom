@@ -1,14 +1,14 @@
 <template>
-  <v-layout column>
-    <v-flex class="white--text text-center headline main-subtitle pt-4 mb-12">
+  <v-layout wrap justify-center>
+    <v-flex class="white--text text-center headline main-subtitle pt-4 mb-12" xs12>
       Мы поможем найти место, которое вы полюбите
     </v-flex>
 
-    <v-flex class="white--text">
+    <v-flex class="white--text" xs8>
       <search-bar />
     </v-flex>
 
-    <v-flex class="after--header">
+    <v-flex class="after--header" xs8>
       <after-header />
     </v-flex>
 
@@ -16,7 +16,7 @@
       <form-section />
     </v-flex>
 
-    <v-flex>
+    <v-flex xs10>
       <last-section />
     </v-flex>
   </v-layout>

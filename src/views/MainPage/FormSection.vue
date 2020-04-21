@@ -5,8 +5,21 @@
         <div class="display-1 primary--text font-weight-medium text--lighten-3 text-center">
           Возьмём весь процесс на себя
         </div>
-        <div class="body-1 px-8 pt-8 text-center">
-          Маяк - высококлассное агенство недвижимости со штатом профессиональных сотрудников Маяк - это гарантия комфорта и безопасности Маяк - это помощь с важнейшим выбором
+        <div class="body-1 px-8 py-8 pb-12 mb-12 text-center">
+          Маяк - высококлассное агенство недвижимости со штатом профессиональных сотрудников <br>
+          Маяк - это гарантия комфорта и безопасности <br>
+          Маяк - это помощь с важнейшим выбором
+        </div>
+
+        <div
+          v-for="section in sections"
+          class="mb-6 px-12 form--section mb-12 pb-8"
+        >
+          <span class="form--section__line"></span>
+          <v-layout column class="form--section__content">
+            <div class="subheadline font-weight-medium">{{ section.title }}</div>
+            <div>{{ section.description }}</div>
+          </v-layout>
         </div>
       </v-flex>
 
@@ -63,6 +76,12 @@
 </template>
 
 <script>
+const sections = [
+  { title: 'Оценим вашу недвижимость',            description: 'Бесплатная экспертная оценка рыночной стоимости квартиры или комнаты для обмена или продажи' },
+  { title: 'Окажем юридическую помощь',           description: 'Экспертная проверка юридической чистоты объектов и бесплатные юридические консультации клиентов' },
+  { title: 'Проведём персональное сопровождение', description: 'Проведём переговоры с продавцом/покупателем и согласуем условия сделки' },
+];
+
 export default {
   name: 'FormSection',
 
@@ -72,6 +91,21 @@ export default {
     street: '',
     phone: '',
     area: '',
+
+    sections,
   }),
 };
 </script>
+
+<style lang="scss">
+  .form--section__line {
+    width: 70px;
+    padding-top: 55px;
+
+    border-right: 4px solid #FFB800;
+  }
+  .form--section__content {
+    margin-top: -80px;
+    margin-left: 30px;
+  }
+</style>
