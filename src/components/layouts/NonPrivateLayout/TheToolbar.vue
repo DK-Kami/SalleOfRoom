@@ -62,7 +62,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .toolbar {
+  .v-toolbar__content {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
   }
   .logo {
