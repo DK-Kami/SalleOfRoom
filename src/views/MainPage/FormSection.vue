@@ -11,7 +11,7 @@
         <v-img src="/main-form.png" />
       </div>
 
-      <v-flex xs5 style="z-index: 1">
+      <v-flex xs8 mt-5 style="z-index: 1">
         <div class="display-1 primary--text font-weight-medium text--lighten-3 text-center">
           Возьмём весь процесс на себя
         </div>
@@ -33,7 +33,7 @@
         </div>
       </v-flex>
 
-      <v-flex xs4 ml-10 px-5>
+      <!-- <v-flex xs4 ml-10 px-5>
         <v-card color="primary" class="pt-2 pb-4 px-2" dark>
           <v-card-title class="font-weight-regular">
             Узнайте рыночную стоимость и арендную ставку квартиры
@@ -80,7 +80,7 @@
             </v-btn>
           </v-card-actions>
         </v-card>
-      </v-flex>
+      </v-flex> -->
     </v-layout>
   <!-- </v-img> -->
 </template>
