@@ -4,14 +4,14 @@
       <v-card class="pa-6">
         <v-layout justify-space-between class="mb-6">
           <v-flex xs5>
-            <div class="headline font-weight-bold about_title">Кто мы</div>
+            <div class="headline font-weight-bold primary__title">Кто мы</div>
             <div class="subtitle">
               Маяк - это высококлассное риелторское агенство, занимающиеся всеми видами недвижимости Московской области, в частности, работаем в таких городах, как Видное, Домодедово и Новое Домодедово. Также мы предоставляем услуги по подбору зарубежной недвижимости. Для удобства наших клиентов мы сосредоточены на обеспечение всего процесса продажи и покупки.
             </div>
           </v-flex>
 
           <v-flex xs5>
-            <div class="headline font-weight-bold about_title">Зачем нам доверять</div>
+            <div class="headline font-weight-bold primary__title">Зачем нам доверять</div>
             <div class="subtitle">
               Прозрачность отношений с клиентами и индивидуальный подход к каждому из них - основа доверия к нашей компании. Наши менеджеры имеют большой опыт работы и мы гарантируем полную безопасность на протяжении всего процесса. Когда вы работаете с нами, вы можете быть уверены, что получаете доступ к профессионалам своего дела.
             </div>
@@ -20,14 +20,14 @@
 
         <v-layout justify-space-between>
           <v-flex xs5>
-            <div class="headline font-weight-bold about_title">Мы ценим Вас</div>
+            <div class="headline font-weight-bold primary__title">Мы ценим Вас</div>
             <div class="subtitle">
               У нас есть ясная и простая цель - хорошо обслуживать клиентов. Наши клиенты находятся в центре наших амбиций по созданию идеального агентства недвижимости. Мы с удовольствием работаем как с физическими, так и с юридическими лицами и решаем для своих клиентов задачи любой сложности: от подбора помещений до инвестиционного консалтинга и девелопмента.
             </div>
           </v-flex>
 
           <v-flex xs5>
-            <div class="headline font-weight-bold about_title">Перспективы</div>
+            <div class="headline font-weight-bold primary__title">Перспективы</div>
             <div class="subtitle">
               Маяк опирается на богатую и разнообразную историю риелторского дела. Путь, по которому идет компания сегодня, обеспечивает нам доверие клиентов в будущем. Мы быстро развиваемся и всегда готовы обсудить вопросы сотрудничества.
             </div>
@@ -102,12 +102,5 @@ export default {
 </script>
 
 <style lang="scss">
-  .about_title::after {
-    content: '';
-    background: #FFB800;
-    margin-bottom: 15px;
-    display: block;
-    width: 50px;
-    height: 4px;
-  }
+  
 </style>

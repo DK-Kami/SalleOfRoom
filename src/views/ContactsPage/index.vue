@@ -7,7 +7,7 @@
         <v-flex xs3>
           <v-card class="pa-8">
             <div class="subtitle font-weight-medium mb-2">Адрес офиса</div>
-            <div class="mb-2">Город Домодедово,  Улица 25 лет октября, дом 9</div>
+            <div class="mb-2">Город Домодедово, Улица 25 лет октября, дом 9</div>
             <div class="mb-2">пн-пт: 10:00–18:00 сб-вс: 11:00–15:00</div>
 
             <v-divider class="my-4" />
