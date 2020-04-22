@@ -106,6 +106,9 @@ export default {
   border: 1px solid #60697C !important;
 }
 
+.subheadline-1 {
+  font-size: 22px
+}
 .subheadline {
   font-size: 20px
 }
@@ -134,6 +137,15 @@ export default {
 }
 .absolute {
   position: absolute;
+}
+
+.primary__title::after {
+  content: '';
+  background: #FFB800;
+  margin-bottom: 15px;
+  display: block;
+  width: 50px;
+  height: 4px;
 }
 
 </style>
