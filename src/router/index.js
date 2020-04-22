@@ -51,6 +51,15 @@ const routes = [
     component: () => import('@/views/AboutPage'),
   },
   {
+    path: '/services',
+    name: 'services',
+    meta: {
+      header: 'services.png',
+      title: 'Маяк предоставляет первоклассные услуги для Вашего удобства',
+    },
+    component: () => import('@/views/ServicesPage'),
+  },
+  {
     path: '/contacts',
     name: 'contacts',
     component: () => import('@/views/ContactsPage'),
