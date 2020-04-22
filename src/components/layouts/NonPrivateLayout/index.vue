@@ -9,8 +9,8 @@
             :src="header"
             height="100%"
           >
-            <v-layout>
-              <v-flex xs12>
+            <v-layout justify-center>
+              <v-flex xs12 ms11 lg10 xl8>
                 <div class="text-center font-weight-medium main_title white--text mb-12">{{ title }}</div>
               </v-flex>
             </v-layout>
