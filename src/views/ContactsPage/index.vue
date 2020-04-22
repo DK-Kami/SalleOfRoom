@@ -1,5 +1,7 @@
 <template>
-  <div>ContactsPage</div>
+  <v-flex xs12>
+    da
+  </v-flex>
 </template>
 
 <script>

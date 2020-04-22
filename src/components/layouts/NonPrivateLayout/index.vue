@@ -13,10 +13,14 @@
 
         <v-flex key="content" :class="$vuetify.breakpoint.xs ? 'mt-0' : 'mt-6'" xs12 ms11 lg10 xl8>
           <v-slide-y-transition mode="out-in">
-            <v-layout column align-center :class="{ 'header__content' : header }">
-              <span v-if="header" class="main_title white--text mb-12">{{ title }}</span>
+            <v-layout align-center :class="{ 'header__content' : header }" wrap>
+              <v-flex xs12>
+                <span v-if="header" class="main_title white--text mb-12">{{ title }}</span>
+              </v-flex>
 
-              <router-view />
+              <v-flex xs12>
+                <router-view />
+              </v-flex>
             </v-layout>
           </v-slide-y-transition>
         </v-flex>
