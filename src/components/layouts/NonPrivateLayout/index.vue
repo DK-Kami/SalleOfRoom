@@ -8,16 +8,18 @@
           <v-img
             :src="header"
             height="100%"
-          ></v-img>
+          >
+            <v-layout>
+              <v-flex xs12>
+                <div class="text-center font-weight-medium main_title white--text mb-12">{{ title }}</div>
+              </v-flex>
+            </v-layout>
+          </v-img>
         </v-flex>
 
         <v-flex key="content" :class="$vuetify.breakpoint.xs ? 'mt-0' : 'mt-6'" xs12 ms11 lg10 xl8>
           <v-slide-y-transition mode="out-in">
             <v-layout align-center :class="{ 'header__content' : header }" wrap>
-              <v-flex xs12>
-                <span v-if="header" class="main_title white--text mb-12">{{ title }}</span>
-              </v-flex>
-
               <v-flex xs12>
                 <router-view />
               </v-flex>
@@ -59,9 +61,9 @@ export default {
     margin-bottom: 325px;
   }
   .main_title {
-    z-index: 1;
+    margin-top: 200px;
   }
   .header__content {
-    margin-top: -580px;
+    margin-top: -400px;
   }
 </style>

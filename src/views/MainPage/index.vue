@@ -46,6 +46,6 @@ export default {
     z-index: 1;
   }
   .after--header {
-    margin-top: 450px;
+    margin-top: 320px;
   }
 </style>
