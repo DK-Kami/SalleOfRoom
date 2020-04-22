@@ -1,22 +1,22 @@
 <template>
-  <v-layout wrap justify-center>
-    <v-flex class="white--text text-center headline main-subtitle pt-4 mb-12" xs12>
+  <v-layout column align-center>
+    <v-flex class="white--text text-center headline main-subtitle pt-4 mb-12">
       Мы поможем найти место, которое вы полюбите
     </v-flex>
 
-    <v-flex class="white--text" xs8>
+    <v-flex class="white--text">
       <search-bar />
     </v-flex>
 
-    <v-flex class="after--header" xs8>
+    <v-flex class="after--header" mb-10>
       <after-header />
     </v-flex>
 
-    <v-flex mt-10>
+    <v-flex my-12 py-12>
       <form-section />
     </v-flex>
 
-    <v-flex xs10>
+    <v-flex>
       <last-section />
     </v-flex>
   </v-layout>

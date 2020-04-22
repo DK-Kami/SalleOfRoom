@@ -129,4 +129,11 @@ export default {
   }
 }
 
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+
 </style>

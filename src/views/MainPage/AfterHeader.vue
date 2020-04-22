@@ -3,7 +3,7 @@
     <v-layout wrap>
       <v-flex xs4 d-flex>
         <v-card style="width: 100%">
-          <v-img src="/main-1.png" class="px-6 py-3 pb-7">
+          <v-img src="/main-1.png" lazy-src="/main-1.png" class="px-6 py-3 pb-7">
             <v-card color="transparent elevation-0 white--text d-flex align-end flex-column fill-height">
               <v-card-title class="headline" style="width: 100%">Жилая недвижимость</v-card-title>
 
@@ -55,7 +55,7 @@
             <v-layout wrap>
               <v-flex xs12>
                 <v-card style="width: 100%" ma-n1>
-                  <v-img src="/main-2.png" class="px-6 py-3">
+                  <v-img src="/main-2.png" lazy-src="/main-2.png" class="px-6 py-3">
                     <v-card color="transparent elevation-0 white--text v-layout column fill-height">
                       <v-card-title class="headline black--text font-weight-medium offer-title">
                         <div>Коммерческая недвижимость</div>
@@ -91,7 +91,7 @@
               
               <v-flex xs12>
                 <v-card style="width: 100%">
-                  <v-img src="/main-3.png" class="px-6 py-3">
+                  <v-img src="/main-3.png" lazy-src="/main-3.png" class="px-6 py-3">
                     <v-card color="transparent elevation-0 white--text v-layout column fill-height">
                       <v-card-title class="headline white--text font-weight-medium offer-title">
                         <div>Зарубежная недвижимость</div>
@@ -124,7 +124,7 @@
 
           <v-flex xs4 child-flex d-flex>
             <v-card style="width: 100%">
-              <v-img src="/main-4.png" class="white--text">
+              <v-img src="/main-4.png" lazy-src="/main-4.png" class="white--text">
                 <v-layout fill-height align-center justify-center column>
                   <div class="headline font-weight-medium">Поиск на карте</div>
                   <div class="body-2 mt-1 mb-6">Быстро, удобно, всё видно</div>

@@ -1,7 +1,17 @@
 <template>
-  <v-img src="/main-form.png">
-    <v-layout justify-center align-center fill-height>
-      <v-flex xs4>
+  <!-- <v-img
+    lazy-src="/main-form.png"
+    src="/main-form.png"
+    key="formImage"
+    rel="preload"
+    width="100%"
+  > -->
+    <v-layout class="relative" justify-center align-center fill-height>
+      <div class="absolute">
+        <v-img src="/main-form.png" />
+      </div>
+
+      <v-flex xs5 style="z-index: 1">
         <div class="display-1 primary--text font-weight-medium text--lighten-3 text-center">
           Возьмём весь процесс на себя
         </div>
@@ -23,7 +33,7 @@
         </div>
       </v-flex>
 
-      <v-flex xs3 ml-10 px-5>
+      <v-flex xs4 ml-10 px-5>
         <v-card color="primary" class="pt-2 pb-4 px-2" dark>
           <v-card-title class="font-weight-regular">
             Узнайте рыночную стоимость и арендную ставку квартиры
@@ -72,7 +82,7 @@
         </v-card>
       </v-flex>
     </v-layout>
-  </v-img>
+  <!-- </v-img> -->
 </template>
 
 <script>
