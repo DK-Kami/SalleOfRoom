@@ -148,4 +148,21 @@ export default {
   height: 4px;
 }
 
+.primary-list {
+  padding: 20px 50px;
+}
+.primary-list__item {
+  padding: 20px 0;
+}
+.primary-list__item::before {
+  content: '';
+  border-radius: 10px;
+  margin-bottom: -15px;
+  margin-left: -20px;
+  display: block;
+  height: 6px;
+  width: 6px;
+
+  background: #192541;
+}
 </style>

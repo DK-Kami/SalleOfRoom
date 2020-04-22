@@ -5,6 +5,12 @@
         <slot name="title">
           <div class="title">{{ title }}</div>
         </slot>
+        <template #actions>
+          <v-layout align-center>
+            <!-- {{ value ? 'Скрыть' : 'Подробнее' }} -->
+            <v-icon color="accent">$expand</v-icon>
+          </v-layout>
+        </template>
       </v-expansion-panel-header>
 
       <v-expansion-panel-content>
