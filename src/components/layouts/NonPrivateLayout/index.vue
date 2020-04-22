@@ -61,9 +61,9 @@ export default {
     margin-bottom: 325px;
   }
   .main_title {
-    margin-top: 200px;
+    margin-top: 150px;
   }
   .header__content {
-    margin-top: -400px;
+    margin-top: -460px;
   }
 </style>
