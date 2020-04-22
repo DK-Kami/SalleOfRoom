@@ -102,8 +102,8 @@ export default {
   }
 }
 
-.v-divider {
-  border: 1px solid #60697C
+.primary-divider {
+  border: 1px solid #60697C !important;
 }
 
 .subheadline {

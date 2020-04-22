@@ -12,31 +12,31 @@
     <v-toolbar-items class="ml-6">
       <v-btn
         to="/sale/list"
-        class="subtitle-1 elevation-0"
+        class="subtitle-1 elevation-0 text-capitalize mx-4"
         text
       >Продажа</v-btn>
 
       <v-btn
         to="/sale/list"
-        class="subtitle-1 elevation-0"
+        class="subtitle-1 elevation-0 text-capitalize mx-4"
         text
       >Аренда</v-btn>
 
       <v-btn
         to="/services"
-        class="subtitle-1 elevation-0"
+        class="subtitle-1 elevation-0 text-capitalize mx-4"
         text
       >Услуги</v-btn>
 
       <v-btn
         to="/about"
-        class="subtitle-1 elevation-0"
+        class="subtitle-1 elevation-0 text-capitalize mx-4"
         text
       >О нас</v-btn>
 
       <v-btn
         to="/contacts"
-        class="subtitle-1 elevation-0"
+        class="subtitle-1 elevation-0 text-capitalize mx-4"
         text
       >Контакты</v-btn>
     </v-toolbar-items>
