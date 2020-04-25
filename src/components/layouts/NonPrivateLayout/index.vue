@@ -17,7 +17,7 @@
           </v-img>
         </v-flex>
 
-        <v-flex key="content" :class="$vuetify.breakpoint.xs ? 'mt-0' : 'mt-6'" xs12 ms11 lg10 xl8>
+        <v-flex key="content" :class="currentClasses">
           <v-slide-y-transition mode="out-in">
             <v-layout align-center :class="{ 'header__content' : header }" wrap>
               <v-flex xs12>
@@ -52,6 +52,17 @@ export default {
     title() {
       return this.$route.meta && this.$route.meta.title;
     },
+
+    currentClasses() {
+      const classes = [];
+      classes.push(this.$vuetify.breakpoint.xs ? 'mt-0' : 'mt-6');
+      classes.push(
+        this.$route.name && this.$route.name.match(/sale|rent/)
+        ? 'xs12'
+        : 'xs12 ms11 lg10 xl8'
+      );
+      return classes;
+    }
   },
 };
 </script>
