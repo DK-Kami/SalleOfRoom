@@ -2,7 +2,7 @@
   <v-card>
     <v-layout class="main-search__items">
       <v-select
-        v-model="transactionType"
+        v-model="searchData.transactionType"
         :items="transactionTypes"
         append-icon="mdi-chevron-down"
         class="primary--select"
@@ -10,7 +10,7 @@
         hide-details
       />
       <v-select
-        v-model="roomType"
+        v-model="searchData.roomType"
         :items="roomTypes"
         append-icon="mdi-chevron-down"
         class="primary--select"
@@ -19,13 +19,14 @@
       />
 
       <v-select
-        v-model="roomCount"
+        v-model="searchData.roomCount"
         :items="roomCounts"
         append-icon="mdi-chevron-down"
         class="primary--select"
         label="Кол-во комнат"
         height="50px"
         hide-details
+        single-line
       />
 
       <v-menu
@@ -51,14 +52,14 @@
           <v-layout justify-space-between>
             <v-flex xs5>
               <v-text-field
-                v-model="priceFrom"
+                v-model="searchData.priceFrom"
                 label="от"
                 suffix="₽"
               />
             </v-flex>
             <v-flex xs5>
               <v-text-field
-                v-model="priceTo"
+                v-model="searchData.priceTo"
                 label="до"
                 suffix="₽"
               />
@@ -68,8 +69,8 @@
       </v-menu>
 
       <v-autocomplete
-        v-model="address"
-        :items="addresses"
+        v-model="searchData.city"
+        :items="cities"
         append-icon="mdi-chevron-down"
         prepend-icon="mdi-map-marker"
         class="primary--select"
@@ -85,42 +86,22 @@
 </template>
 
 <script>
-const transactionTypes = [
-  { value: 'buy',     text: 'Купить' },
-  { value: 'takeOff', text: 'Снять' },
-];
-
-const roomTypes = [
-  { value: 'room',      text: 'Квартира'  },
-  { value: 'studio',    text: 'Студия'    },
-  { value: 'house',     text: 'Дом'       },
-  { value: 'townhouse', text: 'Таунхауз'  },
-];
-
-const roomCounts = [
-  '1', '2', '3', '4', '5', '6', '6+',
-];
-
-const addresses = [
-  { value: 'dmd', text: 'Домодедово' },
-];
+import {
+  mapGetters,
+} from 'vuex';
 
 export default {
   name: 'SearchBar',
 
-  data: () => ({
-    transactionTypes,
-    roomCounts,
-    roomTypes,
-    addresses,
-
-    transactionType: 'buy',
-    roomType: 'room',
-    address: 'dmd',
-    roomCount: '',
-    priceFrom: '',
-    priceTo: '',
-  }),
+  computed: {
+    ...mapGetters ({
+      transactionTypes: 'searchTypes/getTransactionTypes',
+      roomCounts: 'searchTypes/getRoomCounts',
+      roomTypes: 'searchTypes/getRoomTypes',
+      cities: 'searchTypes/getCities',
+      searchData: 'searchTypes/getSearchData',
+    }),
+  },
 
   watch: {
     roomType(newVal) {
