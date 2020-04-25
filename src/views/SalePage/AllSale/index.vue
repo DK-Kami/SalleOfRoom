@@ -1,8 +1,17 @@
 <template>
-  <div>
+  <v-layout column>
     <v-divider />
     <sort-bar :view.sync="view" :is-favorite="isFavorite" />
-  </div>
+
+    <v-layout v-if="view === 'map'">
+      <v-flex xs5></v-flex>
+      <v-flex xs6></v-flex>
+    </v-layout>
+
+    <template v-if="view === 'list'">
+      <div class="headline font-weight-bold px-6">Продажа квартир в Домодедово</div>
+    </template>
+  </v-layout>
 </template>
 
 <script>
@@ -16,7 +25,7 @@ export default {
   },
 
   data: () => ({
-    view: 'map',
+    view: 'list',
   }),
 
   computed: ({
