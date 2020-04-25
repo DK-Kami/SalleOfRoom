@@ -1,7 +1,7 @@
 <template>
   <v-layout justify-center mt-12>
     <v-flex xs11>
-      <v-card class="pa-6">
+      <v-card class="pa-8">
         <v-layout justify-space-between class="mb-6">
           <v-flex xs5>
             <div class="headline font-weight-bold primary__title">Кто мы</div>

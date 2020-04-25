@@ -1,5 +1,5 @@
 <template>
-  <v-layout justify-center wrap>
+  <v-layout justify-center wrap mt-12>
     <v-flex xs11>
       <v-card class="pa-8">
         <v-layout justify-space-between>
