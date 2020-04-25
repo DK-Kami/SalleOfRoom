@@ -17,7 +17,7 @@
       >Продажа</v-btn>
 
       <v-btn
-        to="/sale/list"
+        to="/rent/list"
         class="subtitle-1 elevation-0 text-capitalize mx-4"
         text
       >Аренда</v-btn>

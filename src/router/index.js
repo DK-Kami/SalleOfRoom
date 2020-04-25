@@ -8,6 +8,7 @@ import realtiesRoutes from './routes/realties';
 import realtorsRoutes from './routes/realtors';
 import usersRoutes from './routes/users';
 import saleRoutes from './routes/sale';
+import rentRoutes from './routes/rent';
 
 Vue.use(VueRouter);
 
@@ -26,6 +27,7 @@ const routes = [
   ...realtorsRoutes,
   ...usersRoutes,
   ...saleRoutes,
+  ...rentRoutes,
 
   {
     path: '/',
