@@ -17,7 +17,6 @@
         <v-layout class="px-3">
           <v-select
             v-model="realty.counterpartyId"
-            
             :items="counterparty"
             label="Контрагент"
             item-text="displayName"
@@ -90,6 +89,13 @@
         item-text="Name"
         item-value="Id"
       />
+
+      <v-select
+        v-model="realty.dealStatus"
+        :rules="[rulesList.required]"
+        :items="dealStatuses"
+        label="Тип сделки"
+      />
     </v-card-text>
   </v-card>
 </template>
@@ -119,6 +125,7 @@ export default {
 
     this.loadCounterparty();
     this.loadWallMaterial();
+    this.loadDealStatuses();
     this.loadCategory();
     this.loadRealtor();
   },
@@ -132,6 +139,7 @@ export default {
   computed: {
     ...mapGetters({
       currentCounterparty: 'counterparties/getCounterparty',
+      dealStatuses: 'types/getDealStatuses',
       wallMaterial: 'types/getWallMaterial',
       category: 'types/getCategory',
       realty: 'realties/getRealty',
@@ -180,6 +188,9 @@ export default {
     },
     async loadWallMaterial() {
       await this.$store.dispatch('types/loadWallMaterial');
+    },
+    async loadDealStatuses() {
+      await this.$store.dispatch('types/loadDealStatuses');
     },
     async loadCategory() {
       await this.$store.dispatch('types/loadCategory');

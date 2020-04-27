@@ -60,27 +60,27 @@
             justify-space-around
             wrap
           >
-            <v-flex xs12 lg6 class="pa-0">
+            <v-flex xs12 lg6>
               <types-form />
             </v-flex>
 
-            <v-flex xs12 lg6 class="pa-0">
+            <v-flex xs12 lg6>
               <measuring-form />
             </v-flex>
 
-            <v-flex xs12 lg6 class="pa-0">
+            <v-flex xs12 lg6>
               <address-form />
             </v-flex>
 
-            <v-flex xs12 lg6 class="pa-0">
+            <v-flex xs12 lg6>
               <huita-form />
             </v-flex>
 
-            <v-flex xs12 lg6 class="pa-0">
+            <v-flex xs12 lg6>
               <map-form />
             </v-flex>
 
-            <v-flex xs12 lg6 class="pa-0">
+            <v-flex xs12 lg6>
               <photos-form />
             </v-flex>
           </v-layout>

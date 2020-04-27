@@ -20,6 +20,8 @@ const initialRealty = () => ({
   categoryId: '',
   realtorId: '',
 
+  dealStatus: '',
+
   houseNumber: '',
   kitchenArea: '',
   flatNumber: '',
@@ -87,6 +89,8 @@ export const mutations = {
     state.realty.repairs           = realty.Repairs;
     state.realty.header            = realty.Header;
     state.realty.status            = realty.Status;
+
+    state.realty.dealStatus        = realty.DealStatus;
 
     state.realty.transactionType   = realty.TransactionType;
     state.realty.transactionTypeId = realty.TransactionType && realty.TransactionType.Id;
@@ -180,6 +184,8 @@ export const actions = {
         Header:            state.realty.header,
         Status:            state.realty.status,
 
+        DealStatus:        state.realty.dealStatus,
+
         TransactionTypeId: state.realty.transactionTypeId,
         CounterpartyId:    state.realty.counterpartyId,
         WallMaterialId:    state.realty.wallMaterialId,
@@ -233,6 +239,8 @@ export const actions = {
         Repairs:           state.realty.repairs,
         Header:            state.realty.header,
         Status:            state.realty.status,
+
+        DealStatus:        state.realty.dealStatus,
 
         TransactionTypeId: state.realty.transactionTypeId,
         CounterpartyId:    state.realty.counterpartyId,
