@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar color="white" class="toolbar" flat>
+  <v-app-bar color="white" class="main--toolbar" flat>
     <template class="cursor--pointer">
       <div class="logo" @click="openMain">
         <v-img src="/logo.png" max-width="60px" contain />
@@ -62,8 +62,10 @@ export default {
 </script>
 
 <style lang="scss">
-  .v-toolbar__content {
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+  .main--toolbar {
+    .v-toolbar__content {
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+    }
   }
   .logo {
     display: flex;

@@ -17,7 +17,7 @@
             v-if="currentRole(item.roles)"
             :key="item.path"
             :to="item.path"
-            class="px-3"
+            class="px-3 elevation-0"
             large
             text
           >
@@ -28,7 +28,7 @@
 
         <v-btn
           @click.stop="logout"
-          class="px-3"
+          class="px-3 elevation-0"
           large
           text
         >
