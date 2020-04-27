@@ -92,7 +92,6 @@
 
       <v-select
         v-model="realty.dealStatus"
-        :rules="[rulesList.required]"
         :items="dealStatuses"
         label="Тип сделки"
       />

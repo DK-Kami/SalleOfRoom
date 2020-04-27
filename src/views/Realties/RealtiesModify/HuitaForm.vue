@@ -16,9 +16,7 @@
           <v-select
             v-model="realty.repairs"
             :items="repairs"
-            item-value="Value"
             label="Ремонт"
-            item-text="Text"
           />
         </v-flex>
 

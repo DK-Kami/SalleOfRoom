@@ -83,6 +83,10 @@
             <v-flex xs12 lg6>
               <photos-form />
             </v-flex>
+
+            <v-flex xs12>
+              <services-form />
+            </v-flex>
           </v-layout>
 
           <template #actions>
@@ -102,11 +106,13 @@
 <script>
 import FormBase from '@/components/base/FormBase';
 import MeasuringForm from './MeasuringForm';
+import ServicesForm from './ServicesForm';
 import AddressForm from './AddressForm';
 import PhotosForm from './PhotosForm';
 import TypesForm from './TypesForm';
 import HuitaForm from './HuitaForm';
 import MapForm from './MapForm';
+
 
 import { mask } from 'vue-the-mask';
 
@@ -115,6 +121,7 @@ export default {
 
   components: {
     MeasuringForm,
+    ServicesForm,
     AddressForm,
     PhotosForm,
     TypesForm,

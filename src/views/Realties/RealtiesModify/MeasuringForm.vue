@@ -64,8 +64,6 @@
             v-model="realty.readyState"
             :rules="[rulesList.required]"
             :items="readyStates"
-            item-value="Value"
-            item-text="Text"
             label="Статус недвижимости"
           />
         </v-flex>
@@ -73,9 +71,7 @@
           <v-select
             v-model="realty.roomType"
             :items="roomTypes"
-            item-value="Value"
             label="Тип комнат"
-            item-text="Text"
           />
         </v-flex>
 
@@ -91,9 +87,7 @@
           <v-select
             v-model="realty.status"
             :items="estateStates"
-            item-value="Value"
             label="Состояние"
-            item-text="Text"
           />
         </v-flex>
       </v-layout>
