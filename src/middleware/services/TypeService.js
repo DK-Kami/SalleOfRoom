@@ -20,6 +20,9 @@ export default {
   loadRoomType() {
     return this.apiClient.get('service/room-type');
   },
+  loadDealStatuses() {
+    return this.apiClient.get('service/deal-statuses');
+  },
   loadModels() {
     return {
       data: [

@@ -4,6 +4,7 @@ const { TypeService } = services;
 export const initialState = () => ({
   estateStates: [],
   wallMaterial: [],
+  dealStatuses: [],
   transaction: [],
   roomTypes: [],
   category: [],
@@ -15,6 +16,7 @@ export const initialState = () => ({
 export const mutations = {
   SET_ESTATE_STATES: (state, estateStates) => state.estateStates = estateStates,
   SET_WALL_MATERIAL: (state, wallMaterial) => state.wallMaterial = wallMaterial,
+  SET_DEAL_STATUSES: (state, dealStatuses) => state.dealStatuses = dealStatuses,
   SET_TRANSACTION: (state, transaction) => state.transaction = transaction,
   SET_ROOM_TYPES: (state, roomTypes) => state.roomTypes = roomTypes,
   SET_CATEGORY: (state, category) => state.category = category,
@@ -27,6 +29,10 @@ export const actions = {
   async loadWallMaterial({ commit }) {
     const data = (await TypeService.loadWallMaterial()).data;
     commit('SET_WALL_MATERIAL', data);
+  },
+  async loadDealStatuses({ commit }) {
+    const data = (await TypeService.loadDealStatuses()).data;
+    commit('SET_DEAL_STATUSES', data);
   },
   async loadTransaction({ commit }) {
     const data = (await TypeService.loadTransaction()).data;
@@ -65,6 +71,7 @@ export const actions = {
 export const getters = {
   getEstateStates: state => state.estateStates,
   getWallMaterial: state => state.wallMaterial,
+  getDealStatuses: state => state.dealStatuses,
   getTransaction: state => state.transaction,
   getRoomTypes: state => state.roomTypes,
   getCategory: state => state.category,
