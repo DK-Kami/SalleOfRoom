@@ -23,6 +23,36 @@
     </top-bar>
 
     <v-flex xs12 class="my-4 px-4">
+      <v-dialog max-width="600px">
+        <template #activator="{ on }">
+          <v-btn
+            text
+            v-on="on"
+          >
+            Фиды для выгрузки
+          </v-btn>
+        </template>
+
+        <v-card class="pa-6">
+          <div class="mt-2">
+            ДомКлик: 
+            <a href="https://mayak-reality.com/v1/api/feed/dom-click">https://mayak-reality.com/v1/api/feed/dom-click</a>
+          </div>
+          <div class="mt-2">
+            Мир квартир:
+            <a href="https://mayak-reality.com/v1/api/feed/mir-kvartir">https://mayak-reality.com/v1/api/feed/mir-kvartir</a>
+          </div>
+          <div class="mt-2">
+            Где этот дом:
+            <a href="https://mayak-reality.com/v1/api/feed/gde-etot-dom">https://mayak-reality.com/v1/api/feed/gde-etot-dom</a>
+          </div>
+          <div class="mt-2">
+            Рестат:
+            <a href="https://mayak-reality.com/v1/api/feed/restat">https://mayak-reality.com/v1/api/feed/restat</a>
+          </div>
+        </v-card>
+      </v-dialog>
+
       <realties-filters @apply-filters="applyFilters" />
     </v-flex>
 
