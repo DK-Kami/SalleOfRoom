@@ -95,6 +95,20 @@
         :items="dealStatuses"
         label="Тип сделки"
       />
+
+      <div class="title mb-2">Ссылки на фиды:</div>
+      <div>
+        <a href="https://mayak-reality.com/v1/api/feed/dom-click">ДомКлик</a>
+      </div>
+      <div>
+        <a href="https://mayak-reality.com/v1/api/feed/mir-kvartir">Мир квартир</a>
+      </div>
+      <div>
+        <a href="https://mayak-reality.com/v1/api/feed/gde-etot-dom">Где этот дом</a>
+      </div>
+      <div>
+        <a href="https://mayak-reality.com/v1/api/feed/restat">Рестат</a>
+      </div>
     </v-card-text>
   </v-card>
 </template>
