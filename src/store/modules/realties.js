@@ -22,6 +22,9 @@ const initialRealty = () => ({
 
   dealStatus: '',
   onDomClick: '',
+  onRestat: '',
+  onMirKvartir: '',
+  onGdeEtotDom: '',
 
   houseNumber: '',
   kitchenArea: '',
@@ -93,6 +96,9 @@ export const mutations = {
 
     state.realty.dealStatus        = realty.DealStatus;
     state.realty.onDomClick        = realty.OnDomClick;
+    state.realty.onRestat          = realty.OnRestat;
+    state.realty.onMirKvartir      = realty.OnMirKvartir;
+    state.realty.onGdeEtotDom      = realty.OnGdeEtotDom;
 
     state.realty.transactionType   = realty.TransactionType;
     state.realty.transactionTypeId = realty.TransactionType && realty.TransactionType.Id;
@@ -188,6 +194,9 @@ export const actions = {
 
         DealStatus:        state.realty.dealStatus,
         OnDomClick:        state.realty.onDomClick,
+        OnRestat:          state.realty.onRestat,
+        OnMirKvartir:      state.realty.onMirKvartir,
+        OnGdeEtotDom:      state.realty.onGdeEtotDom,
 
         TransactionTypeId: state.realty.transactionTypeId,
         CounterpartyId:    state.realty.counterpartyId,
@@ -245,6 +254,9 @@ export const actions = {
 
         DealStatus:        state.realty.dealStatus,
         OnDomClick:        state.realty.onDomClick,
+        OnRestat:          state.realty.onRestat,
+        OnMirKvartir:      state.realty.onMirKvartir,
+        OnGdeEtotDom:      state.realty.onGdeEtotDom,
 
         TransactionTypeId: state.realty.transactionTypeId,
         CounterpartyId:    state.realty.counterpartyId,
