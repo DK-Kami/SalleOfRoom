@@ -23,7 +23,7 @@
     </top-bar>
 
     <v-flex xs12 class="my-4 px-4">
-      <v-dialog max-width="600px">
+      <v-dialog max-width="600px" v-if="isAdmin">
         <template #activator="{ on }">
           <v-btn
             text
@@ -33,7 +33,7 @@
           </v-btn>
         </template>
 
-        <v-card class="pa-6">
+        <v-card class="pa-6" v-if="">
           <div class="mt-2">
             ДомКлик: 
             <a href="https://mayak-reality.com/v1/api/feed/dom-click">https://mayak-reality.com/v1/api/feed/dom-click</a>
@@ -117,6 +117,10 @@ export default {
   }),
 
   computed: {
+    isAdmin() {
+      this.$store.getters['auth/getUserRole'] === 'admin';
+    },
+
     realties() {
       return this.$store.getters['realties/getRealties'](false);
     },
