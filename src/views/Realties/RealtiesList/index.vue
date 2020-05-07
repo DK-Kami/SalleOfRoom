@@ -118,7 +118,7 @@ export default {
 
   computed: {
     isAdmin() {
-      this.$store.getters['auth/getUserRole'] === 'admin';
+      return this.$store.getters['auth/getUserRole'] === 'admin';
     },
 
     realties() {
