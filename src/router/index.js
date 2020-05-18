@@ -108,6 +108,7 @@ const routes = [
     name: 'history.list',
     meta: {
       role: 'admin',
+      layout: 'admin',
     },
     component: () => import('@/views/History'),
   },
