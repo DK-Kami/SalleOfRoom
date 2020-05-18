@@ -11,21 +11,21 @@
 
         <v-flex xs12 sm6 md3 lg3>
           <v-checkbox
-            v-model="realty.OnRestat"
+            v-model="realty.onRestat"
             label="Выгрузка: Рестат"
           />
         </v-flex>
 
         <v-flex xs12 sm6 md3 lg3>
           <v-checkbox
-            v-model="realty.OnMirKvartir"
+            v-model="realty.onMirKvartir"
             label="Выгрузка: Мир квартир"
           />
         </v-flex>
 
         <v-flex xs12 sm6 md3 lg3>
           <v-checkbox
-            v-model="realty.OnGdeEtotDom"
+            v-model="realty.onGdeEtotDom"
             label="Выгрузка: Где этот дом"
           />
         </v-flex>
