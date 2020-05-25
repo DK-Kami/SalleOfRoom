@@ -23,6 +23,10 @@ export default {
     vueDropzone: vue2Dropzone,
   },
 
+  props: {
+    multiple: Boolean,
+  },
+
   data: vm => ({
     dropzoneOptions: {
       paramName: "image",
