@@ -97,11 +97,12 @@ import TheFooter from './TheFooter';
 import TheMenu from './TheMenu';
 
 const menu = [
-  { title: 'Пользователи',  path: '/users',           icon: 'mdi-account-group',  roles: ['admin']},
-  { title: 'Риелторы',      path: '/realtors',        icon: 'mdi-account-tie',    roles: ['admin']},
-  { title: 'Контрагенты',   path: '/counterparties',  icon: 'mdi-file-document',  roles: ['admin']},
-  { title: 'Недвижимость',  path: '/realties',        icon: 'mdi-home-city',      roles: ['admin', 'realtor']},
-  { title: 'История',       path: '/history',         icon: 'mdi-history',        roles: ['admin']},
+  { title: 'Пользователи',  path: '/users',           icon: 'mdi-account-group',      roles: ['admin']},
+  { title: 'Риелторы',      path: '/realtors',        icon: 'mdi-account-tie',        roles: ['admin']},
+  { title: 'Контрагенты',   path: '/counterparties',  icon: 'mdi-file-document',      roles: ['admin']},
+  { title: 'Сотрудники',    path: '/employes',        icon: 'mdi-account-supervisor', roles: ['admin']},
+  { title: 'Недвижимость',  path: '/realties',        icon: 'mdi-home-city',          roles: ['admin', 'realtor']},
+  { title: 'История',       path: '/history',         icon: 'mdi-history',            roles: ['admin']},
 ];
 
 export default {
