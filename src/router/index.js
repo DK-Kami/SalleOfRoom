@@ -6,6 +6,7 @@ import listners from './listners';
 import counterpartiesRoutes from './routes/counterparties';
 import realtiesRoutes from './routes/realties';
 import realtorsRoutes from './routes/realtors';
+import employesRoutes from './routes/employes';
 import usersRoutes from './routes/users';
 import saleRoutes from './routes/sale';
 import rentRoutes from './routes/rent';
@@ -25,6 +26,7 @@ const routes = [
   ...counterpartiesRoutes,
   ...realtiesRoutes,
   ...realtorsRoutes,
+  ...employesRoutes,
   ...usersRoutes,
   ...saleRoutes,
   ...rentRoutes,
