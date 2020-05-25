@@ -30,4 +30,7 @@ export default {
       ]
     };
   },
+  loadPositions() {
+    return this.apiClient.get('service/positions');
+  },
 };
